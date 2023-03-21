@@ -5,6 +5,7 @@
 **React, Vite**
 
 In **vite-project**:
+`cd client/vite-project`
 `npm install`
 `npm run dev`
 
