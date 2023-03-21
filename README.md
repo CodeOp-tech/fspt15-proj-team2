@@ -18,5 +18,6 @@ In **my-express-app**:
 
 localhost: 5001
 
-**Dependencies**
+### Dependencies
+
 In addition to nodemon and the regular stuff, our project also includes [node-fetch](https://www.npmjs.com/package/node-fetch) so we can do fetches in the backend and [react-router-dom](https://reactrouter.com/en/main) so we can use react-router for pages.
