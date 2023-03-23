@@ -1,12 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch"); // Not used.
 const unirest = require("unirest");
 const db = require("../model/helper");
-
-// const client = Client({
-//   apiKey: process.env.LISTEN_API_KEY || null,
-// });
 
 const searchFullPodcast = async (req, res) => {
   try {
