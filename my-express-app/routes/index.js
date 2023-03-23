@@ -4,6 +4,7 @@ const router = express.Router();
 const unirest = require("unirest");
 const db = require("../model/helper");
 
+// FULL SEARCH FUNCTION -- used in full search POST router function
 const searchFullPodcast = async (req, res) => {
   try {
     const { searchTerm } = req.body;
@@ -21,7 +22,7 @@ const searchFullPodcast = async (req, res) => {
   }
 };
 
-// FULL SEARCH -- RETURNS ARRAY OF EPISODE RESULTS
+// FULL SEARCH -- RETURNS ARRAY OF EPISODE RESULTS WITH NESTED PODCAST DATA
 router.post("/search", async (req, res) => {
   try {
     searchFullPodcast(req, res);
@@ -30,6 +31,7 @@ router.post("/search", async (req, res) => {
   }
 });
 
+// SEARCH BY PODCAST ID -- used in search by podcast id POST function
 const searchById = async (req, res) => {
   const { id } = req.body;
   try {
@@ -46,7 +48,7 @@ const searchById = async (req, res) => {
   }
 };
 
-// SEARCH FOR PODCAST DETAILS BY ID
+// SEARCH FOR PODCAST DETAILS BY ID -- RETURNS OBJECT WITH PODCAST DATA AND NESTED EPISODE LIST (10 EPISODES)
 router.post("/search/:id", async (req, res) => {
   try {
     searchById(req, res);
