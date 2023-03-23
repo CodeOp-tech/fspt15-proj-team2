@@ -1,21 +1,34 @@
 const express = require("express");
 const router = express.Router();
-const { Client } = require("podcast-api");
+const fetch = require("node-fetch");
+const unirest = require("unirest");
+const db = require("../model/helper");
 
-const client = Client({
-  apiKey: process.env.LISTEN_API_KEY || null,
-});
+// const client = Client({
+//   apiKey: process.env.LISTEN_API_KEY || null,
+// });
 
-// FULL SEARCH -- RETURNING SAMPLE DATA -- NOT USING API KEY
-router.get("/search", async (req, res) => {
-  const searchTerm = req.params;
+const searchFullPodcast = async (req, res) => {
   try {
-    const results = await client.search({
-      q: { searchTerm },
-    });
-    // console.log(results);
-    res.status(200).send(results.data.results); // Returns an array of podcasts
-    // console.log(data);
+    const { searchTerm } = req.body;
+    const response = await unirest
+      .get(
+        `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0`
+      )
+      .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
+    response.toJSON();
+
+    console.log(response.body.results);
+    res.send(response.body.results); // Returns array of podcasts
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// FULL SEARCH -- RETURNS ARRAY OF EPISODE RESULTS
+router.post("/search", async (req, res) => {
+  try {
+    searchFullPodcast(req, res);
   } catch (error) {
     console.log(error);
   }
