@@ -34,4 +34,29 @@ router.post("/search", async (req, res) => {
   }
 });
 
+const searchById = async (req, res) => {
+  const { id } = req.body;
+  try {
+    const response = await unirest
+      .get(
+        `https://listen-api.listennotes.com/api/v2/podcasts/${id}?sort=recent_first`
+      )
+      .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
+    response.toJSON();
+    console.log(response.body);
+    res.send(response.body);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// SEARCH FOR PODCAST DETAILS BY ID
+router.post("/search/:id", async (req, res) => {
+  try {
+    searchById(req, res);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;
