@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 // const fetch = require("node-fetch"); // Not used.
 const unirest = require("unirest");
-const db = require("../model/helper");
+const db = require("../model/helper"); // Not used currently, but could be used if accessing the database
 
 // FULL SEARCH FUNCTION -- used in full search POST router function
 const searchFullPodcast = async (req, res) => {
