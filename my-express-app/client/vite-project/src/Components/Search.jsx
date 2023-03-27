@@ -17,6 +17,7 @@ function Search() {
     };
     try {
       let results = await fetch(`/search`, options);
+      //   console.log(results);
       //   let data = await results.json(); // Error: SyntaxError: Unexpected end of JSON input
       //   console.log(data);
       //   return data;
