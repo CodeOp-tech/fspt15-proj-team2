@@ -1,4 +1,11 @@
 .navbar{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: black;
+}
+
+.nav-title{
+    color: white;
 }
