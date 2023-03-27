@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default Search = () => {
+function Search() {
   const [searchTerm, setSearchTerm] = useState("");
 
   //Function for full search with API
@@ -15,8 +15,10 @@ export default Search = () => {
     };
     try {
       let results = await fetch(`/search`, options);
-      let data = await results.json();
-      return data;
+      //   let data = await results.json();
+      //   return data;
+      console.log(results);
+      return results;
     } catch (err) {
       console.log(err);
     }
@@ -48,4 +50,6 @@ export default Search = () => {
       </div>
     </div>
   );
-};
+}
+
+export default Search;
