@@ -17,14 +17,9 @@ function Search() {
     };
     try {
       let results = await fetch(`/api/search`, options);
-      // Data converted to json in backend, I believe.
-      // console.log(results);
-      let data = await results.json(); // Error: SyntaxError: Unexpected end of JSON input
+      let data = await results.json();
       console.log(data);
-      return data;
-
-      //   console.log(results);
-      //   return results;
+      return data; // Returns array of 10 podcast episodes that meet search criteria
     } catch (err) {
       console.log(err);
     }
