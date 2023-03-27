@@ -16,14 +16,15 @@ function Search() {
       body: JSON.stringify({ searchTerm: searchTerm }),
     };
     try {
-      let results = await fetch(`/search`, options);
-      //   console.log(results);
-      //   let data = await results.json(); // Error: SyntaxError: Unexpected end of JSON input
-      //   console.log(data);
-      //   return data;
+      let results = await fetch(`/api/search`, options);
+      // Data converted to json in backend, I believe.
+      // console.log(results);
+      let data = await results.json(); // Error: SyntaxError: Unexpected end of JSON input
+      console.log(data);
+      return data;
 
-      console.log(results);
-      return results;
+      //   console.log(results);
+      //   return results;
     } catch (err) {
       console.log(err);
     }
