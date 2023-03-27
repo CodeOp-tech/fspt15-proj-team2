@@ -2,10 +2,12 @@ import React from "react";
 import { useState } from "react";
 
 function Search() {
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-  //Function for full search with API
+  //Function for full search with API -- not working yet. getting 404 error
   const searchPodcast = async (searchTerm) => {
+    setLoading(true);
     let options = {
       method: "POST",
       headers: {
@@ -15,19 +17,23 @@ function Search() {
     };
     try {
       let results = await fetch(`/search`, options);
-      //   let data = await results.json();
+      //   let data = await results.json(); // Error: SyntaxError: Unexpected end of JSON input
+      //   console.log(data);
       //   return data;
+
       console.log(results);
       return results;
     } catch (err) {
       console.log(err);
     }
+    setLoading(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     searchPodcast(searchTerm);
-    // setSearchTerm("");
+    console.log(searchTerm); //Working
+    setSearchTerm("");
   };
 
   return (
