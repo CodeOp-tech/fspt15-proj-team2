@@ -1,14 +1,29 @@
-hero-img {
-    display: inline-block;
-    width: 84px;
-    height: 84px;
-    background: 
-      linear-gradient(-179deg, rgba(244, 244, 244, 0.5) 0%, rgba(192, 192, 192, 0.5) 100%),
-      url(https://picsum.photos/200/300?image=1069) center/cover;
-    border-radius: 140px;
-    box-shadow: 
-     0 5px 10px 0px rgba(0,0,0,0.22), 
-     0 10px 13px 0px rgba(0,0,0,0.34), 
-     inset 0 18px 18px 0 rgba(255,255,255,0.35), 
-     inset 0 -18px 18px 0 rgba(0,0,0,0.10);
-  }
+body {
+    margin: 0;
+    padding: 0;
+ }
+ .hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .hero-container {
+    position: relative;
+    color: white;
+    background-color: 	#1DB954;
+    text-align: center;
+    margin: 0.625rem;
+ }
+ .hero-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 0;
+ }
+ .hero-subtitle {
+    font-size: 2rem;
+    font-weight: 200;
+    margin-top: 1rem;
+ }
