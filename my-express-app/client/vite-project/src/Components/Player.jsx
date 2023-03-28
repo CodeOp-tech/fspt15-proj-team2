@@ -11,6 +11,7 @@ function Player() {
             <img src={play}/>
             <img src={fastforward}/>
         </div>
+        
     )
 }
 
