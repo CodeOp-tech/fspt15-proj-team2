@@ -5,7 +5,8 @@ function Footer() {
     return (
         <footer className="page-footer font-small elegant-color-dark">
             <div className="footer-copyright text-center p-3">
-                <p>Footer</p>
+                {/* must attribute flaticons */}
+                <a href="https://www.flaticon.com/free-icons/user" title="user icons">User icons created by Freepik - Flaticon</a>
             </div>  
         </footer>
     )
