@@ -7,5 +7,18 @@
 }
 
 .nav-title{
+    padding-left: 10px;
     color: white;
+    margin-bottom: 0;
+}
+
+.nav-login-btn{
+    color: #1DB954;
+    font-weight: bold;
+    background-color: black;
+}
+
+.nav-signup-btn{
+    color:white;
+    background-color: black;
 }

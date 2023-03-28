@@ -4,10 +4,10 @@ import "./Navbar.css";
 function Navbar() {
     return (
         <div className="navbar navbar-default navbar-fixed-top">
-            <p className="nav-title">Podcast App</p>
+            <h6 className="nav-title">Podcast App</h6>
             <div>
-                <button className="nav-btn">Login</button>
-                <button className="nav-btn">Sign up</button>
+                <button className="nav-login-btn btn">Login</button>
+                <button className="nav-signup-btn btn">Sign up</button>
             </div>
         </div>
 )};

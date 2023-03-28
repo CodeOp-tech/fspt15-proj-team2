@@ -3,9 +3,11 @@ import "./Footer.css";
 
 function Footer() {
     return (
-        <div>
-            <p>Footer</p>
-        </div>  
+        <footer className="page-footer font-small elegant-color-dark">
+            <div className="footer-copyright text-center p-3">
+                <p>Footer</p>
+            </div>  
+        </footer>
     )
 }
 
