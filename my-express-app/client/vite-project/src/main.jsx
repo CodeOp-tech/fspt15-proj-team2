@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </BrowserRouter>
 );
 
-
+// original code before adding react router:
 // ReactDOM.createRoot(document.getElementById("root")).render(
 //   <React.StrictMode>
 //     <App />
