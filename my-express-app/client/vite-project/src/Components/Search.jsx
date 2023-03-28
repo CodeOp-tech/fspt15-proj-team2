@@ -70,6 +70,7 @@ function Search() {
                 key={podcast.podcast.id}
               >
                 <h5>{podcast.title_original}</h5>
+                <img src={podcast.podcast.image} />
               </div>
             ))}
           </div>
