@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Search() {
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [english, setEnglish] = useState(false);
 
   //Function for full search with API -- not working yet. getting 404 error
   const searchPodcast = async (searchTerm) => {
@@ -25,6 +26,11 @@ function Search() {
       console.log(err);
     }
     setLoading(false);
+  };
+
+  const handleChange = (e) => {
+    setEnglish(!english);
+    console.log(english);
   };
 
   const handleSubmit = (e) => {
@@ -49,6 +55,11 @@ function Search() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             ></input>
+            <button className="btn">Search</button>
+            <label htmlFor="checkbox" className="form-label">
+              English-only results
+            </label>
+            <input type="checkbox" checked={english} onChange={handleChange} />
           </form>
         </div>
       </div>
