@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom";
 function Search() {
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [english, setEnglish] = useState(false);
 
-  //Function for full search with API -- not working yet. getting 404 error
+  //Function for full search with API
   const searchPodcast = async (searchTerm) => {
     setLoading(true);
     let options = {
@@ -28,15 +27,11 @@ function Search() {
     setLoading(false);
   };
 
-  const handleChange = (e) => {
-    setEnglish(!english);
-    console.log(english);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchTerm(searchTerm);
     searchPodcast(searchTerm);
+    setSearchTerm("");
     // useNavigate("/results"); //This page needs to be set up in the router area.
   };
 
@@ -56,10 +51,6 @@ function Search() {
               onChange={(e) => setSearchTerm(e.target.value)}
             ></input>
             <button className="btn">Search</button>
-            <label htmlFor="checkbox" className="form-label">
-              English-only results
-            </label>
-            <input type="checkbox" checked={english} onChange={handleChange} />
           </form>
         </div>
       </div>
