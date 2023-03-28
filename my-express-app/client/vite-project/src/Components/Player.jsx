@@ -7,9 +7,9 @@ import "./Player.css";
 function Player() {
     return (
         <div className="player fixed-bottom">
-            <img src={rewind}/>
-            <img src={play}/>
-            <img src={fastforward}/>
+            <button className="rewind-btn"><img src={rewind}/></button>
+            <button className="play-btn"><img src={play}/></button>
+            <button className="pause-btn"><img src={fastforward}/></button>
         </div>
         
     )
