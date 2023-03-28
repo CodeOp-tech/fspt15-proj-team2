@@ -4,7 +4,7 @@ const router = express.Router();
 const unirest = require("unirest");
 const db = require("../model/helper"); // Not used currently, but could be used if accessing the database
 
-// FULL SEARCH FUNCTION -- used in full search POST router function -- working in postman
+// FULL SEARCH FUNCTION -- used in full search POST router function -- returns only English results
 const searchFullPodcast = async (req, res) => {
   try {
     const { searchTerm } = req.body;
