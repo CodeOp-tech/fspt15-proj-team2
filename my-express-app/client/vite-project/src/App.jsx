@@ -17,6 +17,7 @@ function App() {
         <div>Search bar goes here</div>
         <p>Favorites</p>
         <p>Recommended</p>
+        <Search />
       </div>
       <Player/>
       <Footer/>
