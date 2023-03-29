@@ -6,13 +6,16 @@ import "./Player.css";
 
 function Player() {
     return (
-        <div className="player fixed-bottom">
-            <button className="rewind-btn"><img src={rewind}/></button>
-            <button className="play-btn"><img src={play}/></button>
-            <button className="pause-btn"><img src={fastforward}/></button>
-        </div>
-        
+        <iframe src="https://www.listennotes.com/e/63405e9de44c49fda392918584c236c8/embed/" height="180px" width="100%"></iframe>
     )
+    // return (
+    //     <div className="player fixed-bottom">
+    //         <button className="rewind-btn"><img src={rewind}/></button>
+    //         <button className="play-btn"><img src={play}/></button>
+    //         <button className="pause-btn"><img src={fastforward}/></button>
+    //     </div>
+        
+    // )
 }
 
 export default Player;

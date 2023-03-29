@@ -13,7 +13,7 @@
 }
 
 .nav-login-btn{
-    color: #1DB954;
+    color: #AA4A44;
     font-weight: bold;
     background-color: black;
 }
@@ -22,4 +22,8 @@
     color:white;
     font-weight: lighter;
     background-color: black;
+}
+
+.material-symbols-outlined {
+    color: white;
 }
