@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+// import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Navbar from './components/Navbar';
 import Player from './components/Player';
@@ -8,7 +8,7 @@ import Search from './components/Search';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <div>
         <Navbar/>
         <div className="hero-container">
