@@ -5,6 +5,7 @@ function SearchResultsPage() {
     return (
         <div className="search-results-page">
             <Navbar/>
+            <button>Back to search</button>
             <h2>Search Results</h2>
         </div>
     )

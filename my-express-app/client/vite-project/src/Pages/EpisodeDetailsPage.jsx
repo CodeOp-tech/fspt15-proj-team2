@@ -3,9 +3,9 @@ import Navbar from "../Components/Navbar.jsx";
 
 function EpisodeDetails() {
     return (
-        <div className="search-results-page">
+        <div className="episode-details-container">
             <Navbar/>
-            <h2>Search Results</h2>
+            <h2>Episode Summary</h2>
         </div>
     )
 }

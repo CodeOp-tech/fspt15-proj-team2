@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import "./Footer.css"; // currently empty
 
 function Favorites() {
     return (

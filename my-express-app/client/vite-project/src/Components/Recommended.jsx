@@ -1,4 +1,5 @@
 import React from "react";
+import "./Recommended.css"; // currently empty
 import { useState } from "react";
 
 function Recommended() {
