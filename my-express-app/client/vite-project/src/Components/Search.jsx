@@ -6,6 +6,7 @@ function Search() {
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
+  const navigate = useNavigate();
 
   //Function for full search with API
   const searchPodcast = async (searchTerm) => {
@@ -34,7 +35,7 @@ function Search() {
     setSearchTerm(searchTerm);
     searchPodcast(searchTerm);
     setSearchTerm("");
-    // useNavigate("/results"); //This page needs to be set up in the router area.
+    navigate("/results"); //This page needs to be set up in the router area.
   };
 
   return (
