@@ -1,23 +1,35 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, Route, Link } from "react-router-dom";
 import "./App.css";
 import LandingPage from "./Pages/LandingPage";
 import SearchResultsPage from "./Pages/SearchResultsPage";
 import PodcastDetailsPage from "./Pages/PodcastDetailsPage";
 import EpisodeDetailsPage from "./Pages/EpisodeDetailsPage";
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <LandingPage/>, 
+      errorElement: <ErrorPage/>
+    }, 
+    {
+      path: "search",
+      element: <SearchResultsPage/>, 
+    }, 
+    {
+      path: "podcast",
+      element: <PodcastDetailsPage/>, 
+    }, 
+    {
+      path: "episodes",
+      element: <EpisodeDetailsPage/>
+    }
+  ])
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage/>}/>
-        <Route path="search" element={<SearchResultsPage/>}/>
-        <Route path="episode" element={<EpisodeDetailsPage/>}/>
-        <Route path="podcast" element={<PodcastDetailsPage/>}/>
-      </Routes>
-    </BrowserRouter>
-  );
-}
+    <RouterProvider router={router}/>
+)}
 
 export default App;
