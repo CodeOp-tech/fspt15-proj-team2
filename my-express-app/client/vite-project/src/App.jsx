@@ -1,21 +1,25 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, Link, useRouteError } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import ErrorPage from "./Pages/ErrorPage";
 import LandingPage from "./Pages/LandingPage";
 import SearchResultsPage from "./Pages/SearchResultsPage";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/", 
+      element: <LandingPage/>,
+      errorElement: <ErrorPage/>
+    }, 
+    {
+      path: "search", 
+      element: <SearchResultsPage/>
+    }
+  ])
+
   return (
-  
-    <div className="app">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage/>} errorElement={<ErrorPage/>}/>
-          <Route path="search" element={<SearchResultsPage/>}/>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
