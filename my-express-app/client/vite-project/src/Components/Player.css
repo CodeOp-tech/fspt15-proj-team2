@@ -1,0 +1,12 @@
+.player {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+img {
+    padding-left: 20px;
+    padding-right: 20px;
+}

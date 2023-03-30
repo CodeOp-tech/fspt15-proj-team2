@@ -1,0 +1,29 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+}
+
+.nav-title{
+    padding-left: 10px;
+    color: white;
+    margin-bottom: 0;
+}
+
+.nav-login-btn{
+    color: #AA4A44;
+    font-weight: bold;
+    background-color: black;
+}
+
+.nav-signup-btn{
+    color:white;
+    font-weight: lighter;
+    background-color: black;
+}
+
+.material-symbols-outlined {
+    color: white;
+}

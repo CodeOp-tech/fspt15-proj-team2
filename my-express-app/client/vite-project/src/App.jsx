@@ -1,17 +1,20 @@
-import { useState } from "react";
-import Search from "./Components/Search";
-
-import "./App.css"; // This file is empty currently.
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import LandingPage from "./Pages/LandingPage";
+import SearchResultsPage from "./Pages/SearchResultsPage";
+import PodcastDetailsPage from "./Pages/PodcastDetailsPage";
+import EpisodeDetailsPage from "./Pages/EpisodeDetailsPage";
 
 function App() {
+
   return (
-    <div className="App">
-      <div>
-        <h1>This is the front end.</h1>
-        <Search />
-      </div>
-    </div>
-  );
-}
+    <Routes>
+      <Route  path="/" element={<LandingPage />}/>
+      <Route  path="/results" element={<SearchResultsPage />}/>
+      <Route  path="/podcast/:id" element={<PodcastDetailsPage />}/>
+      <Route  path="/episode/:id" element={<EpisodeDetailsPage />}/>
+    </Routes>
+)}
 
 export default App;
