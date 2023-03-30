@@ -15,7 +15,7 @@ function App() {
       errorElement: <ErrorPage/>
     }, 
     {
-      path: "search",
+      path: "results",
       element: <SearchResultsPage/>, 
     }, 
     {

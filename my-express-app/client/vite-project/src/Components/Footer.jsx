@@ -7,7 +7,6 @@ function Footer() {
             <div className="footer-copyright text-center p-3">
                 {/* attributes to flaticons */}
                 <a href="https://www.flaticon.com/free-icons/user" title="user icons">User icon created by Freepik - Flaticon</a> <br/>
-                {/* <a href="https://www.flaticon.com/free-icons/rewind" title="rewind icons">Player icons created by Smashicons - Flaticon</a> */}
             </div>  
         </footer>
     )

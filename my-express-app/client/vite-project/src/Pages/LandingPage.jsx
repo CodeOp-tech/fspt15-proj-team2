@@ -11,7 +11,6 @@ import Recommended from '../components/Recommended';
 function LandingPage() {
   return (
     <div className="app">
-      <div>
         <Navbar/>
         <div className="hero-container">
           <h1 className="hero-title">Podcast slogan. </h1>
@@ -20,7 +19,6 @@ function LandingPage() {
         <Favorites/>
         <Recommended/>
         <Search />
-      </div>
       <Player/>
       <Footer/>
     </div>
