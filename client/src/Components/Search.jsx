@@ -10,7 +10,7 @@ function Search() {
   // const [results, setResults] = useState([]);
 
   // FROM THE COFFEE DEMO -- NEEDS TO BE UDPATED
-  let { setResults } = useContext(SearchContext);
+  let { setResults } = useContext(SearchContext); //Error here: Uncaught TypeError: Cannot destructure property 'setResults' of 'useContext(...)' as it is undefined.
 
   //Function for full search with API
   const searchPodcast = async (searchTerm) => {
