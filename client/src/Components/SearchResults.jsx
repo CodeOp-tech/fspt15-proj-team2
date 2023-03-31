@@ -9,11 +9,6 @@ function SearchResults() {
   const [loading, setLoading] = useState(false);
   let { results, setResults } = useContext(SearchContext);
 
-  const handleClick = (e) => {
-    console.log(e.currentTarget);
-    navigate(`/episode/${e.currentTarget.value}`);
-  };
-
   return (
     <div className="container">
       <div className="row" id="searchResults">
@@ -27,15 +22,15 @@ function SearchResults() {
               <div
                 className="col-lg-4 col-md-6 col-12 ps-3 pe-3 mt-3"
                 id="podcast"
-                value={podcast.id}
                 key={podcast.id}
-                onClick={handleClick}
               >
-                <h5 className="text-center mb-3">{podcast.title_original}</h5>
-                <img src={podcast.podcast.image} />
-                <h6 className="text-center mt-3">
-                  {podcast.podcast.title_original}
-                </h6>
+                <Link to={`/episode/${podcast.id}`}>
+                  <h5 className="text-center mb-3">{podcast.title_original}</h5>
+                  <img src={podcast.podcast.image} />
+                  <h6 className="text-center mt-3">
+                    {podcast.podcast.title_original}
+                  </h6>
+                </Link>
               </div>
             ))}
           </div>
