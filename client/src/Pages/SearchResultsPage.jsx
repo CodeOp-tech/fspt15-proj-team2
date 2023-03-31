@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import { Routes, Route, Link } from "react-router-dom";
+import SearchResults from "../Components/SearchResults";
+import { Link } from "react-router-dom";
 
 function SearchResultsPage() {
   return (

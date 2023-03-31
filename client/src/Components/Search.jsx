@@ -7,7 +7,7 @@ function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
 
-  //Function for full search with API -- GETTING ERROR WITH THIS FUNCTION
+  //Function for full search with API
   const searchPodcast = async (searchTerm) => {
     setLoading(true);
     let options = {
@@ -34,7 +34,7 @@ function Search() {
     setSearchTerm(searchTerm);
     searchPodcast(searchTerm);
     setSearchTerm("");
-    // useNavigate("/results"); //This page needs to be set up in the router area.
+    useNavigate("/results"); //This page needs to be set up in the router area.
   };
 
   return (
