@@ -42,8 +42,11 @@ function EpisodeDetails() {
 
       {/* This div renders the episode data -- right now, it's rendering all the results data */}
       <div id="container" className="row mt-2">
-        <h2 className="text-center">Episode Details Go Here!</h2>
-        <h3>{episodeData.title_original}</h3>
+        <h2 className="text-center">{episodeData.title_original}</h2>
+        <div className="row justify-content-center mt-4">
+          <img src={episodeData.image} className="col-2 w-25" />
+          <p className="col-6">{episodeData.description_original}</p>
+        </div>
       </div>
     </div>
   );
