@@ -1,15 +1,20 @@
 import React from "react";
-import Navbar from "../Components/Navbar.jsx";
-import {Routes, Route, Link} from "react-router-dom";
+import Navbar from "../components/Navbar";
+import { Routes, Route, Link } from "react-router-dom";
 
 function SearchResultsPage() {
-    return (
-        <div className="search-results-page">
-            <Navbar/>
-            <Link to="/"><button>Back to search</button></Link>
-            <h2>Search Results</h2>
-        </div>
-    )
+  return (
+    <div className="search-results-page">
+      <Navbar />
+      <Link to="/">
+        <button>Back to search</button>
+      </Link>
+      <div className="container">
+        <Search />
+        <SearchResults />
+      </div>
+    </div>
+  );
 }
 
 export default SearchResultsPage;

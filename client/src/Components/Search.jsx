@@ -7,7 +7,7 @@ function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
 
-  //Function for full search with API
+  //Function for full search with API -- GETTING ERROR WITH THIS FUNCTION
   const searchPodcast = async (searchTerm) => {
     setLoading(true);
     let options = {
