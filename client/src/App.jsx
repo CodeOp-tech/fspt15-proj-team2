@@ -8,8 +8,12 @@ import EpisodeDetailsPage from "./Pages/EpisodeDetailsPage";
 import { SearchContext } from "./SearchContext";
 
 function App() {
+  const [results, setResults] = useState();
+
+  let searchResults = { results };
+
   return (
-    <SearchContext.Provider value={results}>
+    <SearchContext.Provider value={searchResults}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/results" element={<SearchResultsPage />} />
