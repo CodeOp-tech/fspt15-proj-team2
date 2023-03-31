@@ -4,7 +4,7 @@ import "./App.css";
 import LandingPage from "./Pages/LandingPage";
 import { SearchContext } from "./SearchContext";
 import SearchResultsPage from "./Pages/SearchResultsPage";
-import PodcastDetailsPage from "./Pages/PodcastDetailsPage";
+import PodcastDetailsPage from "./Pages/PodcastDetailsPage"; //We don't need this in this iteration of the project.
 import EpisodeDetailsPage from "./Pages/EpisodeDetailsPage";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <SearchContext.Provider value={results}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/results" element={<SearchResultsPage />} />
-        <Route path="/podcast/:id" element={<PodcastDetailsPage />} />
+        {/* <Route path="/podcast/:id" element={<PodcastDetailsPage />} /> */}
         <Route path="/episode/:id" element={<EpisodeDetailsPage />} />
       </SearchContext.Provider>
     </Routes>
