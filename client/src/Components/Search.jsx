@@ -1,12 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SearchContext } from "../SearchContext";
+// import { SearchContext } from "../SearchContext";
 
 function Search() {
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
+  // FROM THE COFFEE DEMO -- NEEDS TO BE UDPATED
+  let { addCoffee } = useContext(SearchContext); // Should the search functions below live in the searchContext file?
 
   //Function for full search with API
   const searchPodcast = async (searchTerm) => {

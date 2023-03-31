@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import Navbar from "../Navbar.jsx";
+import Navbar from "../components/Navbar";
 
 function EpisodeDetails() {
   const params = useParams(); //A part of react-router
