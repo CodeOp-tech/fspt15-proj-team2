@@ -9,14 +9,14 @@ import { SearchContext } from "./SearchContext";
 
 function App() {
   return (
-    <Routes>
-      <SearchContext.Provider value={results}>
+    <SearchContext.Provider value={results}>
+      <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/results" element={<SearchResultsPage />} />
         {/* <Route path="/podcast/:id" element={<PodcastDetailsPage />} /> */}
         <Route path="/episode/:id" element={<EpisodeDetailsPage />} />
-      </SearchContext.Provider>
-    </Routes>
+      </Routes>
+    </SearchContext.Provider>
   );
 }
 

@@ -1,5 +1,5 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 function EpisodeDetails() {
