@@ -40,7 +40,7 @@ function Search() {
     setSearchTerm(searchTerm);
     searchPodcast(searchTerm);
     setSearchTerm("");
-    // navigate("/results"); //Go to results page upon submission -- results rendered in results page
+    navigate("/results"); //Go to results page upon submission -- results rendered in results page
   };
 
   return (

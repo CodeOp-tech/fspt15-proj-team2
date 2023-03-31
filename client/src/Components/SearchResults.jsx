@@ -1,8 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { SearchContext } from "../SearchContext";
 
 function SearchResults() {
+  const [loading, setLoading] = useState(false);
   let { results, setResults } = useContext(SearchContext);
   return (
     <div className="container">
