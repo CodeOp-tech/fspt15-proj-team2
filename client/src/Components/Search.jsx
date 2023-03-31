@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { SearchContext } from "../SearchContext";
+import { useSearchContext } from "../SearchContext";
 
 function Search() {
   const [loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ function Search() {
   // const [results, setResults] = useState([]);
 
   // FROM THE COFFEE DEMO -- NEEDS TO BE UDPATED
-  let { setResults } = useContext(SearchContext); //Error here: Uncaught TypeError: Cannot destructure property 'setResults' of 'useContext(...)' as it is undefined.
+  let { results, setResults } = useSearchContext();
 
   //Function for full search with API
   const searchPodcast = async (searchTerm) => {
