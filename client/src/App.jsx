@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import LandingPage from "./Pages/LandingPage";
-import { SearchContext } from "./SearchContext";
 import SearchResultsPage from "./Pages/SearchResultsPage";
 import PodcastDetailsPage from "./Pages/PodcastDetailsPage"; //We don't need this in this iteration of the project.
 import EpisodeDetailsPage from "./Pages/EpisodeDetailsPage";
+import { SearchContext } from "./SearchContext";
 
 function App() {
   return (
