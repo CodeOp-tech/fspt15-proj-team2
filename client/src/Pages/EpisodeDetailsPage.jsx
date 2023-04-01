@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Player from "../components/Player";
 import { SearchContext } from "../SearchContext";
 
 function EpisodeDetails() {
@@ -48,6 +49,7 @@ function EpisodeDetails() {
           <p className="col-6">{episodeData.description_original}</p>
         </div>
       </div>
+      <Player />
     </div>
   );
 }
