@@ -1,15 +1,26 @@
 import React from "react";
-import Navbar from "../Components/Navbar.jsx";
-import {Routes, Route, Link} from "react-router-dom";
+import { useState, useContext } from "react";
+import Navbar from "../components/Navbar";
+import SearchResults from "../Components/SearchResults";
+import Search from "../Components/Search";
+import { Link } from "react-router-dom";
+import { SearchContext } from "../SearchContext";
 
 function SearchResultsPage() {
-    return (
-        <div className="search-results-page">
-            <Navbar/>
-            <Link to="/"><button>Back to search</button></Link>
-            <h2>Search Results</h2>
-        </div>
-    )
+  const [loading, setLoading] = useState(false);
+  let { results, setResults } = useContext(SearchContext);
+  return (
+    <div className="search-results-page container">
+      <Navbar />
+      <Link to="/">
+        <button className="btn btn-primary mt-2">Back to home page</button>
+      </Link>
+      <div className="container">
+        <Search />
+        <SearchResults />
+      </div>
+    </div>
+  );
 }
 
 export default SearchResultsPage;
