@@ -1,3 +1,18 @@
 button {
     margin-left: 15px;
 }
+
+.podcast-title {
+    font-style: italic;
+}
+
+.episode-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.episode-desc {
+    margin-top: 10px;
+}

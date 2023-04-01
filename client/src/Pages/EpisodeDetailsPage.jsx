@@ -12,6 +12,7 @@ function EpisodeDetails() {
   // this podcast episode id is in the database & can be used to search API
   let { results, setResults } = useContext(SearchContext);
   const [episodeData, setEpisodeData] = useState([]);
+  const url = `${episodeData.listennotes_url}/embed`
 
   const getEpisodeDetails = (results) => {
     for (let episode of results) {
@@ -46,14 +47,14 @@ function EpisodeDetails() {
       <div id="container" className="row mt-2">
         <div className="episode-title">
             <h2 className="text-center">{episodeData.title_original}</h2>
-            {/* <h4 className="text-center">From the {episodeData.podcast.title_original} Podcast</h4> */}
+            {/* <h4 className="text-center">From the <span className="podcast-title"> {episodeData.podcast.title_original} </span>Podcast</h4> */}
         </div>
-        <div className="row justify-content-center mt-4">
+        <div className="episode-details column justify-content-center mt-4">
           <img src={episodeData.image} className="col-2 w-25" />
-          <p className="col-6">{episodeData.description_original}</p>
+          <div className="episode-desc col-6">{episodeData.description_original}</div>
         </div>
       </div>
-      <Player />
+      <Player url={url}/> 
     </div>
   );
 }
