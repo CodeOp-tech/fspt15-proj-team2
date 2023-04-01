@@ -6,7 +6,8 @@ function EpisodeDetails() {
     return (
         <div className="episode-details-container">
             <Navbar/>
-            <h2>Episode Summary</h2>
+            <img>Podcast image</img>
+            <h2>Episode Description</h2>
             <Player/>
         </div>
     )
