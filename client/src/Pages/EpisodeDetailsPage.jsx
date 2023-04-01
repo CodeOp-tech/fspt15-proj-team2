@@ -46,7 +46,7 @@ function EpisodeDetails() {
       <div id="container" className="row mt-2">
         <div className="episode-title">
             <h2 className="text-center">{episodeData.title_original}</h2>
-            <h4 className="text-center">From the {episodeData.podcast.title_original} Podcast</h4>
+            {/* <h4 className="text-center">From the {episodeData.podcast.title_original} Podcast</h4> */}
         </div>
         <div className="row justify-content-center mt-4">
           <img src={episodeData.image} className="col-2 w-25" />
