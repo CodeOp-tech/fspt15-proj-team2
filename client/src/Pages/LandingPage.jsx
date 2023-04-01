@@ -19,7 +19,6 @@ function LandingPage() {
       {/* <Favorites/>
         <Recommended/> */}
       <Search />
-      <Player />
       <Footer />
     </div>
   );

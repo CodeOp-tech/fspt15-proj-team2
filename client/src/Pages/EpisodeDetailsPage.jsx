@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Player from "../components/Player";
 import { SearchContext } from "../SearchContext";
+import "./EpisodeDetailsPage.css";
 
 function EpisodeDetails() {
   const params = useParams(); //A part of react-router
@@ -43,7 +44,10 @@ function EpisodeDetails() {
 
       {/* This div renders the episode data -- right now, it's rendering all the results data */}
       <div id="container" className="row mt-2">
-        <h2 className="text-center">{episodeData.title_original}</h2>
+        <div className="episode-title">
+            <h2 className="text-center">{episodeData.title_original}</h2>
+            <h4 className="text-center">From the {episodeData.podcast.title_original} Podcast</h4>
+        </div>
         <div className="row justify-content-center mt-4">
           <img src={episodeData.image} className="col-2 w-25" />
           <p className="col-6">{episodeData.description_original}</p>
