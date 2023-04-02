@@ -12,8 +12,7 @@ function EpisodeDetails() {
   // this podcast episode id is in the database & can be used to search API
   let { results, setResults } = useContext(SearchContext);
   const [episodeData, setEpisodeData] = useState([]);
-  const url = `${episodeData.listennotes_url}/embed`
-
+  const url = `${episodeData.listennotes_url}/embed`;
 
   const getEpisodeDetails = (results) => {
     for (let episode of results) {
@@ -29,7 +28,6 @@ function EpisodeDetails() {
     getEpisodeDetails(results); // Pulls episode details from full results
   }, []);
 
-
   // Right now, all results are being rendered here. Just thinking about how we could get just the data for the target episode:
   // Option 1: Loop through the results and just render the data from the episode with the matching id (podcast.id).
   // Option 2: Use a function to fetch the data for just that one episode using the episode id.
@@ -42,28 +40,38 @@ function EpisodeDetails() {
       Or store it locally? Or use onClick with this button to render it in the search results somehow...
       not sure yet.*/}
       <div className="body">
-      <Link to="/results">
-        <button className="btn btn-primary mt-2">Back to search results</button>
-      </Link>
+        <Link to="/results">
+          <button className="btn btn-primary mt-2">
+            Back to search results
+          </button>
+        </Link>
 
-      {/* This div renders the episode data -- right now, it's rendering all the results data */}
-      <div id="container" className="row mt-2">
-        <div className="episode-title">
+        {/* This div renders the episode data -- right now, it's rendering all the results data */}
+        <div id="container" className="row mt-2">
+          <div className="episode-title">
             <h2 className="text-center">{episodeData.title_original}</h2>
             {/* <h4 className="text-center">From the <span className="podcast-title"> {episodeData.podcast.title_original} </span>Podcast</h4> */}
-        </div>
-        <div className="episode-details justify-content-center mt-4">
-          <img src={episodeData.image} className="episode-img col-2 w-25" />
-          {/* to render HTMl string as true html */}
-          <div className="episode-desc col-6" dangerouslySetInnerHTML={{ __html: episodeData.description_original }} />
-        </div>
-        {/* material symbols for when we create add to playlist functionality - currently white */}
-        {/* <span className="material-symbols-outlined ">playlist_add</span>
+          </div>
+          <div className="episode-details justify-content-center mt-4">
+            <img
+              src={episodeData.image}
+              className="episode-img col-2 w-25 rounded"
+            />
+            {/* to render HTMl string as true html */}
+            <div
+              className="episode-desc col-6"
+              dangerouslySetInnerHTML={{
+                __html: episodeData.description_original,
+              }}
+            />
+          </div>
+          {/* material symbols for when we create add to playlist functionality - currently white */}
+          {/* <span className="material-symbols-outlined ">playlist_add</span>
         <span className="material-symbols-outlined">playlist_add_check</span>
         <span className="material-symbols-outlined">playlist_remove</span> */}
+        </div>
       </div>
-      </div>
-      <Player url={url}/> 
+      <Player url={url} />
     </div>
   );
 }
