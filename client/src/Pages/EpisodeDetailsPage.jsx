@@ -54,9 +54,13 @@ function EpisodeDetails() {
         </div>
         <div className="episode-details column justify-content-center mt-4">
           <img src={episodeData.image} className="col-2 w-25" />
-          {/* dangerouslySetHTML is to render HTMl string as true html */}
+          {/* to render HTMl string as true html */}
           <div className="episode-desc col-6" dangerouslySetInnerHTML={{ __html: episodeData.description_original }} />
         </div>
+        {/* material symbols for when we create add to playlist functionality - currently white */}
+        {/* <span className="material-symbols-outlined ">playlist_add</span>
+        <span className="material-symbols-outlined">playlist_add_check</span>
+        <span className="material-symbols-outlined">playlist_remove</span> */}
       </div>
       </div>
       <Player url={url}/> 
