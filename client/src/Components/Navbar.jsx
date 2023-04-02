@@ -5,7 +5,7 @@ import avatar from "../Images/avatar.png";
 
 function Navbar() {
   return (
-    <div className="navbar navbar-default navbar-fixed-top">
+    <div className="navbar navbar-default fixed-top">
       <Link to="/">
         <h6 className="nav-title">Podcast App</h6>
       </Link>

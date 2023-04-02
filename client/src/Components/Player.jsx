@@ -3,8 +3,8 @@ import "./Player.css";
 
 function Player({url}) {
     return (
-        <div className="fixed-bottom">
-            <iframe  src={url} height="180px" width="100%"></iframe>
+        <div className="player">
+            <iframe  src={url} height="180px" width="100%" ></iframe>
         </div>
     )
 }
