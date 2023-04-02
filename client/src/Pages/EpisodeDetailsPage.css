@@ -1,0 +1,30 @@
+.body {
+    margin-top: 60px;
+}
+
+button {
+    margin-left: 15px;
+}
+
+.podcast-title {
+    font-style: italic;
+}
+
+.episode-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.episode-desc {
+    margin-top: 10px;
+}
+
+.container {
+    margin-bottom: 100px;
+}
+
+.episode_img {
+    margin-right: 20px;
+}
