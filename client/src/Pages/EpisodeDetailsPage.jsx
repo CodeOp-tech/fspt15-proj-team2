@@ -39,6 +39,7 @@ function EpisodeDetails() {
       {/* This link should keep the results from the previous search -- maybe refetch the data? 
       Or store it locally? Or use onClick with this button to render it in the search results somehow...
       not sure yet.*/}
+      <div className="body">
       <Link to="/results">
         <button className="btn btn-primary mt-2">Back to search results</button>
       </Link>
@@ -53,6 +54,7 @@ function EpisodeDetails() {
           <img src={episodeData.image} className="col-2 w-25" />
           <div className="episode-desc col-6">{episodeData.description_original}</div>
         </div>
+      </div>
       </div>
       <Player url={url}/> 
     </div>
