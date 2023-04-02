@@ -44,7 +44,7 @@ function Search() {
   };
 
   return (
-    <div id="searchArea" className="container mt-3">
+    <div id="searchArea" className="container mt-3 mb-2">
       <div className="row">
         <div id="searchBox" className="offset-md-3 col-md-6 mb-3">
           <form onSubmit={handleSubmit}>
