@@ -52,8 +52,8 @@ function EpisodeDetails() {
             <h2 className="text-center">{episodeData.title_original}</h2>
             {/* <h4 className="text-center">From the <span className="podcast-title"> {episodeData.podcast.title_original} </span>Podcast</h4> */}
         </div>
-        <div className="episode-details column justify-content-center mt-4">
-          <img src={episodeData.image} className="col-2 w-25" />
+        <div className="episode-details justify-content-center mt-4">
+          <img src={episodeData.image} className="episode-img col-2 w-25" />
           {/* to render HTMl string as true html */}
           <div className="episode-desc col-6" dangerouslySetInnerHTML={{ __html: episodeData.description_original }} />
         </div>
