@@ -14,6 +14,7 @@ function EpisodeDetails() {
   const [episodeData, setEpisodeData] = useState([]);
   const url = `${episodeData.listennotes_url}/embed`
 
+
   const getEpisodeDetails = (results) => {
     for (let episode of results) {
       if (episode.id === ID) {
@@ -27,6 +28,7 @@ function EpisodeDetails() {
   useEffect(() => {
     getEpisodeDetails(results); // Pulls episode details from full results
   }, []);
+
 
   // Right now, all results are being rendered here. Just thinking about how we could get just the data for the target episode:
   // Option 1: Loop through the results and just render the data from the episode with the matching id (podcast.id).
@@ -52,7 +54,8 @@ function EpisodeDetails() {
         </div>
         <div className="episode-details column justify-content-center mt-4">
           <img src={episodeData.image} className="col-2 w-25" />
-          <div className="episode-desc col-6">{episodeData.description_original}</div>
+          {/* dangerouslySetHTML is to render HTMl string as true html */}
+          <div className="episode-desc col-6" dangerouslySetInnerHTML={{ __html: episodeData.description_original }} />
         </div>
       </div>
       </div>
