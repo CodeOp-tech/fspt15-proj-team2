@@ -16,7 +16,7 @@ CREATE TABLE users (
 -- SQL query in users.js
 -- INSERT INTO users (username, password, firstName, email) VALUES ("${username}", "${hashedPW}", "${firstName}", "${email}")
   
--- need to fetch the id from the podcast for this
+-- need to fetch the id from the podcast API for this
 CREATE TABLE favorites (
     id INTEGER NOT NULL PRIMARY KEY
 );

@@ -38,16 +38,14 @@ export default function Login({ setAuth }){
             // save the token and username in the local storage with the setItem method (can only do one at a time)
             //? what format does this have to be if we set multiple items
             localStorage.setItem("token", data.token)
-            localStorage.setItem("username", data.username)
             console.log(data.message, data.token, data.username)
 
-            setAuth(true);
-            if (localStorage.getItem("username") === "admin") {
-                setIsAdminLoggedIn(true)
-                navigate("/admin")
-            } else {
-                navigate("/parent")
-            }
+            // setAuth(true);
+            // if (localStorage.getItem() {
+            //     navigate("/admin")
+            // } else {
+            //     navigate("/parent")
+            // }
 
 
         } catch(err) {
@@ -59,9 +57,6 @@ export default function Login({ setAuth }){
         e.preventDefault();
         login();
         console.log("log in successful")
-        // can we create a conditional here that if the user is admin then it takes us to the private routes and then if it is a parent then it will go to where it needs to be?
-        // navigate("/")
-        
     }
 
     return(

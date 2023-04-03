@@ -29,6 +29,7 @@ DB_HOST=localhost
 DB_USER=root
 DB_PASS=TYPE YOUR PASSWORD
 DB_NAME=podcast
+SUPER_SECRET=YOUR SECRET KEY
 ```
 
 Type `mysql -u root -p` to access the MySQL CLI using your password.
