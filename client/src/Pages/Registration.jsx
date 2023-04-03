@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 export default function Register(){
     const navigate = useNavigate();
@@ -47,8 +48,6 @@ export default function Register(){
             // this shows us the token in the console (reflects the data from the backend users.js line 91)
             console.log(data);
 
-            // how do I check that this works and the user can be taken to the login page to log in?
-
 
         } catch(err) {
             console.log({message: err.message})
@@ -58,21 +57,10 @@ export default function Register(){
 
     return(
         <>
-            <h2 className="text-center m-4"> Registration Form</h2>
-            <h6 className="text-center m-4">The student ID was sent via email</h6>
+            <Navbar></Navbar>
+            <h2 className="text-center m-4"> Registration</h2>
             <form onSubmit={handleSubmit}>
-                {/* the information from this page must match a child in the database for the user to create an account */}
-                {/* this way we already know which ID the account is attached to and which child's progress will be viewable */}
                 <div className="row justify-content-center">
-                    <div className="form-floating mb-3 col-md-10 col-10">
-                        <input 
-                            type="number" 
-                            className="form-control mr-3" name="email"
-                            value = {userRegistration.email}
-                            onChange={(event) => handleChange(event)}  
-                        />
-                        <label className="mx-1" for="studentID">E-mail</label>
-                    </div>
                     <div className="form-floating mb-3 col-md-10 col-10">
                         <input 
                             // type="text" text is default so this is unnecessary
@@ -80,8 +68,18 @@ export default function Register(){
                             value = {userRegistration.firstName}
                             onChange={(event) => handleChange(event)}  
                         />
-                        <label className="mx-1" for="studentLastName">First Name</label>
+                        <label className="mx-1" for="firstName">First Name</label>
                     </div>
+                    <div className="form-floating mb-3 col-md-10 col-10">
+                        <input 
+                            type="number" 
+                            className="form-control mr-3" name="email"
+                            value = {userRegistration.email}
+                            onChange={(event) => handleChange(event)}  
+                        />
+                        <label className="mx-1" for="email">E-mail</label>
+                    </div>
+                    
                     <div className="form-floating mb-3 col-md-10 col-10">
                         <input 
                             type="username" 
@@ -105,7 +103,7 @@ export default function Register(){
                     
                 </div>
                 <div className="text-center m-3">
-                    <button type="submit" className="register-btn m-2">Register</button>
+                    <button type="submit" className="register-btn m-2">Sign up</button>
                 </div>  
             </form>
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 export default function Login({ setAuth }){
     const navigate = useNavigate();
@@ -61,6 +62,8 @@ export default function Login({ setAuth }){
 
     return(
         <>
+            <Navbar></Navbar>
+            <h2 className="text-center m-4">Log in</h2>
             <form onSubmit={handleSubmit}>
                 <div className="row justify-content-center">
                     <div className="form-floating mt-3 mb-3 col-md-10 col-10">
@@ -90,7 +93,7 @@ export default function Login({ setAuth }){
                 </div>  
                 <div className="text-center m-3">
                     <h6>No account?</h6>
-                    <button className="register-btn m-2" onClick={createNewUser}>Register</button>
+                    <button className="register-btn m-2" onClick={createNewUser}>Sign up</button>
                 </div>
             </form>
             

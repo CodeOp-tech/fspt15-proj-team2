@@ -6,7 +6,7 @@ import SearchResultsPage from "./Pages/SearchResultsPage";
 import PodcastDetailsPage from "./Pages/PodcastDetailsPage";
 import EpisodeDetailsPage from "./Pages/EpisodeDetailsPage";
 import Login from "./Pages/Login"
-import Register from "./Pages/Register";
+import Register from "./Pages/Registration";
 
 function App() {
 
