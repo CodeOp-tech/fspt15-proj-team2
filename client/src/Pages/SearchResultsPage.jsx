@@ -5,23 +5,21 @@ import SearchResults from "../Components/SearchResults";
 import Search from "../Components/Search";
 import { Link } from "react-router-dom";
 import { SearchContext } from "../SearchContext";
-import "./SearchResultsPage.css";
-
 
 function SearchResultsPage() {
-  const [loading, setLoading] = useState(false);
-  let { results, setResults } = useContext(SearchContext);
+  // const [loading, setLoading] = useState(false);
+  // let { results, setResults } = useContext(SearchContext);
   return (
     <div className="search-results-page">
       <Navbar />
-      <div className="body">
-      <Link to="/">
-        <button className="btn btn-primary mt-2">Back to home page</button>
-      </Link>
       <div className="container">
-        <Search />
-        <SearchResults />
-      </div>
+        <Link to="/">
+          <button className="btn btn-primary mt-2">Back to home page</button>
+        </Link>
+        <div className="container">
+          <Search />
+          <SearchResults />
+        </div>
       </div>
     </div>
   );
