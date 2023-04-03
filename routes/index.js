@@ -11,6 +11,8 @@ const searchFullPodcast = async (req, res) => {
     const response = await unirest
       .get(
         `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
+        // below is mock database api url:
+        // `https://listen-api-test.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
       )
       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
     response.toJSON();
