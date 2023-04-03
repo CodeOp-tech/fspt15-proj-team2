@@ -12,9 +12,9 @@ function SearchResultsPage() {
   return (
     <div className="search-results-page">
       <Navbar />
-      <div className="container">
+      <div className="container  pt-5">
         <Link to="/">
-          <button className="btn btn-primary mt-2">Back to home page</button>
+          <p className="mt-5"> Back to home page</p>
         </Link>
         <div className="container">
           <Search />
