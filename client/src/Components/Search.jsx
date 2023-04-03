@@ -45,16 +45,16 @@ function Search() {
 
   return (
     <div id="searchArea" className="container mt-3 mb-2">
-      <div className="row">
+      <div className="row mt-5">
         <div id="searchBox" className="offset-md-3 col-md-6 mb-3">
           <form onSubmit={handleSubmit}>
             <label htmlFor="search" className="form-label">
-              <h3>Search for a podcast</h3>
+              <h3>Explore podcast episodes</h3>
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder="e.g. My favorite podcast"
+              placeholder="e.g. dinosaurs"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             ></input>
