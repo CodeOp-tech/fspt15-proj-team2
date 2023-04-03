@@ -15,7 +15,7 @@ function Search() {
 
   //Function for full search with API
   const searchPodcast = async (searchTerm) => {
-    setLoading(true);
+    setLoading(true); // Set to loading
     let options = {
       method: "POST",
       headers: {
@@ -39,6 +39,7 @@ function Search() {
     e.preventDefault();
     setSearchTerm(searchTerm);
     searchPodcast(searchTerm);
+
     setSearchTerm("");
     navigate("/results"); //Go to results page upon submission -- results rendered in results page
   };

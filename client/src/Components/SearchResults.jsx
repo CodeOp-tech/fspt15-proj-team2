@@ -6,7 +6,8 @@ import { SearchContext } from "../SearchContext";
 
 function SearchResults() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); //Loading is available through the context, but I'm not sure how
+  // to get it to render here since the function for searching/loading content is in the Search component.
   let { results, setResults } = useContext(SearchContext);
 
   return (
