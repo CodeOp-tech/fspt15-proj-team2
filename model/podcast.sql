@@ -1,6 +1,8 @@
 SET foreign_key_checks = 0;
-  DROP TABLE IF EXISTS users; DROP TABLE IF EXISTS users_favorites; DROP TABLE IF EXISTS favorites;
-  SET foreign_key_checks = 1;
+DROP TABLE IF EXISTS users; 
+DROP TABLE IF EXISTS users_favorites; 
+DROP TABLE IF EXISTS favorites;
+SET foreign_key_checks = 1;
 
 -- this is the information that we will ask for the registration
 CREATE TABLE users (
