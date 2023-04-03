@@ -14,6 +14,8 @@ function App() {
       <Route  path="/results" element={<SearchResultsPage />}/>
       <Route  path="/podcast/:id" element={<PodcastDetailsPage />}/>
       <Route  path="/episode/:id" element={<EpisodeDetailsPage />}/>
+      {/* <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} /> */}
     </Routes>
 )}
 
