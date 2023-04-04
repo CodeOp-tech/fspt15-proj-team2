@@ -7,11 +7,17 @@ import { Link } from "react-router-dom";
 import { SearchContext } from "../SearchContext";
 
 function SearchResultsPage() {
+  let { searchTerm, setSearchTerm } = useContext(SearchContext);
+
+  const reset = (e) => {
+    setSearchTerm("");
+  };
+
   return (
     <div className="search-results-page">
       <Navbar />
       <div className="container  pt-5">
-        <Link to="/">
+        <Link to="/" onClick={reset}>
           <p className="mt-5"> Back to home page</p>
         </Link>
         <div className="container">

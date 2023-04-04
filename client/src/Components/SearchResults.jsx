@@ -95,11 +95,11 @@ function SearchResults() {
         )}
       </div>
       {searchedMore ? (
-        <div className="text-center">
+        <div className="text-center mt-4">
           <button onClick={previousResults}>See previous results</button>
         </div>
       ) : (
-        <div className="text-center">
+        <div className="text-center mt-4">
           <button onClick={handleClick}>See more results</button>
         </div>
       )}

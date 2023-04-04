@@ -7,9 +7,7 @@ import "../App.css";
 
 function Search() {
   const navigate = useNavigate();
-  // const [loading, setLoading] = useState(false);
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const [results, setResults] = useState([]);
+  const [missingSearchTerm, setMissingSearchTerm] = useState(false);
 
   let { results, setResults } = useSearchContext();
   let { loading, setLoading } = useSearchContext();
@@ -42,10 +40,11 @@ function Search() {
     if (searchTerm) {
       setSearchTerm(searchTerm);
       searchPodcast(searchTerm);
+      setMissingSearchTerm(false);
+      navigate("/results");
+    } else {
+      setMissingSearchTerm(true);
     }
-
-    // setSearchTerm("");
-    navigate("/results"); //Go to results page upon submission -- results rendered in results page
   };
 
   return (
@@ -67,6 +66,13 @@ function Search() {
               <button>Search</button>
             </div>
           </form>
+          {missingSearchTerm ? (
+            <div classaName="row">
+              <h4 className="mt-4 text-center">
+                Please enter a topic you'd like to hear about
+              </h4>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
