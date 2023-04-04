@@ -20,10 +20,21 @@ body {
   text-align: center;
   height: 358px;
 }
-
-.hero-img {
+.hero-title {
+  width: 90%;
+  height: 100%;
+  /* limit the width on bigger devices */
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  /* makes them line up on the right side (horizontal) */
+  justify-content: right;
+  /* text-align makes everything go to the right side */
+  text-align: right;
+  color: #F9F9F9;
+  text-shadow: -6px -3px 22px #5e5757;
 }
-
 .hero-title {
   font-size: 3rem;
   font-weight: 600;

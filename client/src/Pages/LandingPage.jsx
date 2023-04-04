@@ -15,7 +15,7 @@ function LandingPage() {
       <Navbar />
       <div className="hero-container">
         <img className="hero-img" src={hero}/>
-        <h4 className="hero-subtitle">Discover and enjoy podcasts</h4>
+        <h4 className="hero-title">Discover and enjoy podcasts</h4>
       </div>
       <Search />
     </div>
