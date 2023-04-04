@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchContext } from "../SearchContext";
+import "../App.css";
 
 function Search() {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ function Search() {
               onChange={(e) => setSearchTerm(e.target.value)}
             ></input>
             <div className="row mt-3 w-50 m-auto">
-              <button className="btn btn-primary">Search</button>
+              <button className="btn ">Search</button>
             </div>
           </form>
         </div>
