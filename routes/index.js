@@ -22,6 +22,25 @@ const searchFullPodcast = async (req, res) => {
     console.log(error);
   }
 };
+// RETURNS OFFSET RESULTS -- SEE MORE RESULTS FUNCTION IN SEARCH COMPONENT
+const searchFullPodcastMore = async (req, res) => {
+  try {
+    const { searchTerm } = req.body;
+    const response = await unirest
+      .get(
+        `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&offset=11`
+        // below is mock database api url:
+        // `https://listen-api-test.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
+      )
+      .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
+    response.toJSON();
+
+    console.log(response.body.results);
+    res.send(response.body.results); // Returns array of podcasts
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // const searchFullPodcastEnglish = async (req, res) => {
 //   try {
@@ -44,6 +63,14 @@ const searchFullPodcast = async (req, res) => {
 router.post("/api/search", async (req, res) => {
   try {
     await searchFullPodcast(req, res);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post("/api/search/more", async (req, res) => {
+  try {
+    await searchFullPodcastMore(req, res);
   } catch (error) {
     console.log(error);
   }

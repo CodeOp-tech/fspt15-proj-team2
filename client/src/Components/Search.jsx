@@ -8,12 +8,12 @@ import "../App.css";
 function Search() {
   const navigate = useNavigate();
   // const [loading, setLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
   // const [results, setResults] = useState([]);
 
   let { results, setResults } = useSearchContext();
   let { loading, setLoading } = useSearchContext();
-
+  let { searchTerm, setSearchTerm } = useSearchContext();
   //Function for full search with API
   const searchPodcast = async (searchTerm) => {
     setLoading(true); // Set to loading

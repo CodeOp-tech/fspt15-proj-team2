@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 import { SearchContext } from "../SearchContext";
 
 function SearchResultsPage() {
-  // const [loading, setLoading] = useState(false);
-  // let { results, setResults } = useContext(SearchContext);
   return (
     <div className="search-results-page">
       <Navbar />
