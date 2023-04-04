@@ -16,12 +16,15 @@
     color:white;
     margin-bottom: 0;
     font-size: 25px;
+    text-decoration: none;
 }
+
 
 .nav-title:hover{
     padding-left: 10px;
     color: #FC5F5F;
     margin-bottom: 0;
+    text-decoration: none;
 }
 
 .nav-login-btn{

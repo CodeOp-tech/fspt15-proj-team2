@@ -13,11 +13,12 @@ function LandingPage() {
   return (
     <div className="app">
       <Navbar />
-      <div className="hero-container">
-        <img className="hero-img" src={hero}/>
-        <h4 className="hero-title">Discover and enjoy podcasts</h4>
+      <div className="hero">
+        <div className="hero-inner">
+        <h1 className="hero-title">Discover and enjoy podcasts</h1>
+        <Search />
+        </div>
       </div>
-      <Search />
     </div>
   );
 }
