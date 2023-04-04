@@ -61,7 +61,7 @@ function Search() {
               onChange={(e) => setSearchTerm(e.target.value)}
             ></input>
             <div className="row mt-3 w-50 m-auto">
-              <button className="btn ">Search</button>
+              <button>Search</button>
             </div>
           </form>
         </div>
