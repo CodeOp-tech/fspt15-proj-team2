@@ -12,6 +12,27 @@ function SearchResults() {
   let { loading, setLoading } = useContext(SearchContext);
   let { searchTerm, setSearchTerm } = useContext(SearchContext);
 
+  const searchPodcast = async (searchTerm) => {
+    setLoading(true); // Set to loading
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ searchTerm: searchTerm }),
+    };
+    try {
+      let results = await fetch(`/api/search`, options);
+      let data = await results.json();
+      console.log(data);
+      setResults(data);
+      setLoading(false);
+      return results; // Returns array of 10 podcast episodes that meet search criteria
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // FUNCTION TO RETURN NEXT 10 RESULTS FROM API -- SEE MORE RESULTS
   const searchPodcastMore = async (searchTerm) => {
     setLoading(true); // Set to loading
@@ -37,6 +58,10 @@ function SearchResults() {
 
   const handleClick = (e) => {
     searchPodcastMore(searchTerm);
+  };
+
+  const previousResults = (e) => {
+    searchPodcast(searchTerm);
   };
 
   return (
@@ -69,7 +94,11 @@ function SearchResults() {
           </div>
         )}
       </div>
-      {searchedMore ? null : (
+      {searchedMore ? (
+        <div className="text-center">
+          <button onClick={previousResults}>See previous results</button>
+        </div>
+      ) : (
         <div className="text-center">
           <button onClick={handleClick}>See more results</button>
         </div>

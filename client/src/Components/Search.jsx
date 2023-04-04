@@ -39,8 +39,10 @@ function Search() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchTerm(searchTerm);
-    searchPodcast(searchTerm);
+    if (searchTerm) {
+      setSearchTerm(searchTerm);
+      searchPodcast(searchTerm);
+    }
 
     // setSearchTerm("");
     navigate("/results"); //Go to results page upon submission -- results rendered in results page
