@@ -14,6 +14,7 @@ function Search() {
   let { results, setResults } = useSearchContext();
   let { loading, setLoading } = useSearchContext();
   let { searchTerm, setSearchTerm } = useSearchContext();
+
   //Function for full search with API
   const searchPodcast = async (searchTerm) => {
     setLoading(true); // Set to loading
@@ -41,7 +42,7 @@ function Search() {
     setSearchTerm(searchTerm);
     searchPodcast(searchTerm);
 
-    setSearchTerm("");
+    // setSearchTerm("");
     navigate("/results"); //Go to results page upon submission -- results rendered in results page
   };
 

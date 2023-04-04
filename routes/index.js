@@ -35,7 +35,7 @@ const searchFullPodcastMore = async (req, res) => {
       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
     response.toJSON();
 
-    console.log(response.body.results);
+    console.log(response.body);
     res.send(response.body.results); // Returns array of podcasts
   } catch (error) {
     console.log(error);

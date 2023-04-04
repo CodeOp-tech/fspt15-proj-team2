@@ -23,11 +23,11 @@ function SearchResults() {
     };
     try {
       let results = await fetch(`/api/search/more`, options);
-      let data = await results.json();
+      let data = await results.json(); // Getting an error here.
       console.log(data);
       setResults(data);
       setLoading(false);
-      return results; // Returns array of 10 podcast episodes that meet search criteria
+      return results;
     } catch (err) {
       console.log(err);
     }
