@@ -72,24 +72,41 @@ function SearchResults() {
             <span className="visually-hidden">Loading...</span>
           </div>
         ) : (
-          <div id="searchResults" className="row mt-2">
+          <div id="searchResults" className="row mt-2 justify-content-center">
             {results.map((podcast) => (
               <div
-                className="col-lg-4 col-md-6 col-12 ps-3 pe-3 mt-3 mb-4"
+                className="card w-25 mb-5 me-5"
                 id="podcast"
                 key={podcast.id}
               >
                 <Link to={`/episode/${podcast.id}`}>
-                  <h5 className="text-center mb-3">{podcast.title_original}</h5>
                   <img
                     src={podcast.podcast.image}
-                    className="rounded mx-auto d-block col-8"
+                    class="card-img-top"
+                    alt="podcast image"
                   />
-                  <h6 className="text-center mt-3">
-                    {podcast.podcast.title_original}
-                  </h6>
+                  <div class="card-body">
+                    <h5 class="card-title">{podcast.title_original}</h5>
+                    <p class="card-text">{podcast.podcast.title_original}</p>
+                  </div>
                 </Link>
               </div>
+              // <div
+              //   className="col-lg-4 col-md-6 col-12 ps-3 pe-3 mt-3 mb-4"
+              //   id="podcast"
+              //   key={podcast.id}
+              // >
+              //   <Link to={`/episode/${podcast.id}`}>
+              //     <h5 className="text-center mb-3">{podcast.title_original}</h5>
+              //     <img
+              //       src={podcast.podcast.image}
+              //       className="rounded mx-auto d-block col-8"
+              //     />
+              //     <h6 className="text-center mt-3">
+              //       {podcast.podcast.title_original}
+              //     </h6>
+              //   </Link>
+              // </div>
             ))}
           </div>
         )}
