@@ -1,16 +1,15 @@
 const express = require("express");
 const router = express.Router();
-// const fetch = require("node-fetch"); // Not used.
 const unirest = require("unirest");
 const db = require("../model/helper"); // Not used currently, but could be used if accessing the database
 
-// FULL SEARCH FUNCTION -- used in full search POST router function -- returns only English results
+// FULL SEARCH FUNCTION -- used in full search POST router function -- returns all language results
 const searchFullPodcast = async (req, res) => {
   try {
     const { searchTerm } = req.body;
     const response = await unirest
       .get(
-        `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
+        `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0`
         // below is mock database api url:
         // `https://listen-api-test.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
       )
