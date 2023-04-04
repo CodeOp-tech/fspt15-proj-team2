@@ -51,3 +51,6 @@ button:hover {
   border: 1px solid #fc5f5f;
   color: #fc5f5f;
 }
+img:hover {
+  opacity: 80%;
+}

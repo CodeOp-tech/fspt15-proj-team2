@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../SearchContext";
+import "../App.css";
 
 function SearchResults() {
   const [searchedMore, setSearchedMore] = useState(false); //Variable to conditionally render see more results button
