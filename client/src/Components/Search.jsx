@@ -6,12 +6,12 @@ import { useSearchContext } from "../SearchContext";
 
 function Search() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   // const [results, setResults] = useState([]);
 
-  // FROM THE COFFEE DEMO -- NEEDS TO BE UDPATED
   let { results, setResults } = useSearchContext();
+  let { loading, setLoading } = useSearchContext();
 
   //Function for full search with API
   const searchPodcast = async (searchTerm) => {

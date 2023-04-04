@@ -6,15 +6,15 @@ import { SearchContext } from "../SearchContext";
 
 function SearchResults() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false); //Loading is available through the context, but I'm not sure how
-  // to get it to render here since the function for searching/loading content is in the Search component.
+
   let { results, setResults } = useContext(SearchContext);
+  let { loading, setLoading } = useContext(SearchContext);
 
   return (
     <div className="container mb-2">
       <div className="row" id="searchResults">
         {loading ? (
-          <div className="spinner-border text-warning" role="status">
+          <div className="spinner-border text-warning m-auto" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
         ) : (
