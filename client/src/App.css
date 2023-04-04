@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  margin-top: 200px;
   padding: 0;
 }
 .hero {
@@ -16,15 +16,20 @@ body {
   justify-content: center;
   position: relative;
   color: white;
-  background-color: #aa4a44;
+  background-color: #FC5F5F;
   text-align: center;
   height: 358px;
 }
+
+.hero-img {
+}
+
 .hero-title {
   font-size: 3rem;
   font-weight: 600;
   margin-bottom: 0;
 }
+
 .hero-subtitle {
   font-size: 2rem;
   font-weight: 200;
@@ -35,3 +40,4 @@ a {
   color: black;
   text-decoration: none;
 }
+

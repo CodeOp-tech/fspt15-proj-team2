@@ -6,24 +6,47 @@
     background-color: black;
 }
 
+.navbar-container{
+    display: flex;
+    align-items: center;
+}
+
 .nav-title{
     padding-left: 10px;
-    color: white;
+    color:white;
+    margin-bottom: 0;
+}
+
+.nav-title:hover{
+    padding-left: 10px;
+    color: #FC5F5F;
     margin-bottom: 0;
 }
 
 .nav-login-btn{
-    color: #AA4A44;
+    color: #FC5F5F;
+    font-weight: bold;
+    background-color: black;
+}
+
+.nav-login-btn:hover{
+    color: white;
     font-weight: bold;
     background-color: black;
 }
 
 .nav-signup-btn{
+    color: #FC5F5F;
+    font-weight: lighter;
+    background-color: black;
+}
+
+.nav-signup-btn:hover{
     color:white;
     font-weight: lighter;
     background-color: black;
 }
 
 .material-symbols-outlined {
-    color: white;
+    color: #FC5F5F;
 }
