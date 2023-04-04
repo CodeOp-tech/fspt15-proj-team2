@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../SearchContext";
 
 function SearchResults() {
+  const [searchedMore, setSearchedMore] = useState(false); //Variable to conditionally render see more results button
   const navigate = useNavigate();
 
   let { results, setResults } = useContext(SearchContext);
@@ -27,6 +28,7 @@ function SearchResults() {
       console.log(data);
       setResults(data);
       setLoading(false);
+      setSearchedMore(true); // Makes see more results button disappear
       return results;
     } catch (err) {
       console.log(err);
@@ -67,9 +69,11 @@ function SearchResults() {
           </div>
         )}
       </div>
-      <div className="text-center">
-        <button onClick={handleClick}>See more results</button>
-      </div>
+      {searchedMore ? null : (
+        <div className="text-center">
+          <button onClick={handleClick}>See more results</button>
+        </div>
+      )}
     </div>
   );
 }
