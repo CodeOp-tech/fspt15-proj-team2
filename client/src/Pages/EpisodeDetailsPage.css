@@ -1,10 +1,23 @@
 .body {
     margin-top: 60px;
+    margin-bottom: 200px;
 }
 
-button {
+.results-btn {
+    background-color: #FC5F5F;
+    border: 1px solid #FC5F5F;
+    border-radius: 50px;
+    padding: 3px 36px;
+    color: #F9F9F9;
     margin-left: 15px;
 }
+.results-btn:hover {
+    background-color: #F9F9F9;
+    border: 1px solid #FC5F5F;
+    color: #FC5F5F;
+}
+
+
 
 .podcast-title {
     font-style: italic;

@@ -41,7 +41,7 @@ function EpisodeDetails() {
       not sure yet.*/}
       <div className="body">
         <Link to="/results">
-          <button className="btn btn-primary mt-2">
+          <button className="results-btn btn btn-primary mt-2">
             Back to search results
           </button>
         </Link>
