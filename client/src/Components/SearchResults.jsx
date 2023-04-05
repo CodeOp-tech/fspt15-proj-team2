@@ -78,17 +78,19 @@ function SearchResults() {
               <div
                 className="card w-25 mb-5 me-5"
                 id="podcast"
-                key={podcast.id}
+                key={podcast.results.id}
               >
-                <Link to={`/episode/${podcast.id}`}>
+                <Link to={`/episode/${podcast.results.id}`}>
                   <img
-                    src={podcast.podcast.image}
+                    src={podcast.results.podcast.image}
                     class="card-img-top"
                     alt="podcast image"
                   />
                   <div class="card-body">
-                    <h5 class="card-title">{podcast.title_original}</h5>
-                    <p class="card-text">{podcast.podcast.title_original}</p>
+                    <h5 class="card-title">{podcast.results.title_original}</h5>
+                    <p class="card-text">
+                      {podcast.results.podcast.title_original}
+                    </p>
                   </div>
                 </Link>
               </div>
