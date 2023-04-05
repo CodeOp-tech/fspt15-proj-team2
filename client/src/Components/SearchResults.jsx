@@ -10,6 +10,7 @@ function SearchResults() {
   const navigate = useNavigate();
 
   let { results, setResults } = useContext(SearchContext);
+  let { podcasts, setPodcasts } = useContext(SearchContext);
   let { loading, setLoading } = useContext(SearchContext);
   let { searchTerm, setSearchTerm } = useContext(SearchContext);
 
@@ -48,7 +49,8 @@ function SearchResults() {
       let results = await fetch(`/api/search/more`, options);
       let data = await results.json(); // Getting an error here.
       console.log(data);
-      setResults(data);
+      setResults(data); // Returns object with results array nested
+      // setPodcasts(data.results);
       setLoading(false);
       setSearchedMore(true); // Makes see more results button disappear
       return results;
@@ -74,22 +76,22 @@ function SearchResults() {
           </div>
         ) : (
           <div id="searchResults" className="row mt-2 justify-content-center">
-            {results.map((podcast) => (
+            {podcasts.map((podcast) => (
               <div
                 className="card w-25 mb-5 me-5"
                 id="podcast"
-                key={podcast.results.id}
+                key={podcast.id}
               >
-                <Link to={`/episode/${podcast.results.id}`}>
+                <Link to={`/episode/${podcast.id}`}>
                   <img
-                    src={podcast.results.podcast.image}
-                    class="card-img-top"
+                    src={podcast.podcast.image}
+                    className="card-img-top"
                     alt="podcast image"
                   />
-                  <div class="card-body">
-                    <h5 class="card-title">{podcast.results.title_original}</h5>
-                    <p class="card-text">
-                      {podcast.results.podcast.title_original}
+                  <div className="card-body">
+                    <h5 className="card-title">{podcast.title_original}</h5>
+                    <p className="card-text">
+                      {podcast.podcast.title_original}
                     </p>
                   </div>
                 </Link>
