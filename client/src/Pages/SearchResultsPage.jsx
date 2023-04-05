@@ -9,6 +9,7 @@ import { SearchContext } from "../SearchContext";
 function SearchResultsPage() {
   let { searchTerm, setSearchTerm } = useContext(SearchContext);
 
+  //Trying to get searchTerm to reset here, but it's not quite working.
   const reset = (e) => {
     setSearchTerm("");
   };
@@ -22,7 +23,7 @@ function SearchResultsPage() {
         </Link>
         <div className="container">
           <Search />
-          <SearchResults />
+          {searchTerm ? <SearchResults /> : null}
         </div>
       </div>
     </div>

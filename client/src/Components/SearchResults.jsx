@@ -11,7 +11,7 @@ function SearchResults() {
   const navigate = useNavigate();
 
   let { results, setResults } = useContext(SearchContext);
-  let { podcasts, setPodcasts } = useContext(SearchContext);
+  // let { podcasts, setPodcasts } = useContext(SearchContext);
   let { loading, setLoading } = useContext(SearchContext);
   let { searchTerm, setSearchTerm } = useContext(SearchContext);
 
@@ -36,17 +36,26 @@ function SearchResults() {
     }
   };
 
-  const moreResults = (e) => {
-    let nextOffset = offset + 10;
-    setOffset(nextOffset);
-    searchPodcast(searchTerm);
+  const moreResults = async (e) => {
+    // let nextOffset = (offset += 10);
+    setOffset((offset) => offset + 11);
+    console.log(offset);
+    await searchPodcast(searchTerm);
+    const newResults = [];
+    setResults((results) => [...results, newResults]);
   };
 
-  const previousResults = (e) => {
-    let previousOffset = offset - 10;
-    setOffset(previousOffset);
-    searchPodcast(searchTerm);
-  };
+  // const previousResults = async (e) => {
+  //   // let previousOffset = (offset - 10);
+  //   if (offset >= 11) {
+  //     setOffset(offset - 11);
+  //     console.log(offset);
+  //     await searchPodcast(searchTerm);
+  //   } else {
+  //     setOffset(0);
+  //     await searchPodcast(searchTerm);
+  //   }
+  // };
 
   return (
     <div className="container mb-2">
@@ -57,7 +66,7 @@ function SearchResults() {
           </div>
         ) : (
           <div id="searchResults" className="row mt-2 justify-content-center">
-            {podcasts.map((podcast) => (
+            {results.map((podcast) => (
               <div
                 className="card w-25 mb-5 me-5"
                 id="podcast"
@@ -65,15 +74,13 @@ function SearchResults() {
               >
                 <Link to={`/episode/${podcast.id}`}>
                   <img
-                    src={podcast.podcast.image}
+                    src={podcast.image}
                     className="card-img-top"
                     alt="podcast image"
                   />
                   <div className="card-body">
                     <h5 className="card-title">{podcast.title_original}</h5>
-                    <p className="card-text">
-                      {podcast.podcast.title_original}
-                    </p>
+                    <p className="card-text">{podcast.title_original}</p>
                   </div>
                 </Link>
               </div>
@@ -81,15 +88,10 @@ function SearchResults() {
           </div>
         )}
       </div>
-      {offset >= 10 ? (
-        <div className="text-center mt-4">
-          <button onClick={previousResults}>See previous results</button>
-        </div>
-      ) : (
-        <div className="text-center mt-4">
-          <button onClick={moreResults}>See more results</button>
-        </div>
-      )}
+
+      <div className="text-center mt-4">
+        <button onClick={moreResults}>See more results</button>
+      </div>
     </div>
   );
 }
