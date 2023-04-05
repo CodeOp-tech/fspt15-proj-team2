@@ -6,10 +6,10 @@ const db = require("../model/helper"); // Not used currently, but could be used 
 // FULL SEARCH FUNCTION -- used in full search POST router function -- returns all language results
 const searchFullPodcast = async (req, res) => {
   try {
-    const { searchTerm } = req.body;
+    const { searchTerm, offset } = req.body;
     const response = await unirest
       .get(
-        `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0`
+        `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&offset=${offset}`
         // below is mock database api url:
         // `https://listen-api-test.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
       )
@@ -17,30 +17,30 @@ const searchFullPodcast = async (req, res) => {
     response.toJSON();
 
     console.log(response.body);
-    res.send(response.body); // Returns array of podcasts
+    res.send(response.body); // Returns object with data & nested array of podcast episodes
   } catch (error) {
     console.log(error);
   }
 };
 // RETURNS OFFSET RESULTS -- SEE MORE RESULTS FUNCTION IN SEARCH COMPONENT
-const searchFullPodcastMore = async (req, res) => {
-  try {
-    const { searchTerm } = req.body;
-    const response = await unirest
-      .get(
-        `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&offset=11`
-        // below is mock database api url:
-        // `https://listen-api-test.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
-      )
-      .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
-    response.toJSON();
+// const searchFullPodcastMore = async (req, res) => {
+//   try {
+//     const { searchTerm } = req.body;
+//     const response = await unirest
+//       .get(
+//         `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&offset=11`
+//         // below is mock database api url:
+//         // `https://listen-api-test.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
+//       )
+//       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
+//     response.toJSON();
 
-    console.log(response.body);
-    res.send(response.body.results); // Returns array of podcasts
-  } catch (error) {
-    console.log(error);
-  }
-};
+//     console.log(response.body);
+//     res.send(response.body.results); // Returns array of podcasts
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 // const searchFullPodcastEnglish = async (req, res) => {
 //   try {
@@ -68,13 +68,13 @@ router.post("/api/search", async (req, res) => {
   }
 });
 
-router.post("/api/search/more", async (req, res) => {
-  try {
-    await searchFullPodcastMore(req, res);
-  } catch (error) {
-    console.log(error);
-  }
-});
+// router.post("/api/search/more", async (req, res) => {
+//   try {
+//     await searchFullPodcastMore(req, res);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 // SEARCH BY PODCAST ID -- used in search by podcast id POST function
 const searchById = async (req, res) => {

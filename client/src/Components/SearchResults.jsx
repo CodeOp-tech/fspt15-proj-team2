@@ -7,6 +7,7 @@ import "../App.css";
 
 function SearchResults() {
   const [searchedMore, setSearchedMore] = useState(false); //Variable to conditionally render see more results button
+  const [offset, setOffset] = useState(0); // Value used to tell which batch of results to return (10 at a time)
   const navigate = useNavigate();
 
   let { results, setResults } = useContext(SearchContext);
@@ -21,7 +22,7 @@ function SearchResults() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ searchTerm: searchTerm }),
+      body: JSON.stringify({ searchTerm: searchTerm, offset: offset }),
     };
     try {
       let results = await fetch(`/api/search`, options);
@@ -35,35 +36,15 @@ function SearchResults() {
     }
   };
 
-  // FUNCTION TO RETURN NEXT 10 RESULTS FROM API -- SEE MORE RESULTS
-  const searchPodcastMore = async (searchTerm) => {
-    setLoading(true); // Set to loading
-    let options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ searchTerm: searchTerm }),
-    };
-    try {
-      let results = await fetch(`/api/search/more`, options);
-      let data = await results.json(); // Getting an error here.
-      console.log(data);
-      setResults(data); // Returns object with results array nested
-      // setPodcasts(data.results);
-      setLoading(false);
-      setSearchedMore(true); // Makes see more results button disappear
-      return results;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleClick = (e) => {
-    searchPodcastMore(searchTerm);
+  const moreResults = (e) => {
+    let nextOffset = offset + 10;
+    setOffset(nextOffset);
+    searchPodcast(searchTerm);
   };
 
   const previousResults = (e) => {
+    let previousOffset = offset - 10;
+    setOffset(previousOffset);
     searchPodcast(searchTerm);
   };
 
@@ -96,33 +77,17 @@ function SearchResults() {
                   </div>
                 </Link>
               </div>
-              // <div
-              //   className="col-lg-4 col-md-6 col-12 ps-3 pe-3 mt-3 mb-4"
-              //   id="podcast"
-              //   key={podcast.id}
-              // >
-              //   <Link to={`/episode/${podcast.id}`}>
-              //     <h5 className="text-center mb-3">{podcast.title_original}</h5>
-              //     <img
-              //       src={podcast.podcast.image}
-              //       className="rounded mx-auto d-block col-8"
-              //     />
-              //     <h6 className="text-center mt-3">
-              //       {podcast.podcast.title_original}
-              //     </h6>
-              //   </Link>
-              // </div>
             ))}
           </div>
         )}
       </div>
-      {searchedMore ? (
+      {offset >= 10 ? (
         <div className="text-center mt-4">
           <button onClick={previousResults}>See previous results</button>
         </div>
       ) : (
         <div className="text-center mt-4">
-          <button onClick={handleClick}>See more results</button>
+          <button onClick={moreResults}>See more results</button>
         </div>
       )}
     </div>
