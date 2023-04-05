@@ -11,11 +11,12 @@ function EpisodeDetails() {
   const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
   // this podcast episode id is in the database & can be used to search API
   let { results, setResults } = useContext(SearchContext);
+  let { podcasts, setPodcasts } = useContext(SearchContext);
   const [episodeData, setEpisodeData] = useState([]);
   const url = `${episodeData.listennotes_url}/embed`;
 
-  const getEpisodeDetails = (results) => {
-    for (let episode of results) {
+  const getEpisodeDetails = (podcasts) => {
+    for (let episode of podcasts) {
       if (episode.id === ID) {
         console.log({ episode });
         setEpisodeData(episode);
@@ -25,7 +26,7 @@ function EpisodeDetails() {
   };
 
   useEffect(() => {
-    getEpisodeDetails(results); // Pulls episode details from full results
+    getEpisodeDetails(podcasts); // Pulls episode details from full results
   }, []);
 
   // Right now, all results are being rendered here. Just thinking about how we could get just the data for the target episode:
