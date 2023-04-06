@@ -43,7 +43,7 @@ function SearchResults() {
   const moreResults = async (e) => {
     console.log(offset);
     await searchPodcast(searchTerm);
-    setResults((results) => [...results, results]);
+    setResults((results) => [...results, results]); // Something isn't working quite right
   };
 
   return (
@@ -69,7 +69,9 @@ function SearchResults() {
                   />
                   <div className="card-body">
                     <h5 className="card-title">{podcast.title_original}</h5>
-                    <p className="card-text">{podcast.title_original}</p>
+                    <p className="card-text">
+                      {podcast.podcast.title_original}
+                    </p>
                   </div>
                 </Link>
               </div>
