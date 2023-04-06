@@ -11,6 +11,7 @@ function EpisodeDetails() {
   const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
   // this podcast episode id is in the database & can be used to search API
   let { results, setResults } = useContext(SearchContext);
+
   const [episodeData, setEpisodeData] = useState([]);
   const url = `${episodeData.listennotes_url}/embed`;
 

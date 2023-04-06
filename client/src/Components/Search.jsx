@@ -3,19 +3,20 @@ import { useState } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSearchContext } from "../SearchContext";
+import "../App.css";
 
 function Search() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  // const [results, setResults] = useState([]);
+  const [missingSearchTerm, setMissingSearchTerm] = useState(false);
 
-  // FROM THE COFFEE DEMO -- NEEDS TO BE UDPATED
   let { results, setResults } = useSearchContext();
+  let { loading, setLoading } = useSearchContext();
+  let { searchTerm, setSearchTerm } = useSearchContext();
+  let { offset, setOffset } = useSearchContext();
 
   //Function for full search with API
   const searchPodcast = async (searchTerm) => {
-    setLoading(true);
+    setLoading(true); // Set to loading
     let options = {
       method: "POST",
       headers: {
@@ -25,6 +26,7 @@ function Search() {
     };
     try {
       let results = await fetch(`/api/search`, options);
+      console.log(results);
       let data = await results.json();
       console.log(data);
       setResults(data);
@@ -37,31 +39,43 @@ function Search() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchTerm(searchTerm);
-    searchPodcast(searchTerm);
-    setSearchTerm("");
-    navigate("/results"); //Go to results page upon submission -- results rendered in results page
+    if (searchTerm) {
+      setSearchTerm(searchTerm);
+      searchPodcast(searchTerm);
+      setMissingSearchTerm(false);
+      setOffset((offset) => offset + 10);
+      navigate("/results");
+    } else {
+      setMissingSearchTerm(true);
+    }
   };
 
   return (
     <div id="searchArea" className="container mt-3 mb-2">
-      <div className="row">
+      <div className="row mt-5">
         <div id="searchBox" className="offset-md-3 col-md-6 mb-3">
           <form onSubmit={handleSubmit}>
             <label htmlFor="search" className="form-label">
-              <h3>Search for a podcast</h3>
+              <h3>Explore podcast episodes</h3>
             </label>
             <input
               type="text"
               className="form-control"
-              placeholder="e.g. My favorite podcast"
+              placeholder="e.g. dinosaurs"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             ></input>
             <div className="row mt-3 w-50 m-auto">
-              <button className="btn btn-primary">Search</button>
+              <button>Search</button>
             </div>
           </form>
+          {missingSearchTerm ? (
+            <div classaName="row">
+              <h4 className="mt-4 text-center">
+                Please enter a topic you'd like to hear about
+              </h4>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

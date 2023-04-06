@@ -14,12 +14,12 @@ function LandingPage() {
       <Navbar />
       <div className="hero-container">
         <h1 className="hero-title">Podcast App </h1>
-        <h4 className="hero-subtitle">Discover and enjoy podcasts</h4>
+        <h4 className="hero-subtitle">Discover and enjoy podcast episodes</h4>
       </div>
       {/* <Favorites/>
         <Recommended/> */}
       <Search />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
