@@ -31,10 +31,13 @@ function SearchResults() {
     try {
       let results = await fetch(`/api/search`, options);
       let data = await results.json();
-      console.log(data);
-      setResults((results) => [...results, data]);
+      // console.log(data);
+      setResults((results) => [...results, ...data]);
+      // console.log(data);
       setLoading(false);
-      return results; // Returns array of 10 podcast episodes that meet search criteria
+      setOffset((offset) => offset + 10);
+
+      return data;
     } catch (err) {
       console.log(err);
     }
@@ -43,7 +46,7 @@ function SearchResults() {
   const moreResults = async (e) => {
     console.log(offset);
     await searchPodcast(searchTerm);
-    setResults((results) => [...results, results]); // Something isn't working quite right
+    console.log(results);
   };
 
   return (
@@ -70,7 +73,7 @@ function SearchResults() {
                   <div className="card-body">
                     <h5 className="card-title">{podcast.title_original}</h5>
                     <p className="card-text">
-                      {podcast.podcast.title_original}
+                      {podcast.podcast?.title_original}
                     </p>
                   </div>
                 </Link>

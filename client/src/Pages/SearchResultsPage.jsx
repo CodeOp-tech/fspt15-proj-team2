@@ -9,7 +9,7 @@ import { SearchContext } from "../SearchContext";
 function SearchResultsPage() {
   let { searchTerm, setSearchTerm } = useContext(SearchContext);
 
-  //Trying to get searchTerm to reset here, but it's not quite working.
+  // To reset the searchTerm field
   const reset = (e) => {
     setSearchTerm("");
   };

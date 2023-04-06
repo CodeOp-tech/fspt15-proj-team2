@@ -10,7 +10,7 @@ function Search() {
   const [missingSearchTerm, setMissingSearchTerm] = useState(false);
 
   let { results, setResults } = useSearchContext();
-  let { podcasts, setPodcasts } = useSearchContext();
+
   let { loading, setLoading } = useSearchContext();
   let { searchTerm, setSearchTerm } = useSearchContext();
   let { offset, setOffset } = useSearchContext();
@@ -31,7 +31,6 @@ function Search() {
       let data = await results.json();
       console.log(data);
       setResults(data);
-      // setPodcasts(data);
       setLoading(false);
       return results; // Returns array of 10 podcast episodes that meet search criteria
     } catch (err) {
