@@ -49,8 +49,8 @@ function EpisodeDetails() {
         {/* This div renders the episode data -- right now, it's rendering all the results data */}
         <div id="container" className="row mt-2">
           <div className="episode-title">
-            <h2 className="text-center">{episodeData.title_original}</h2>
-            {/* <h4 className="text-center">From the <span className="podcast-title"> {episodeData.podcast.title_original} </span>Podcast</h4> */}
+            <h2 className="text-center col-md-6 offset-3">{episodeData.title_original}</h2>
+            <h4 className="text-center col-md-6 offset-3"><span className="podcast-title"> {episodeData.podcast?.title_original} </span></h4>
           </div>
           <div className="episode-details justify-content-center mt-4">
             <img
