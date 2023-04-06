@@ -13,6 +13,8 @@ function EpisodeDetails() {
   let { results, setResults } = useContext(SearchContext);
   const [episodeData, setEpisodeData] = useState([]);
   const url = `${episodeData.listennotes_url}/embed`;
+  const date = new Date(episodeData.pub_date_ms);
+
 
   const getEpisodeDetails = (results) => {
     for (let episode of results) {
@@ -58,7 +60,11 @@ function EpisodeDetails() {
               className="episode-img col-2 w-25 rounded"
             />
             {/* to render HTMl string as true html */}
-            <div
+          <div className="date-published">
+            <span>Released </span>
+            <span>{date.toUTCString().slice(0, 16)}</span>
+          </div>
+          <div
               className="episode-desc col-6"
               dangerouslySetInnerHTML={{
                 __html: episodeData.description_original,
