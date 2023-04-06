@@ -1,23 +1,14 @@
 import React from "react";
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../SearchContext";
 import "../App.css";
 
 function SearchResults() {
-  const [searchedMore, setSearchedMore] = useState(false); //Variable to conditionally render see more results button
-  // const [offset, setOffset] = useState(0); // Value used to tell which batch of results to return (10 at a time)
-  const navigate = useNavigate();
-
-  let { results, setResults } = useContext(SearchContext);
-  let { loading, setLoading } = useContext(SearchContext);
-  let { searchTerm, setSearchTerm } = useContext(SearchContext);
-  let { offset, setOffset } = useContext(SearchContext);
-
-  // useEffect(() => {
-  //   setOffset((offset) => offset + 10);
-  // }, []);
+  let { results, setResults } = useContext(SearchContext); // Array of podcasts
+  let { loading, setLoading } = useContext(SearchContext); // Used to render loading spinner during async functions
+  let { searchTerm, setSearchTerm } = useContext(SearchContext); // Used to search API, from search component input
+  let { offset, setOffset } = useContext(SearchContext); // Used to determine which batch of data to return
 
   const searchPodcast = async (searchTerm) => {
     setLoading(true); // Set to loading
@@ -31,12 +22,10 @@ function SearchResults() {
     try {
       let results = await fetch(`/api/search`, options);
       let data = await results.json();
-      // console.log(data);
-      setResults((results) => [...results, ...data]);
-      // console.log(data);
-      setLoading(false);
-      setOffset((offset) => offset + 10);
+      setResults((results) => [...results, ...data]); // Adds new results to results array
 
+      setOffset((offset) => offset + 10); // Adds 10 to offset value so next search will be the next 10 results
+      setLoading(false);
       return data;
     } catch (err) {
       console.log(err);
@@ -44,9 +33,7 @@ function SearchResults() {
   };
 
   const moreResults = async (e) => {
-    console.log(offset);
-    await searchPodcast(searchTerm);
-    console.log(results);
+    await searchPodcast(searchTerm); // Performs another search of the API using the new offset value (next batch of data)
   };
 
   return (

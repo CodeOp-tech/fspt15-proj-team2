@@ -10,7 +10,6 @@ function Search() {
   const [missingSearchTerm, setMissingSearchTerm] = useState(false);
 
   let { results, setResults } = useSearchContext();
-
   let { loading, setLoading } = useSearchContext();
   let { searchTerm, setSearchTerm } = useSearchContext();
   let { offset, setOffset } = useSearchContext();

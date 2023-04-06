@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import Navbar from "../components/Navbar";
 import SearchResults from "../Components/SearchResults";
 import Search from "../Components/Search";
