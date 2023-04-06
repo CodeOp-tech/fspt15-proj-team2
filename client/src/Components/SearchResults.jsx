@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../SearchContext";
@@ -7,13 +7,17 @@ import "../App.css";
 
 function SearchResults() {
   const [searchedMore, setSearchedMore] = useState(false); //Variable to conditionally render see more results button
-  const [offset, setOffset] = useState(0); // Value used to tell which batch of results to return (10 at a time)
+  // const [offset, setOffset] = useState(0); // Value used to tell which batch of results to return (10 at a time)
   const navigate = useNavigate();
 
   let { results, setResults } = useContext(SearchContext);
-  // let { podcasts, setPodcasts } = useContext(SearchContext);
   let { loading, setLoading } = useContext(SearchContext);
   let { searchTerm, setSearchTerm } = useContext(SearchContext);
+  let { offset, setOffset } = useContext(SearchContext);
+
+  // useEffect(() => {
+  //   setOffset((offset) => offset + 10);
+  // }, []);
 
   const searchPodcast = async (searchTerm) => {
     setLoading(true); // Set to loading
@@ -28,7 +32,7 @@ function SearchResults() {
       let results = await fetch(`/api/search`, options);
       let data = await results.json();
       console.log(data);
-      setResults(data);
+      setResults((results) => [...results, data]);
       setLoading(false);
       return results; // Returns array of 10 podcast episodes that meet search criteria
     } catch (err) {
@@ -37,25 +41,10 @@ function SearchResults() {
   };
 
   const moreResults = async (e) => {
-    // let nextOffset = (offset += 10);
-    setOffset((offset) => offset + 11);
     console.log(offset);
     await searchPodcast(searchTerm);
-    const newResults = [];
-    setResults((results) => [...results, newResults]);
+    setResults((results) => [...results, results]);
   };
-
-  // const previousResults = async (e) => {
-  //   // let previousOffset = (offset - 10);
-  //   if (offset >= 11) {
-  //     setOffset(offset - 11);
-  //     console.log(offset);
-  //     await searchPodcast(searchTerm);
-  //   } else {
-  //     setOffset(0);
-  //     await searchPodcast(searchTerm);
-  //   }
-  // };
 
   return (
     <div className="container mb-2">
@@ -90,7 +79,7 @@ function SearchResults() {
       </div>
 
       <div className="text-center mt-4">
-        <button onClick={moreResults}>See more results</button>
+        <button onClick={() => moreResults()}>See more results</button>
       </div>
     </div>
   );

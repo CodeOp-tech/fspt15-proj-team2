@@ -13,6 +13,7 @@ function Search() {
   let { podcasts, setPodcasts } = useSearchContext();
   let { loading, setLoading } = useSearchContext();
   let { searchTerm, setSearchTerm } = useSearchContext();
+  let { offset, setOffset } = useSearchContext();
 
   //Function for full search with API
   const searchPodcast = async (searchTerm) => {
@@ -26,10 +27,11 @@ function Search() {
     };
     try {
       let results = await fetch(`/api/search`, options);
+      console.log(results);
       let data = await results.json();
       console.log(data);
       setResults(data);
-      setPodcasts(data.results);
+      // setPodcasts(data);
       setLoading(false);
       return results; // Returns array of 10 podcast episodes that meet search criteria
     } catch (err) {
@@ -43,6 +45,7 @@ function Search() {
       setSearchTerm(searchTerm);
       searchPodcast(searchTerm);
       setMissingSearchTerm(false);
+      setOffset((offset) => offset + 10);
       navigate("/results");
     } else {
       setMissingSearchTerm(true);

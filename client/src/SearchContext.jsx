@@ -8,6 +8,7 @@ function SearchContextProvider({ children }) {
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [offset, setOffset] = useState(0);
 
   return (
     <SearchContext.Provider
@@ -20,6 +21,8 @@ function SearchContextProvider({ children }) {
         setSearchTerm,
         podcasts,
         setPodcasts,
+        offset,
+        setOffset,
       }}
     >
       {children}
