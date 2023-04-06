@@ -13,7 +13,7 @@ function EpisodeDetails() {
   let { results, setResults } = useContext(SearchContext);
   const [episodeData, setEpisodeData] = useState([]);
   const url = `${episodeData.listennotes_url}/embed`;
-  const date = new Date(episodeData.pub_date_ms);
+  const date = new Date(episodeData?.pub_date_ms);
 
 
   const getEpisodeDetails = (results) => {
