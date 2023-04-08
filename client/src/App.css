@@ -42,3 +42,16 @@ a:hover {
 a:active {
   text-decoration: none;
 }
+
+button {
+  background-color: #fc5f5f;
+  border: 1px solid #fc5f5f;
+  border-radius: 50px;
+  padding: 3px 36px;
+  color: #f9f9f9;
+}
+button:hover {
+  background-color: #f9f9f9;
+  border: 1px solid #fc5f5f;
+  color: #fc5f5f;
+}

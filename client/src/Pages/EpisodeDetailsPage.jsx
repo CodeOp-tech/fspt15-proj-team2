@@ -2,19 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Player from "../components/Player";
+// import Player from "../components/Player";
 import { SearchContext } from "../SearchContext";
 import "./EpisodeDetailsPage.css";
 
-function EpisodeDetails() {
+function EpisodeDetails({setUrl, setShowPlayer}) {
   const params = useParams(); //A part of react-router
   const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
   // this podcast episode id is in the database & can be used to search API
   let { results, setResults } = useContext(SearchContext);
   const [episodeData, setEpisodeData] = useState([]);
-  const url = `${episodeData.listennotes_url}/embed`;
-  const date = new Date(episodeData?.pub_date_ms);
-
 
   const getEpisodeDetails = (results) => {
     for (let episode of results) {
@@ -28,7 +25,8 @@ function EpisodeDetails() {
 
   useEffect(() => {
     getEpisodeDetails(results); // Pulls episode details from full results
-  }, []);
+    setUrl(`${episodeData.listennotes_url}/embed`);
+  }, [episodeData]);
 
   // Right now, all results are being rendered here. Just thinking about how we could get just the data for the target episode:
   // Option 1: Loop through the results and just render the data from the episode with the matching id (podcast.id).
@@ -60,10 +58,10 @@ function EpisodeDetails() {
               className="episode-img col-2 w-25 rounded"
             />
             {/* to render HTMl string as true html */}
-          <div className="date-published">
+          {/* <div className="date-published">
             <span>Released </span>
             <span>{date.toUTCString().slice(0, 16)}</span>
-          </div>
+          </div> */}
           <div
               className="episode-desc col-6"
               dangerouslySetInnerHTML={{
@@ -77,7 +75,6 @@ function EpisodeDetails() {
         <span className="material-symbols-outlined">playlist_remove</span> */}
         </div>
       </div>
-      <Player url={url} />
     </div>
   );
 }

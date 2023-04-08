@@ -4,9 +4,13 @@ import "./Navbar.css";
 // import avatar from "../Images/avatar.png";
 
 function Navbar() {
+  const reset = (e) => {
+    setSearchTerm("");
+  };
+
   return (
     <div className="navbar navbar-default fixed-top">
-      <Link to="/">
+      <Link to="/" onClick={reset}>
         <h6 className="nav-title">Podcast App</h6>
       </Link>
       <div className="navbar-container">
