@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-export default function Login({ setAuth }){
+export default function Login(){
     const navigate = useNavigate();
     const [user, setUser] = useState({
         username: "",
@@ -11,6 +11,10 @@ export default function Login({ setAuth }){
 
     function createNewUser() {
         navigate("/register")
+    }
+
+    function login() {
+        navigate("/login")
     }
 
     const handleChange = (e) => {
@@ -37,16 +41,15 @@ export default function Login({ setAuth }){
             console.log(data);
 
             // save the token and username in the local storage with the setItem method (can only do one at a time)
-            //? what format does this have to be if we set multiple items
             localStorage.setItem("token", data.token)
             console.log(data.message, data.token, data.username)
 
-            // setAuth(true);
-            // if (localStorage.getItem() {
-            //     navigate("/admin")
-            // } else {
-            //     navigate("/parent")
-            // }
+            // 
+            if (localStorage.getItem("token")) {
+                navigate("/account")
+            } else {
+                navigate("/register")
+            }
 
 
         } catch(err) {
