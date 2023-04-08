@@ -8,8 +8,8 @@ export default function Register(){
     const [userRegistration, setUserRegistration] = useState({
         username: "",
         password: "",
-        studentLastName: "",
-        studentID: 0
+        email: "",
+        firstName: ""
     })
 
     // we need to put this on every input so it catches the change in information onChange={() => handleChange(e)}
