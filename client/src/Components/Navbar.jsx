@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-// import avatar from "../Images/avatar.png";
 
 function Navbar() {
   const reset = (e) => {

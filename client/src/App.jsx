@@ -7,6 +7,7 @@ import SearchResultsPage from "./Pages/SearchResultsPage";
 import EpisodeDetailsPage from "./Pages/EpisodeDetailsPage";
 import SearchContextProvider from "./SearchContext";
 import Player from "./Components/Player";
+import Navbar from "./Components/Navbar";
 
 function App() {
   const [url, setUrl] = useState("");
