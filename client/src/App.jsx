@@ -6,6 +6,8 @@ import SearchResultsPage from "./Pages/SearchResultsPage";
 // import PodcastDetailsPage from "./Pages/PodcastDetailsPage"; //We don't need this in this iteration of the project.
 import EpisodeDetailsPage from "./Pages/EpisodeDetailsPage";
 import SearchContextProvider from "./SearchContext";
+import Login from "./Pages/Login";
+import Registration from "./Pages/Registration";
 
 function App() {
   return (
@@ -16,7 +18,7 @@ function App() {
         {/* <Route path="/podcast/:id" element={<PodcastDetailsPage />} /> */}
         <Route path="/episode/:id" element={<EpisodeDetailsPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Registration />} />
       </Routes>
     </SearchContextProvider>
   );
