@@ -12,6 +12,8 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   // this podcast episode id is in the database & can be used to search API
   let { results, setResults } = useContext(SearchContext);
   const [episodeData, setEpisodeData] = useState([]);
+  const dateObject = new Date(episodeData.pub_date_ms);
+
 
   const getEpisodeDetails = (results) => {
     for (let episode of results) {
@@ -63,12 +65,18 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
             <span>Released </span>
             <span>{date.toUTCString().slice(0, 16)}</span>
           </div> */}
-          <div
-              className="episode-desc col-6"
-              dangerouslySetInnerHTML={{
-                __html: episodeData.description_original,
-              }}
-            />
+          <div className="espiode-text">
+            <div>
+                <p>Release Date</p>
+                <p>{dateObject?.toUTCString().slice(0, 16)}</p>
+            </div>
+            <div
+                className="episode-desc col-6"
+                dangerouslySetInnerHTML={{
+                  __html: episodeData.description_original,
+                }}
+              />
+            </div>
           </div>
           {/* material symbols for when we create add to playlist functionality - currently white */}
           {/* <span className="material-symbols-outlined ">playlist_add</span>
