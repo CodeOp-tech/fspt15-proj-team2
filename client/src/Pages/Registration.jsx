@@ -72,7 +72,7 @@ export default function Register(){
                     </div>
                     <div className="form-floating mb-3 col-md-10 col-10">
                         <input 
-                            type="number" 
+                            type="email" 
                             className="form-control mr-3" name="email"
                             value = {userRegistration.email}
                             onChange={(event) => handleChange(event)}  
@@ -82,7 +82,6 @@ export default function Register(){
                     
                     <div className="form-floating mb-3 col-md-10 col-10">
                         <input 
-                            type="username" 
                             className="form-control mr-3" 
                             name="username"
                             value = {userRegistration.username}
