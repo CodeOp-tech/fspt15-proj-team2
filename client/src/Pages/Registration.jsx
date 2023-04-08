@@ -60,7 +60,7 @@ export default function Registration() {
     return(
         <>
             <Navbar></Navbar>
-            <h2 className="text-center m-4"> Registration</h2>
+            <h2 className="text-center m-4">Sign Up</h2>
             <form onSubmit={handleSubmit}>
                 <div className="row justify-content-center">
                     <div className="row form-floating mb-3 col-md-10 col-10 col-lg-5 m-1">
