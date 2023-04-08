@@ -65,10 +65,9 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
             <span>Released </span>
             <span>{date.toUTCString().slice(0, 16)}</span>
           </div> */}
-          <div className="espiode-text">
             <div>
-                <p>Release Date</p>
-                <p>{dateObject?.toUTCString().slice(0, 16)}</p>
+                <span>Release Date: </span>
+                <span>{dateObject?.toUTCString().slice(0, 16)}</span>
             </div>
             <div
                 className="episode-desc col-6"
@@ -76,7 +75,6 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
                   __html: episodeData.description_original,
                 }}
               />
-            </div>
           </div>
           {/* material symbols for when we create add to playlist functionality - currently white */}
           {/* <span className="material-symbols-outlined ">playlist_add</span>
