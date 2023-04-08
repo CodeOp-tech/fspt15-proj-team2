@@ -9,7 +9,7 @@ export default function Login(){
         password: ""
     })
 
-    function createNewUser() {
+    function signup() {
         navigate("/signup")
     }
 
@@ -96,7 +96,7 @@ export default function Login(){
                 </div>  
                 <div className="text-center m-3">
                     <h6>No account?</h6>
-                    <button className="register-btn m-2" onClick={createNewUser}>Sign up</button>
+                    <button className="register-btn m-2" onClick={signup}>Sign up</button>
                 </div>
             </form>
             

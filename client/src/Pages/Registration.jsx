@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-export default function Registration(){
+export default function Registration() {
     const navigate = useNavigate();
 
     function login() {
@@ -30,13 +30,13 @@ export default function Registration(){
             username: event.target.value,
             password: event.target.value
         })
-        register();
+        signup();
         // we know that it grabs the necessary information from our table, we just have to save this to our database
         console.log(userRegistration)
         login();
     }
 
-    async function register() {
+    async function signup() {
         try {
             let body = userRegistration;
                  
