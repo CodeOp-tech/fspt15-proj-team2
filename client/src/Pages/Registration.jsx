@@ -63,42 +63,43 @@ export default function Registration() {
             <h2 className="text-center m-4"> Registration</h2>
             <form onSubmit={handleSubmit}>
                 <div className="row justify-content-center">
-                    <div className="form-floating mb-3 col-md-10 col-10">
+                    <div className="row form-floating mb-3 col-md-10 col-10 col-lg-5 m-1">
                         <input 
                             // type="text" text is default so this is unnecessary
                             className="form-control mr-3" name="firstName"
                             value = {userRegistration.firstName}
                             onChange={(event) => handleChange(event)}  
                         />
-                        <label className="mx-1" for="firstName">First Name</label>
+                        <label className="mx-2" for="firstName">First Name</label>
                     </div>
-                    <div className="form-floating mb-3 col-md-10 col-10">
-                        <input 
+                    <div className="row form-floating mb-3 col-md-10 col-10 col-lg-5 m-1">
+                        <input
                             type="email" 
-                            className="form-control mr-3" name="email"
+                            className="form-control mr-3" 
+                            name="email"
                             value = {userRegistration.email}
                             onChange={(event) => handleChange(event)}  
                         />
-                        <label className="mx-1" for="email">E-mail</label>
+                        <label className="mx-2" for="email">E-mail</label>
                     </div>
                     
-                    <div className="form-floating mb-3 col-md-10 col-10">
+                    <div className="row form-floating mb-3 col-md-10 col-10 col-lg-5 m-1">
                         <input 
-                            className="form-control mr-3" 
+                            className="form-control" 
                             name="username"
                             value = {userRegistration.username}
                             onChange={(event) => handleChange(event)}  
                         />
-                        <label className="mx-1" for="username">Username</label>
+                        <label className="mx-2" for="username">Username</label>
                     </div>
-                    <div className="form-floating col-md-10 col-10">
+                    <div className="row form-floating col-md-10 col-10 col-lg-5 m-1">
                         <input 
                             type="password" 
                             className="form-control" 
                             name="password"
                             value = {userRegistration.password}
                             onChange={(event) => handleChange(event)} />
-                        <label className="mx-1" for="password">Password</label>
+                        <label className="mx-2" for="password">Password</label>
                     </div>
 
                     

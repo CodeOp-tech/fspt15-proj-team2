@@ -68,17 +68,17 @@ export default function Login(){
             <Navbar></Navbar>
             <h2 className="text-center m-4">Log in</h2>
             <form onSubmit={handleSubmit}>
-                <div className="row justify-content-center">
-                    <div className="form-floating mt-3 mb-3 col-md-10 col-10">
+                <div className="d-flex flex-column flex-wrap justify-content-between align-items-center">
+                    <div className="form-floating mt-3 mb-3 col-md-10 col-10 col-lg-5 m-1">
                         <input 
                             type="username" 
-                            className="form-control mr-3" name="username"
+                            className="form-control" name="username"
                             value = {user.username}
                             onChange={handleChange}
                         />
                         <label className="mx-1" for="username">Username</label>
                     </div>
-                    <div className="form-floating col-md-10 col-10">
+                    <div className="form-floating col-md-10 col-10 col-lg-5 m-1">
                         <input 
                             type="password" 
                             className="form-control" 
