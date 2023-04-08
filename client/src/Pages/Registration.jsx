@@ -23,8 +23,8 @@ export default function Register(){
         setUserRegistration({ ...userRegistration,
             username: event.target.value,
             password: event.target.value,
-            studentLastName: event.target.value,
-            studentID: event.target.value
+            email: event.target.value,
+            firstName: event.target.value
         })
         register();
         // we know that it grabs the necessary information from our table, we just have to save this to our database
