@@ -26,6 +26,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   useEffect(() => {
     getEpisodeDetails(results); // Pulls episode details from full results
     setUrl(`${episodeData.listennotes_url}/embed`);
+    setShowPlayer(true);
   }, [episodeData]);
 
   // Right now, all results are being rendered here. Just thinking about how we could get just the data for the target episode:

@@ -10,6 +10,7 @@ import Player from "./Components/Player";
 
 function App() {
   const [url, setUrl] = useState("");
+  const [showPlayer, setShowPlayer] = useState(false)
 
   return (
     <SearchContextProvider>
@@ -17,9 +18,9 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/results" element={<SearchResultsPage />} />
         {/* <Route path="/podcast/:id" element={<PodcastDetailsPage />} /> */}
-        <Route path="/episode/:id" element={<EpisodeDetailsPage setUrl={setUrl}/>} />
+        <Route path="/episode/:id" element={<EpisodeDetailsPage setUrl={setUrl} setShowPlayer={setShowPlayer}/>} />
       </Routes>
-      {<Player url={url}/>}
+      {showPlayer && <Player url={url}/>}
     </SearchContextProvider>
   );
 }
