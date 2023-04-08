@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-export default function Register(){
+export default function Registration(){
     const navigate = useNavigate();
 
+    function login() {
+        navigate("/login")
+    }
+
     const [userRegistration, setUserRegistration] = useState({
-        username: "",
-        password: "",
+        firstName: "",
         email: "",
-        firstName: ""
+        username: "",
+        password: ""
     })
 
     // we need to put this on every input so it catches the change in information onChange={() => handleChange(e)}
@@ -21,15 +25,15 @@ export default function Register(){
     const handleSubmit = (event) => {
         event.preventDefault();
         setUserRegistration({ ...userRegistration,
-            username: event.target.value,
-            password: event.target.value,
+            firstName: event.target.value,
             email: event.target.value,
-            firstName: event.target.value
+            username: event.target.value,
+            password: event.target.value
         })
         register();
         // we know that it grabs the necessary information from our table, we just have to save this to our database
         console.log(userRegistration)
-        navigate("/")
+        login();
     }
 
     async function register() {
@@ -47,8 +51,6 @@ export default function Register(){
             let data = await results.json();
             // this shows us the token in the console (reflects the data from the backend users.js line 91)
             console.log(data);
-
-
         } catch(err) {
             console.log({message: err.message})
         }

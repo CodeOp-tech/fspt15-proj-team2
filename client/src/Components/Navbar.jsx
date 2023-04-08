@@ -12,12 +12,15 @@ function Navbar() {
   const navigate = useNavigate();
 
   function login() {
-      console.log("log in")
       navigate("/login")
   }
 
-  function register() {
-      navigate("/register")
+  function signup() {
+      navigate("/signup")
+  }
+
+  function account() {
+    navigate("/account")
   }
 
   return (
@@ -28,9 +31,9 @@ function Navbar() {
           <div>
               {/* if we prefer google material symbols we can switch it out with the flaticons */}
               {/* <span className="material-symbols-outlined">account_circle</span> */}
-              <img src={avatar}></img>
+              <img src={avatar} onClick={account}></img>
               <button className="nav-login-btn btn" onClick={login}>Login</button>
-              <button className="nav-signup-btn btn" onClick={register}>Sign up</button>
+              <button className="nav-signup-btn btn" onClick={signup}>Sign up</button>
           </div>
       </div>
 )};

@@ -8,6 +8,7 @@ import EpisodeDetailsPage from "./Pages/EpisodeDetailsPage";
 import SearchContextProvider from "./SearchContext";
 import Login from "./Pages/Login";
 import Registration from "./Pages/Registration";
+import Account from "./Pages/Account";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         {/* <Route path="/podcast/:id" element={<PodcastDetailsPage />} /> */}
         <Route path="/episode/:id" element={<EpisodeDetailsPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
+        <Route path="/signup" element={<Registration />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
     </SearchContextProvider>
   );

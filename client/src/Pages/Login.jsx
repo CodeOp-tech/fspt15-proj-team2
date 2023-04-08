@@ -10,7 +10,7 @@ export default function Login(){
     })
 
     function createNewUser() {
-        navigate("/register")
+        navigate("/signup")
     }
 
     function login() {
@@ -48,7 +48,7 @@ export default function Login(){
             if (localStorage.getItem("token")) {
                 navigate("/account")
             } else {
-                navigate("/register")
+                navigate("/signup")
             }
 
 

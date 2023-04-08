@@ -16,12 +16,12 @@ async function userExists(req, res, next) {
 }
 
 // creating a new user
-router.post("/register", userExists, async (req, res) => {
-  const { username, password, firstName, email } = req.body;
+router.post("/signup", userExists, async (req, res) => {
+  const { firstName, email, username, password  } = req.body;
   const hashedPW = await bcrypt.hash(password, 10);
 
   try {
-      let sql = `INSERT INTO users (username, password, firstName, email ) VALUES ("${username}", "${hashedPW}", "${firstName}", "${email}")`
+      let sql = `INSERT INTO users (firstName, email, username, password) VALUES ("${firstName}", "${email}", "${username}", "${hashedPW}" )`
       await db(sql);
       res.status(200).send({message: "User registered!"});
   } catch(err) {
