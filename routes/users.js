@@ -39,14 +39,11 @@ router.post("/login", userExists, async (req, res) => {
   try {
       let sql = `SELECT * FROM users WHERE username="${username}";`
       let result = await db(sql);
-      // * understanding this syntax: everything we get back requires the .data? (no only because of the created helper file)
       let user = result.data[0];
 
       // if user not found, return an error
       if (!user) res.status(404).send({message: "User not found!"})
 
-      // if found, compare the pw from the user vs what is in the database - the compare method returns a boolean
-      // we need to await the bcrypt method since it does take a while
       let doMatch = await bcrypt.compare(password, user.password);
       if (doMatch) {
           const token = jwt.sign({userID: user.id}, process.env.SUPER_SECRET)

@@ -20,6 +20,12 @@ a.nav-login {
 
 a.nav-login:hover {
     color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+a.nav-login:active {
+    text-decoration: underline;
+    text-decoration-color: white;
 }
 
 a.nav-signup {
@@ -28,8 +34,12 @@ a.nav-signup {
 
 a.nav-signup:hover {
     color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
+.account:hover {
+    cursor: pointer;
+}
 .material-symbols-outlined {
     color: white;
 }

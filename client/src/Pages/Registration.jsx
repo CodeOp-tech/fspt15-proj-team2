@@ -32,6 +32,7 @@ export default function Registration() {
         signup();
         // we know that it grabs the necessary information from our table, we just have to save this to our database
         console.log(userRegistration)
+        // add a conditional that makes it so that it only brings us to the login page if the user account is successfully create
         login();
     }
 
