@@ -18,10 +18,14 @@
     background-color: black;
 }
 
-.nav-signup-btn{
-    color:white;
-    font-weight: lighter;
-    background-color: black;
+.nav-login-btn:hover {
+    color: #fc5f5f;
+    font-weight: bold;
+}
+
+.nav-signup-btn:hover {
+    font-weight: bold;
+    color: #fc5f5f;
 }
 
 .material-symbols-outlined {

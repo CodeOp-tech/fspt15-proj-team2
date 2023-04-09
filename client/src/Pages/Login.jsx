@@ -91,12 +91,15 @@ export default function Login(){
                     
                     
                 </div>
-                <div className="text-center m-3">
-                    <button className="login-btn" type="submit">Log in</button>
-                </div>  
-                <div className="text-center m-3">
-                    <h6>No account?</h6>
-                    <button className="register-btn m-2" onClick={signup}>Sign up</button>
+                
+                <div className="d-flex justify-content-center align-items-center flex-column flex-wrap m-2">
+                    <div className="m-2 ">
+                        <button className="login-btn" type="submit">Log in</button>
+                    </div>  
+                    <div className="m-2 text-center">
+                        <h6 className="m-2">No account? <a className="link" onClick={signup}>Sign up!</a></h6>
+                        
+                    </div>
                 </div>
             </form>
             
