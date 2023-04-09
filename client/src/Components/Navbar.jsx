@@ -28,12 +28,12 @@ function Navbar() {
           <Link to="/" onClick={reset}>
             <h6 className="nav-title">Podcast App</h6>
           </Link>
-          <div>
+          <div className="m-1 mr-2">
               {/* if we prefer google material symbols we can switch it out with the flaticons */}
               {/* <span className="material-symbols-outlined">account_circle</span> */}
-              <img src={avatar} onClick={account}></img>
-              <button className="nav-login-btn btn" onClick={login}>Login</button>
-              <button className="nav-signup-btn btn" onClick={signup}>Sign up</button>
+              <img className="mx-2" src={avatar} onClick={account}></img>
+              <a className="nav-login p-2" onClick={login}>Login</a>
+              <a className="nav-signup px-2" onClick={signup}>Sign up</a>
           </div>
       </div>
 )};

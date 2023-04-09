@@ -12,20 +12,22 @@
     margin-bottom: 0;
 }
 
-.nav-login-btn{
+a.nav-login {
     color: #AA4A44;
     font-weight: bold;
     background-color: black;
 }
 
-.nav-login-btn:hover {
-    color: #fc5f5f;
-    font-weight: bold;
+a.nav-login:hover {
+    color: rgb(255, 255, 255);
 }
 
-.nav-signup-btn:hover {
-    font-weight: bold;
-    color: #fc5f5f;
+a.nav-signup {
+    color: rgba(255, 255, 255, 0.731);  
+}
+
+a.nav-signup:hover {
+    color: rgb(255, 255, 255);
 }
 
 .material-symbols-outlined {
