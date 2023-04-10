@@ -72,15 +72,20 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
             src={episodeData.image}
             className="episode-img col-2 w-25 rounded"
           />
-          <div>
+          <div className="column">
             <div className="playlist-icons">
                 {!checked && <span className="material-symbols-outlined gray" onClick={() => setChecked(true)}>heart_plus</span>}
                 { checked && <span className="material-symbols-outlined full" onClick={() => setChecked(false)}>favorite</span>}
             </div>
-              <span>Release Date: </span>
+            <div>
+              <span className="bold">Release Date: </span>
               <span>{dateObject?.toUTCString().slice(0, 16)}</span> <br/>
-              <span>Duration: </span>
-              <span>{convertSecondstoMinutes(seconds)}</span>
+              <span className="bold">Duration: </span>
+              <span>{convertSecondstoMinutes(seconds)}</span> <br/>
+              <span className="bold">Rating: </span>
+              {!episodeData.explicit_content && <span>Clean</span>} 
+              {episodeData.explicit_content && <span>Explicit</span>} 
+             </div>
           </div>
           <div
               className="episode-desc col-6"
