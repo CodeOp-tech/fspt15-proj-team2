@@ -37,7 +37,7 @@ function SearchResults() {
   };
 
   return (
-    <div className="container mb-2">
+    <div className="container mb-200">
       <div className="row" id="searchResults">
         {loading ? (
           <div className="spinner-border text-warning m-auto" role="status">
