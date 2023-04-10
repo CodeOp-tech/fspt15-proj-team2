@@ -61,6 +61,6 @@ input:focus {
   border-color: #fc5f5f;
 }
 
-img:hover {
+.card-img-top:hover {
   opacity: 80%;
 }
