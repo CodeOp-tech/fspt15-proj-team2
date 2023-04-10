@@ -92,7 +92,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
           </div>
           </div>
           <div
-              className="episode-desc col-6"
+              className="episode-desc col-6 mt-4"
               dangerouslySetInnerHTML={{
                 __html: episodeData.description_original,
               }}
