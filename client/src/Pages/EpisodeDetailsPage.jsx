@@ -75,7 +75,9 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
               <span>{dateObject?.toUTCString().slice(4, 16)}</span> <br/>
               <span className="bold spaced-line">Rating: </span>
               {!episodeData.explicit_content && <span>Clean</span>} 
-              {episodeData.explicit_content && <span>Explicit</span>} 
+              {episodeData.explicit_content && <span>Explicit</span>} <br/>
+              <span className="bold spaced-line">More about </span>
+              <span><a href={episodeData.link} target="_blank">{episodeData.podcast?.title_original}</a></span>
              </div>
           </div>
           </div>
