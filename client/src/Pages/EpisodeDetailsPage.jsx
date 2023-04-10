@@ -13,7 +13,8 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   let { results, setResults } = useContext(SearchContext);
   const [episodeData, setEpisodeData] = useState([]);
   const dateObject = new Date(episodeData.pub_date_ms);
-
+  const [checked, setChecked] = useState(false);
+ 
 
   const getEpisodeDetails = (results) => {
     for (let episode of results) {
@@ -35,6 +36,10 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   // Option 1: Loop through the results and just render the data from the episode with the matching id (podcast.id).
   // Option 2: Use a function to fetch the data for just that one episode using the episode id.
   // I'd prefer to do the first option to avoid fetching so much, but 🤷‍♀️
+
+  // function addToPlaylist() {
+  //   console.log("go");
+  // }
 
   return (
     <div className="episode-details-container">
@@ -60,12 +65,11 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
               src={episodeData.image}
               className="episode-img col-2 w-25 rounded"
             />
-            {/* to render HTMl string as true html */}
-          {/* <div className="date-published">
-            <span>Released </span>
-            <span>{date.toUTCString().slice(0, 16)}</span>
-          </div> */}
             <div>
+              <div className="playlist-icons">
+                  {!checked && <span className="material-symbols-outlined gray" onClick={() => setChecked(true)}>heart_plus</span>}
+                  { checked && <span className="material-symbols-outlined full" onClick={() => setChecked(false)}>favorite</span>}
+              </div>
                 <span>Release Date: </span>
                 <span>{dateObject?.toUTCString().slice(0, 16)}</span>
             </div>
@@ -76,10 +80,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
                 }}
               />
           </div>
-          {/* material symbols for when we create add to playlist functionality - currently white */}
-          {/* <span className="material-symbols-outlined ">playlist_add</span>
-        <span className="material-symbols-outlined">playlist_add_check</span>
-        <span className="material-symbols-outlined">playlist_remove</span> */}
+          {/* material symbols for when we create add to playlist functionality*/}
         </div>
       </div>
     </div>

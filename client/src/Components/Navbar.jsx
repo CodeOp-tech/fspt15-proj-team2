@@ -1,4 +1,4 @@
-import React from "react";
+import {React} from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
@@ -14,7 +14,7 @@ function Navbar() {
       </Link>
       <div className="navbar-container">
         {/* if we prefer google material symbols we can switch it out with the flaticons */}
-        <span className="avatar material-symbols-outlined">account_circle</span>
+        <span className="avatar material-symbols-outlined pink">account_circle</span>
         {/* <img src={avatar}></img> */}
         <button className="nav-login-btn btn">Login</button>
         <button className="nav-signup-btn btn">Sign up</button>

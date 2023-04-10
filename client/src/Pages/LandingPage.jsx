@@ -2,7 +2,6 @@ import React, { useState } from "react";
 // import { Routes, Route, Link } from "react-router-dom";
 import "../App.css";
 import Navbar from "../components/Navbar";
-// import Player from "../components/Player";
 import Search from "../Components/Search";
 // import Favorites from "../components/Favorites";
 // import Recommended from "../components/Recommended";

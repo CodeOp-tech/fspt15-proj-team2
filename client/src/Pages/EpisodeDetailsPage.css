@@ -39,3 +39,11 @@
 .episode_img {
     margin-right: 20px;
 }
+
+.gray {
+    color: gray;
+}
+
+.gray:hover {
+    color:  #FC5F5F;
+}

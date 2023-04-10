@@ -16,7 +16,7 @@ function App() {
   return (
     <SearchContextProvider>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage/>} />
         <Route path="/results" element={<SearchResultsPage />} />
         {/* <Route path="/podcast/:id" element={<PodcastDetailsPage />} /> */}
         <Route path="/episode/:id" element={<EpisodeDetailsPage setUrl={setUrl} setShowPlayer={setShowPlayer}/>} />
