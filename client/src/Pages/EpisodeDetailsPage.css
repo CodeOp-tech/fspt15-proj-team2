@@ -71,7 +71,13 @@
     background-color: #f9f9f9;
     border: 1px solid #fc5f5f;
     color: #fc5f5f;
-  }
+}
+
+.fav-btn:hover {
+    background-color: #fc5f5f;
+    border: 1px solid #fc5f5f;
+    color: #f9f9f9;
+}
 
 .down {
     vertical-align: bottom;
