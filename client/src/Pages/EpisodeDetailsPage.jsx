@@ -82,7 +82,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
               {!checked && <button  className="fav-btn mb-2" onClick={() => setChecked(true)}><span className="material-symbols-outlined down">heart_plus</span><span> Add to favorites</span></button>}
               { checked && <button  className="rem-btn mb-2"onClick={() => setChecked(false)}><span className="material-symbols-outlined down">favorite</span><span> Remove from favorites</span></button>} <br/>
               <span className="bold spaced-line release">Release Date: </span>
-              <span>{dateObject?.toUTCString().slice(0, 16)}</span> <br/>
+              <span>{dateObject?.toUTCString().slice(4, 16)}</span> <br/>
               <span className="bold spaced-line">Duration: </span>
               <span>{convertSecondstoMinutes(seconds)}</span> <br/>
               <span className="bold spaced-line">Rating: </span>
