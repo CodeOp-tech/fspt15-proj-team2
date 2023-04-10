@@ -14,7 +14,6 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   const [episodeData, setEpisodeData] = useState([]);
   const dateObject = new Date(episodeData.pub_date_ms);
   const [checked, setChecked] = useState(false);
-  const seconds = episodeData.audio_length_sec;
  
 
   const getEpisodeDetails = (results) => {
@@ -68,7 +67,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
             className="episode-img col-2 w-50 rounded"
           />
           <div>
-            <div className="ep-info">
+            {episodeData.title_original && <div className="ep-info">
               {!checked && <button  className="fav-btn mb-2" onClick={() => setChecked(true)}><span className="material-symbols-outlined down">heart_plus</span><span> Add to favorites</span></button>}
               { checked && <button  className="rem-btn mb-2"onClick={() => setChecked(false)}><span className="material-symbols-outlined down">favorite</span><span> Remove from favorites</span></button>} <br/>
               <span className="bold spaced-line release">Release Date: </span>
@@ -78,7 +77,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
               {episodeData.explicit_content && <span>Explicit</span>} <br/>
               <span className="bold spaced-line">More about </span>
               <span><a href={episodeData.link} target="_blank">{episodeData.podcast?.title_original}</a></span>
-             </div>
+            </div>}
           </div>
           </div>
           <div
