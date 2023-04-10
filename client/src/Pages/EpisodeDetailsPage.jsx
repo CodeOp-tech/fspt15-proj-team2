@@ -43,13 +43,13 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   // }
 
   function convertSecondstoMinutes(seconds) {
-    let minutes = ~~(seconds % 60);
-    let hours = ~~(minutes / 60);
+    let minutes = Math.floor(seconds /60);
+    let hours = Math.floor(seconds / 3600)
     let extraSeconds = seconds % 60;
     if (hours === 0) {
       return (minutes + " min " + extraSeconds + " sec " );
     }
-    return (hours + " hr " + minutes + " min " + extraSeconds + " sec " );
+    return (" hr " + minutes + " min " + extraSeconds + " sec " );
  }
 
  return (
