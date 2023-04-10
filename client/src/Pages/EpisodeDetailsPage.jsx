@@ -49,7 +49,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
     if (hours === 0) {
       return (minutes + " min " + extraSeconds + " sec " );
     }
-    return (" hr " + minutes + " min " + extraSeconds + " sec " );
+    return ( hours + " hr " + minutes + " min " + extraSeconds + " sec " );
  }
 
  return (
