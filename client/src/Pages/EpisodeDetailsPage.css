@@ -57,7 +57,7 @@
     font-weight: bold;
 }
 
-.info {
+.ep-info {
     margin-left: 30px;
 }
 
@@ -78,3 +78,8 @@
 .down {
     vertical-align: bottom;
  }
+
+ .spaced-line {
+    line-height: 50px;
+ }
+
