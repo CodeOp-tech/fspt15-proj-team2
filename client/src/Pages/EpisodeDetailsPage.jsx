@@ -42,16 +42,6 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   //   console.log("go");
   // }
 
-  function convertSecondstoMinutes(seconds) {
-    let minutes = Math.floor(seconds /60);
-    let hours = Math.floor(seconds / 3600)
-    let extraSeconds = seconds % 60;
-    if (hours === 0) {
-      return (minutes + " min " + extraSeconds + " sec " );
-    }
-    return ( hours + " hr " + minutes + " min " + extraSeconds + " sec " );
- }
-
  return (
   <div className="episode-details-container">
     <Navbar />
@@ -83,8 +73,6 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
               { checked && <button  className="rem-btn mb-2"onClick={() => setChecked(false)}><span className="material-symbols-outlined down">favorite</span><span> Remove from favorites</span></button>} <br/>
               <span className="bold spaced-line release">Release Date: </span>
               <span>{dateObject?.toUTCString().slice(4, 16)}</span> <br/>
-              <span className="bold spaced-line">Duration: </span>
-              <span>{convertSecondstoMinutes(seconds)}</span> <br/>
               <span className="bold spaced-line">Rating: </span>
               {!episodeData.explicit_content && <span>Clean</span>} 
               {episodeData.explicit_content && <span>Explicit</span>} 
