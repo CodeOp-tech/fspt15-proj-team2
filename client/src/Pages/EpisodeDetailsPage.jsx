@@ -14,6 +14,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   const [episodeData, setEpisodeData] = useState([]);
   const dateObject = new Date(episodeData.pub_date_ms);
   const [checked, setChecked] = useState(false);
+  const [hideListenButton, setHideListenButton] = useState(false);
  
 
   const getEpisodeDetails = (results) => {
@@ -28,8 +29,6 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
 
   useEffect(() => {
     getEpisodeDetails(results); // Pulls episode details from full results
-    setUrl(`${episodeData.listennotes_url}/embed`);
-    setShowPlayer(true);
   }, [episodeData]);
 
   // Right now, all results are being rendered here. Just thinking about how we could get just the data for the target episode:
@@ -40,6 +39,12 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   // function addToPlaylist() {
   //   console.log("go");
   // }
+
+  function playEpisode() {
+    setUrl(`${episodeData.listennotes_url}/embed`);
+    setShowPlayer(true);
+    setHideListenButton(true);
+  }
 
  return (
   <div className="episode-details-container">
@@ -68,6 +73,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
           />
           <div>
             {episodeData.title_original && <div className="ep-info">
+              {!hideListenButton && <button  className="fav-btn mb-3" onClick={() => playEpisode()}><span className="material-symbols-outlined down ">play_arrow</span><span> Listen </span></button>} <br/>
               {!checked && <button  className="fav-btn mb-2" onClick={() => setChecked(true)}><span className="material-symbols-outlined down">heart_plus</span><span> Add to favorites</span></button>}
               { checked && <button  className="rem-btn mb-2"onClick={() => setChecked(false)}><span className="material-symbols-outlined down">favorite</span><span> Remove from favorites</span></button>} <br/>
               <span className="bold spaced-line release">Release Date: </span>
@@ -76,7 +82,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
               {!episodeData.explicit_content && <span>Clean</span>} 
               {episodeData.explicit_content && <span>Explicit</span>} <br/>
               <span className="bold spaced-line">More about </span>
-              <span><a href={episodeData.link} target="_blank">{episodeData.podcast?.title_original}</a></span>
+              <span><a href={episodeData.link} target="_blank">{episodeData.podcast?.title_original}</a></span> <br/>
             </div>}
           </div>
           </div>
