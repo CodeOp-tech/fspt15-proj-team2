@@ -9,9 +9,9 @@ const searchFullPodcast = async (req, res) => {
     const { searchTerm, offset } = req.body;
     const response = await unirest
       .get(
-        // `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&offset=${offset}`
+        `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&offset=${offset}`
         // below is mock database api url:
-        `https://listen-api-test.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
+        // `https://listen-api-test.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
       )
       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
     response.toJSON();

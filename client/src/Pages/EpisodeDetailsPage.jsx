@@ -75,7 +75,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
           <div className="episode-info">
           <img
             src={episodeData.image}
-            className="episode-img col-2 w-25 rounded"
+            className="episode-img col-2 w-50 rounded"
           />
           <div>
             <div className="ep-info">
