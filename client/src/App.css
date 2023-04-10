@@ -14,7 +14,7 @@
   text-align: center;
   background-image: url(https://images.pexels.com/photos/983831/pexels-photo-983831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -50,8 +50,17 @@ button {
   padding: 3px 36px;
   color: #f9f9f9;
 }
+
 button:hover {
   background-color: #f9f9f9;
   border: 1px solid #fc5f5f;
   color: #fc5f5f;
+}
+
+input:focus {
+  border-color: #fc5f5f;
+}
+
+img:hover {
+  opacity: 80%;
 }
