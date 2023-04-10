@@ -14,6 +14,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   const [episodeData, setEpisodeData] = useState([]);
   const dateObject = new Date(episodeData.pub_date_ms);
   const [checked, setChecked] = useState(false);
+  const seconds = episodeData.audio_length_sec;
  
 
   const getEpisodeDetails = (results) => {
@@ -41,50 +42,58 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   //   console.log("go");
   // }
 
-  return (
-    <div className="episode-details-container">
-      <Navbar />
-      {/* This link should keep the results from the previous search -- maybe refetch the data? 
-      Or store it locally? Or use onClick with this button to render it in the search results somehow...
-      not sure yet.*/}
-      <div className="body">
-        <Link to="/results">
-          <button className="results-btn btn btn-primary mt-2">
-            Back to search results
-          </button>
-        </Link>
+  function convertSecondstoMinutes(seconds) {
+    let minutes = ~~(seconds / 60);
+    let extraSeconds = seconds % 60;
+    return (minutes + " : " + extraSeconds );
+ }
 
-        {/* This div renders the episode data -- right now, it's rendering all the results data */}
-        <div id="container" className="row mt-2">
-          <div className="episode-title">
-            <h2 className="text-center col-md-6 offset-3">{episodeData.title_original}</h2>
-            <h4 className="text-center col-md-6 offset-3"><span className="podcast-title"> {episodeData.podcast?.title_original} </span></h4>
-          </div>
-          <div className="episode-details justify-content-center mt-4">
-            <img
-              src={episodeData.image}
-              className="episode-img col-2 w-25 rounded"
-            />
-            <div>
-              <div className="playlist-icons">
-                  {!checked && <span className="material-symbols-outlined gray" onClick={() => setChecked(true)}>heart_plus</span>}
-                  { checked && <span className="material-symbols-outlined full" onClick={() => setChecked(false)}>favorite</span>}
-              </div>
-                <span>Release Date: </span>
-                <span>{dateObject?.toUTCString().slice(0, 16)}</span>
-            </div>
-            <div
-                className="episode-desc col-6"
-                dangerouslySetInnerHTML={{
-                  __html: episodeData.description_original,
-                }}
-              />
-          </div>
-          {/* material symbols for when we create add to playlist functionality*/}
+ return (
+  <div className="episode-details-container">
+    <Navbar />
+    {/* This link should keep the results from the previous search -- maybe refetch the data? 
+    Or store it locally? Or use onClick with this button to render it in the search results somehow...
+    not sure yet.*/}
+    <div className="body">
+      <Link to="/results">
+        <button className="results-btn btn btn-primary mt-2">
+          Back to search results
+        </button>
+      </Link>
+
+      {/* This div renders the episode data -- right now, it's rendering all the results data */}
+      <div id="container" className="row mt-2">
+        <div className="episode-title">
+          <h2 className="text-center col-md-6 offset-3">{episodeData.title_original}</h2>
+          <h4 className="text-center col-md-6 offset-3"><span className="podcast-title"> {episodeData.podcast?.title_original} </span></h4>
         </div>
+        <div className="episode-details justify-content-center mt-4">
+          <img
+            src={episodeData.image}
+            className="episode-img col-2 w-25 rounded"
+          />
+          <div>
+            <div className="playlist-icons">
+                {!checked && <span className="material-symbols-outlined gray" onClick={() => setChecked(true)}>heart_plus</span>}
+                { checked && <span className="material-symbols-outlined full" onClick={() => setChecked(false)}>favorite</span>}
+            </div>
+              <span>Release Date: </span>
+              <span>{dateObject?.toUTCString().slice(0, 16)}</span> <br/>
+              <span>Duration: </span>
+              <span>{convertSecondstoMinutes(seconds)}</span>
+          </div>
+          <div
+              className="episode-desc col-6"
+              dangerouslySetInnerHTML={{
+                __html: episodeData.description_original,
+              }}
+            />
+        </div>
+        {/* material symbols for when we create add to playlist functionality*/}
       </div>
     </div>
-  );
+  </div>
+);
 }
 
 export default EpisodeDetails;

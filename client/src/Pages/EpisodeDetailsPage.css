@@ -47,3 +47,11 @@
 .gray:hover {
     color:  #FC5F5F;
 }
+
+
+.container-info {
+    display: flex;
+    flex-direction: row;    
+    justify-content: space-between;
+    align-items: center;
+}
