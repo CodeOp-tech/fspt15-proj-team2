@@ -68,16 +68,15 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
           <h4 className="text-center col-md-6 offset-3"><span className="podcast-title"> {episodeData.podcast?.title_original} </span></h4>
         </div>
         <div className="episode-details justify-content-center mt-4">
+          <div className="episode-info">
           <img
             src={episodeData.image}
             className="episode-img col-2 w-25 rounded"
           />
-          <div className="column">
-            <div className="playlist-icons">
-                {!checked && <span className="material-symbols-outlined gray" onClick={() => setChecked(true)}>heart_plus</span>}
-                { checked && <span className="material-symbols-outlined full" onClick={() => setChecked(false)}>favorite</span>}
-            </div>
-            <div>
+          <div>
+            <div className="info">
+              {!checked && <button  className="fav-btn" onClick={() => setChecked(true)}><span className="material-symbols-outlined down">heart_plus</span><span> Add to favorites</span></button>}
+              { checked && <button  className="rem-btn"onClick={() => setChecked(false)}><span className="material-symbols-outlined down">favorite</span><span> Remove from favorites</span></button>} <br/>
               <span className="bold">Release Date: </span>
               <span>{dateObject?.toUTCString().slice(0, 16)}</span> <br/>
               <span className="bold">Duration: </span>
@@ -87,6 +86,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
               {episodeData.explicit_content && <span>Explicit</span>} 
              </div>
           </div>
+          </div>
           <div
               className="episode-desc col-6"
               dangerouslySetInnerHTML={{
@@ -94,7 +94,6 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
               }}
             />
         </div>
-        {/* material symbols for when we create add to playlist functionality*/}
       </div>
     </div>
   </div>
