@@ -26,7 +26,7 @@ router.post("/signup", userExists, async (req, res) => {
   const stringPass = password.toString();
   try {
     const hashedPW = await bcrypt.hash(stringPass, 10);
-    let sql = `INSERT INTO users (firstName, email, username, password) VALUES ("${firstName}", "${email}", "${username}", "${hashedPW}" )`;
+    let sql = `INSERT INTO users (firstName, email, username, password) VALUES ("${firstName}", "${email}", "${username}", "${hashedPW}");`;
     await db(sql);
     res.status(200).send({ message: "User registered!" });
   } catch (err) {

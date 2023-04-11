@@ -53,9 +53,10 @@ export default function Registration() {
 
       // the fetch needs to match the API route in the backend
       let results = await fetch("/users/signup", options);
+      console.log(results);
       let data = await results.json();
       // this shows us the token in the console (reflects the data from the backend users.js line 91)
-      console.log(data);
+      
     } catch (err) {
       console.log({ message: err.message });
     }
