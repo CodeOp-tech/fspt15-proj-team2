@@ -6,9 +6,9 @@ const db = require("../model/helper");
 const jwt = require("jsonwebtoken");
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
+// router.get("/", function (req, res, next) {
+//   res.send("respond with a resource");
+// });
 
 //* CHECK IF THE USERNAME ALREADY EXISTS
 async function userExists(req, res, next) {
@@ -38,16 +38,13 @@ router.post("/signup", userExists, async (req, res) => {
 // log in for the user
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-
   // retrieve user from db
   try {
     let sql = `SELECT * FROM users WHERE username="${username}";`;
     let result = await db(sql);
     let user = result.data[0];
-
     // if user not found, return an error
     if (!user) res.status(404).send({ message: "User not found!" });
-
     let doMatch = await bcrypt.compare(password, user.password);
     if (doMatch) {
       const token = jwt.sign({ userID: user.id }, process.env.SUPER_SECRET);
@@ -65,27 +62,25 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// NOT CURRENTLY USED. WAS CAUSING ERROR WHEN TESTING IN POSTMAN
-function usersShouldBeLoggedIn(req, res, next) {
-  // Get token from the "authorization" header with format "Bearer <token>"
+// TO CHECK IF USER IS LOGGED IN
+async function isLoggedIn(req, res, next) {
+  // get the token from the "authorization" header in our frontend (the options)
   let authHeader = req.headers["authorization"];
-  // Separate 'Bearer' and token to keep only the token
-  let [str, token] = authHeader.split(" ");
   try {
-    // Throws error on invalid/missing token
-    // remember, payload includes the user_id we added to it when we created the token
-    let payload = jwt.verify(token, supersecret);
-    //everything is awesome!
-    //get from the payload the user_id and store in the req so we can use later
+    // we only want our token so we have to split our authHeader into the following
+    let [str, token] = authHeader.split(" ");
+    // jwt will check the payload and if a token doesn't exist then it will throw an error
+    let payload = jwt.verify(token, process.env.SUPER_SECRET);
+    // store the payload in the req to be used later
     req.user_id = payload.user_id;
     next();
-  } catch (err) {
+  } catch (error) {
     res.status(401).send({ error: "Unauthorized" });
   }
 }
 
 // GET ALL FROM FAVORITES FOR ONE USER
-router.get("/favorites", usersShouldBeLoggedIn, async (req, res) => {
+router.get("/favorites", isLoggedIn, async (req, res) => {
   try {
     // Return all favorites_id for specific user_id
     // Search API using favorites_id & return details
