@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
 require("dotenv").config();
 const db = require("../model/helper");
 const jwt = require("jsonwebtoken");
 const supersecret = process.env.SUPER_SECRET;
 
+// MAKE SURE USER IS LOGGED IN
 function usersShouldBeLoggedIn(req, res, next) {
   // Get token from the "authorization" header with format "Bearer <token>"
   let authHeader = req.headers["authorization"];
   // Separate 'Bearer' and token to keep only the token
-  let [str, token] = authHeader.split(" "); //Getting error here when doing GET router function
+  let [str, token] = authHeader.split(" ");
 
   try {
     // Throws error on invalid/missing token
@@ -33,16 +33,16 @@ router.get(
 
   async function (req, res) {
     // If we get here we know the user is logged in
-    let book = res.locals.book; //What is this? Idk. haha
+    let podcast = res.locals.podcast; //What is this? Idk. haha
     // let user_id = req.user_id;
     // console.log(req);
 
     try {
       let sql = `
             SELECT 
-            users.id, books.bookId, books.review FROM users
-            JOIN user_books ON users.id = user_books.user_id 
-            JOIN books ON books.id = user_books.book_id 
+            users.id, favorites.id FROM users
+            JOIN users_favorites ON users.id = users_favorites.user_id 
+            JOIN favorites ON favorites.id = users_favorites.favorites_id 
             WHERE users.id = ${req.user_id}
         `;
       //Getting an error with WHERE and req.user_id, tried using variable user_id (above), but same error
