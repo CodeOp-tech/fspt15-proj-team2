@@ -15,7 +15,7 @@ function SearchResultsPage() {
   };
 
   return (
-    <div className="search-results-page">
+    <div className="search-results-page mb-100">
       <Navbar />
       <div className="container  pt-5">
         <Link to="/" onClick={reset}>

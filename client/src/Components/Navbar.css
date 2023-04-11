@@ -6,10 +6,25 @@
     background-color: black;
 }
 
+.navbar-container{
+    display: flex;
+    align-items: center;
+}
+
 .nav-title{
     padding-left: 10px;
-    color: white;
+    color:white;
     margin-bottom: 0;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+
+.nav-title:hover{
+    padding-left: 10px;
+    color: #FC5F5F;
+    margin-bottom: 0;
+    text-decoration: none;
 }
 
 a.nav-login {

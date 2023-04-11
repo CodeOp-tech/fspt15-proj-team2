@@ -1,42 +1,46 @@
-body {
+
+.body {
   margin: 0;
   padding: 0;
 }
+
 .hero {
-  position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-.hero-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  color: white;
-  background-color: #aa4a44;
+  align-items: top;
   text-align: center;
-  height: 358px;
-}
-.hero-title {
-  font-size: 3rem;
-  font-weight: 600;
-  margin-bottom: 0;
-}
-.hero-subtitle {
-  font-size: 2rem;
-  font-weight: 200;
-  margin-top: 1rem;
+  background-image: url(https://images.pexels.com/photos/983831/pexels-photo-983831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-a {
-  color: black;
+.hero h1 {
+  font-size: 3rem;
+  text-align: right;
+  color: #FC5F5F;
+  margin-top: 50px;
+}
+
+a:link {
   text-decoration: none;
 }
+
+
+a:visited {
+  text-decoration: none;
+}
+
 a:hover {
-  color: #fc5f5f;
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
 }
 
 button {
@@ -50,9 +54,6 @@ button:hover {
   background-color: white;
   border: 1px solid #fc5f5f;
   color: #fc5f5f;
-}
-img:hover {
-  opacity: 80%;
 }
 
 a.link {

@@ -56,7 +56,7 @@ function Search() {
         <div id="searchBox" className="offset-md-3 col-md-6 mb-3">
           <form onSubmit={handleSubmit}>
             <label htmlFor="search" className="form-label">
-              <h3>Explore podcast episodes</h3>
+              <h4>Explore podcast episodes</h4>
             </label>
             <input
               type="text"
