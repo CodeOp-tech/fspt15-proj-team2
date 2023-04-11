@@ -55,12 +55,13 @@ export default function Registration() {
       let results = await fetch("/users/signup", options);
       console.log(results);
       let data = await results.json();
-      // this shows us the token in the console (reflects the data from the backend users.js line 91)
       
     } catch (err) {
       console.log({ message: err.message });
     }
   }
+
+  
 
   return (
     <>

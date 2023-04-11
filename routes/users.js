@@ -20,6 +20,26 @@ async function userExists(req, res, next) {
   next();
 }
 
+// CHECK IF THE USER IS LOGGED IN
+async function isLoggedIn(req, res, next) {
+  // get the token from the "authorization" header in our frontend (the options)
+  let authHeader = req.headers["authorization"]
+
+  try {
+    // we only want our token so we have to split our authHeader into the following
+    let [str, token] = authHeader.split(" ")
+
+    // jwt will check the payload and if a token doesn't exist then it will throw an error
+    let payload = jwt.verify(token, process.env.SUPER_SECRET)
+
+    // store the payload in the req to be used later
+    req.user_id = payload.user_id;
+    next();
+  } catch (error) {
+    res.status(401).send({error: "Unauthorized"})
+  }
+}
+
 // creating a new user
 router.post("/signup", userExists, async (req, res) => {
   const { firstName, email, username, password } = req.body;
@@ -51,10 +71,15 @@ router.post("/login", async (req, res) => {
     let doMatch = await bcrypt.compare(password, user.password);
     if (doMatch) {
       const token = jwt.sign({ userID: user.id }, process.env.SUPER_SECRET);
+      
+      // we do not want the user's password in the object we are sending for security reasons
+      delete user.password;
+      
+      // this information is sent to our console
       res.send({
         message: "Log in successful! here is your token",
         token,
-        username,
+        user
       });
     } else {
       res.send({ message: "The password is incorrect!" });
@@ -63,6 +88,13 @@ router.post("/login", async (req, res) => {
     // send the error in an object
     res.status(400).send({ message: err.message });
   }
+});
+
+// GET user information 
+router.get("/account", isLoggedIn, async function(req, res) {
+  res.status(200).send({
+    message: req.user_id
+  })
 });
 
 module.exports = router;

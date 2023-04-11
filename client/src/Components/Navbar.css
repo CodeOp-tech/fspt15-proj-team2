@@ -31,6 +31,7 @@ a.nav-login {
     color: #AA4A44;
     font-weight: bold;
     background-color: black;
+    text-decoration: none;
 }
 
 a.nav-login:hover {
@@ -38,13 +39,10 @@ a.nav-login:hover {
     cursor: pointer;
 }
 
-a.nav-login:active {
-    text-decoration: underline;
-    text-decoration-color: white;
-}
-
 a.nav-signup {
     color: rgba(255, 255, 255, 0.731);  
+    text-decoration: none;
+
 }
 
 a.nav-signup:hover {
@@ -52,9 +50,17 @@ a.nav-signup:hover {
     cursor: pointer;
 }
 
-.account:hover {
-    cursor: pointer;
-}
+
 .material-symbols-outlined {
     color: white;
+    padding: 0.5rem;
+}
+
+.material-symbols-outlined:hover {
+    cursor: pointer;
+}
+
+.user-control {
+    display: flex;
+    align-items: center;
 }
