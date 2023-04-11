@@ -86,14 +86,12 @@ function usersShouldBeLoggedIn(req, res, next) {
 }
 
 // GET ALL FROM FAVORITES FOR ONE USER
-router.get("/favorites", usersShouldBeLoggedIn, async (req, res) => {
+router.get("/favorites", async (req, res) => {
   try {
     // Loop through users_favorites
     // Return all favorites_id for specific user_id
     // Search API using favorites_id & return details
-    const result = await db(
-      `SELECT * FROM users_favorites WHERE user_id=${req.user_id}`
-    );
+    const result = await db(`SELECT * FROM users_favorites`);
     console.log(result);
     const items = result.data;
     console.log(items);
