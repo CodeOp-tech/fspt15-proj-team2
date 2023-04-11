@@ -1,9 +1,13 @@
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Navbar from "../Components/Navbar";
 
 export default function Account() {
+  const [loading, setLoading] = useState(false);
   // Need function to fetch users_favorites data
   // And search API by episode ID to return details
+
+  const getFavorites = async () => {};
 
   return (
     <div className="">
