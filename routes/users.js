@@ -71,12 +71,10 @@ function usersShouldBeLoggedIn(req, res, next) {
   let authHeader = req.headers["authorization"];
   // Separate 'Bearer' and token to keep only the token
   let [str, token] = authHeader.split(" ");
-
   try {
     // Throws error on invalid/missing token
     // remember, payload includes the user_id we added to it when we created the token
     let payload = jwt.verify(token, supersecret);
-
     //everything is awesome!
     //get from the payload the user_id and store in the req so we can use later
     req.user_id = payload.user_id;
@@ -87,19 +85,18 @@ function usersShouldBeLoggedIn(req, res, next) {
 }
 
 // GET ALL FROM FAVORITES FOR ONE USER
-router.get("/favorites", async (req, res) => {
+router.get("/favorites", usersShouldBeLoggedIn, async (req, res) => {
   try {
-    // Loop through users_favorites
     // Return all favorites_id for specific user_id
     // Search API using favorites_id & return details
     const result = await db(
       `SELECT * FROM users_favorites WHERE users_favorites.user_id = ${req.user_id}`
-      // this part isn't working yet. req.user_id is undefined
     );
     console.log(result);
     const items = result.data;
     console.log(items);
     res.send(items);
+    return;
   } catch (err) {
     res.status(500).send(err);
   }
