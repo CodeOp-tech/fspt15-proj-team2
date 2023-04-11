@@ -75,6 +75,7 @@ router.post("/login", async (req, res) => {
       // we do not want the user's password in the object we are sending for security reasons
       delete user.password;
       
+      // this information is sent to our console
       res.send({
         message: "Log in successful! here is your token",
         token,

@@ -1,7 +1,11 @@
 // import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
 import Navbar from "../Components/Navbar";
+import UserContext from "../UserContext";
 
 export default function Account() {
+    const auth = useContext(UserContext)
+
     // No need to specify the method since GET is the default set
     async function getUserInfo() {
         let options = {
@@ -16,6 +20,11 @@ export default function Account() {
         console.log(error)
         }
     }
+
+    useEffect(() => {console.log(auth)}, [])
+
+    
+
     return(
         <>
             <Navbar></Navbar>
@@ -27,10 +36,14 @@ export default function Account() {
 
             <div className="d-flex flex-column justify-content-center align-content-center align-items-left m-4">
                 {/* these are things that we will eventually get from the database when the registration is working */}
-                <h3 className="mx-3">Hello, <span style={{color: "#AA4A44"}}>user_firstName</span></h3>
+                <h3 className="mx-3">Hello, <span style={{color: "#AA4A44"}}>
+                    {auth.currentUser.firstName}
+                    </span></h3>
                 <div className="mx-5 mt-3">
-                    <p className="p-6"><b>username:</b> @sample</p>
-                    <p className="p-6"><b>email:</b> sample@gmail.com</p>
+                    <p className="p-6"><b>username: </b> 
+                        @{auth.currentUser.username}
+                    </p>
+                    <p className="p-6"><b>email:</b> {auth.currentUser.email}</p>
                 </div>
                 
             </div>

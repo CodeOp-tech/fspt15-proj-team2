@@ -1,6 +1,5 @@
 import { createContext } from "react";
 import { useState, useContext } from "react";
-import useProvideAuth from "../hooks/useProvideAuth";
 
 export const SearchContext = createContext([]);
 
@@ -10,7 +9,6 @@ function SearchContextProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [offset, setOffset] = useState(0);
-  const auth = useProvideAuth();
 
   return (
     <SearchContext.Provider
@@ -25,7 +23,6 @@ function SearchContextProvider({ children }) {
         setPodcasts,
         offset,
         setOffset,
-        auth
       }}
     >
       {children}

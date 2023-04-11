@@ -27,7 +27,7 @@ function Navbar() {
           <Link to="/" onClick={reset}>
             <h6 className="nav-title">Podcast App</h6>
           </Link>
-          <div className="m-1 mr-2">
+          <div className="m-1 mr-2 user-control">
               {/* if we prefer google material symbols we can switch it out with the flaticons */}
               <span className="material-symbols-outlined">account_circle</span>
               <a className="nav-login p-2" onClick={login}>Login</a>

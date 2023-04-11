@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
+// import SearchContextProvider from "../SearchContext";
 
 export default function Login() {
   const navigate = useNavigate();
+
+  // const auth = useContext(SearchContextProvider)
 
   const [user, setUser] = useState({
     username: "",
@@ -14,10 +17,6 @@ export default function Login() {
     navigate("/signup");
   }
 
-  function login() {
-    navigate("/login");
-  }
-
   const handleChange = (e) => {
     // alternative to writing it separately
     let { name, value } = e.target;
@@ -25,7 +24,6 @@ export default function Login() {
   };
 
   // send the login info to the database; post method so we have a body
-  // previously I had an error because I had an arrow function so it didn't call it correctly in the handleSubmit
   async function login() {
     try {
       // will this syntax be correct?
@@ -36,10 +34,10 @@ export default function Login() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       };
+
       let results = await fetch("/users/login", options);
       console.log(results)
       let data = await results.json();
-      // this reflects the data from the backend users.js line 91 in the console (message, token, and username)
       console.log(data);
 
       // save the token and username in the local storage with the setItem method (can only do one at a time)
@@ -65,7 +63,7 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     login();
-    console.log("log in successful");
+    navigate("/account");
   };
 
   return (
