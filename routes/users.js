@@ -92,7 +92,10 @@ router.get("/favorites", async (req, res) => {
     // Loop through users_favorites
     // Return all favorites_id for specific user_id
     // Search API using favorites_id & return details
-    const result = await db(`SELECT * FROM users_favorites`);
+    const result = await db(
+      `SELECT * FROM users_favorites WHERE users_favorites.user_id = ${req.user_id}`
+      // this part isn't working yet. req.user_id is undefined
+    );
     console.log(result);
     const items = result.data;
     console.log(items);
