@@ -1,12 +1,9 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-// import SearchContextProvider from "../SearchContext";
 
 export default function Login() {
   const navigate = useNavigate();
-
-  // const auth = useContext(SearchContextProvider)
 
   const [user, setUser] = useState({
     username: "",
