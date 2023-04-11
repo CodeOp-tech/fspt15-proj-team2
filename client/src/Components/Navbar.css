@@ -27,30 +27,34 @@
     text-decoration: none;
 }
 
-.nav-login-btn{
-    color: #FC5F5F;
+a.nav-login {
+    color: #AA4A44;
     font-weight: bold;
     background-color: black;
 }
 
-.nav-login-btn:hover{
+a.nav-login:hover {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+a.nav-login:active {
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+a.nav-signup {
+    color: rgba(255, 255, 255, 0.731);  
+}
+
+a.nav-signup:hover {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.account:hover {
+    cursor: pointer;
+}
+.material-symbols-outlined {
     color: white;
-    font-weight: bold;
-    background-color: black;
-}
-
-.nav-signup-btn{
-    color: #FC5F5F;
-    font-weight: lighter;
-    background-color: black;
-}
-
-.nav-signup-btn:hover{
-    color:white;
-    font-weight: lighter;
-    background-color: black;
-}
-
-.pink {
-    color: #FC5F5F;
 }

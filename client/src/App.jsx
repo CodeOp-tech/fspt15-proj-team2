@@ -8,6 +8,9 @@ import EpisodeDetailsPage from "./Pages/EpisodeDetailsPage";
 import SearchContextProvider from "./SearchContext";
 import Player from "./Components/Player";
 import Navbar from "./Components/Navbar";
+import Login from "./Pages/Login";
+import Registration from "./Pages/Registration";
+import Account from "./Pages/Account";
 
 function App() {
   const [url, setUrl] = useState("");
@@ -20,6 +23,9 @@ function App() {
         <Route path="/results" element={<SearchResultsPage />} />
         {/* <Route path="/podcast/:id" element={<PodcastDetailsPage />} /> */}
         <Route path="/episode/:id" element={<EpisodeDetailsPage setUrl={setUrl} setShowPlayer={setShowPlayer}/>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Registration />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
       {showPlayer && <Player url={url}/>}
     </SearchContextProvider>
