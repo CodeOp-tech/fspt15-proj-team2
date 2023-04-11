@@ -26,33 +26,47 @@ function usersShouldBeLoggedIn(req, res, next) {
   }
 }
 
-// GET ALL FAVORITES FROM DATABASE -- JOIN USERS & PODCAST TABLES
-router.get(
-  "/users/mypodcasts",
-  usersShouldBeLoggedIn, //Use token in header in Postman
-
-  async function (req, res) {
-    // If we get here we know the user is logged in
-    let podcast = res.locals.podcast; //What is this? Idk. haha
-    // let user_id = req.user_id;
-    // console.log(req);
-
-    try {
-      let sql = `
-            SELECT 
-            users.id, favorites.id FROM users
-            JOIN users_favorites ON users.id = users_favorites.user_id 
-            JOIN favorites ON favorites.id = users_favorites.favorites_id 
-            WHERE users.id = ${req.user_id}
-        `;
-      let results = await db(sql);
-      console.log(results);
-      // Convert DB results into "sensible" JSON -- reformat data
-
-      res.send(results);
-      console.log(results);
-    } catch (err) {
-      res.status(500).send({ error: err.message });
-    }
+router.get("/users/myfavorites", async (req, res) => {
+  try {
+    // Loop through users_favorites
+    // Return all favorites_id for specific user_id
+    // Search API using favorites_id & return details
+    const result = await db(`SELECT * FROM books`);
+    const items = result.data;
+    res.send(items);
+  } catch (err) {
+    res.status(500).send(err);
   }
-);
+});
+
+// GET ALL FAVORITES FROM DATABASE -- JOIN USERS & PODCAST TABLES
+// WE'LL ONLY NEED THE JOIN PART IF WE INTEGRATE NOTES OR SOMETHING ELSE IN THE FAVORITES TABLE
+// router.get(
+//   "/users/mypodcasts",
+//   usersShouldBeLoggedIn, //Use token in header in Postman
+
+//   async function (req, res) {
+//     // If we get here we know the user is logged in
+//     // let podcast = res.locals.podcast; //What is this? Idk. haha
+//     // let user_id = req.user_id;
+//     // console.log(req);
+
+//     try {
+//       let sql = `
+//             SELECT
+//             users.id, favorites.id FROM users
+//             JOIN users_favorites ON users.id = users_favorites.user_id
+//             JOIN favorites ON favorites.id = users_favorites.favorites_id
+//             WHERE users.id = ${req.user_id}
+//         `;
+//       let results = await db(sql);
+//       console.log(results);
+//       // Convert DB results into "sensible" JSON -- reformat data
+
+//       res.send(results);
+//       console.log(results);
+//     } catch (err) {
+//       res.status(500).send({ error: err.message });
+//     }
+//   }
+// );
