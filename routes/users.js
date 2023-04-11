@@ -65,6 +65,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// NOT CURRENTLY USED. WAS CAUSING ERROR WHEN TESTING IN POSTMAN
 function usersShouldBeLoggedIn(req, res, next) {
   // Get token from the "authorization" header with format "Bearer <token>"
   let authHeader = req.headers["authorization"];

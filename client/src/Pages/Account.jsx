@@ -21,14 +21,12 @@ export default function Account() {
     <div className="">
       <Navbar></Navbar>
       <div className="d-flex flex-column justify-content-center align-content-center m-4">
-        <h2 style={{ color: "#AA4A44" }}>Account Details</h2>
+        <h2>Your Account</h2>
       </div>
 
       <div className="d-flex flex-column justify-content-center align-content-center align-items-left m-4">
         {/* these are things that we will eventually get from the database when the registration is working */}
-        <h3 className="mx-3">
-          Hello, <span style={{ color: "#AA4A44" }}>user_firstName</span>
-        </h3>
+        <h3 className="mx-3">Hello, user_firstName</h3>
         <div className="mx-5 mt-3">
           <p className="p-6">
             <b>username:</b> @sample
