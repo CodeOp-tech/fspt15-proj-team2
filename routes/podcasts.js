@@ -26,13 +26,18 @@ function usersShouldBeLoggedIn(req, res, next) {
   }
 }
 
-router.get("/users/myfavorites", async (req, res) => {
+// GET ALL FROM FAVORITES FOR ONE USER
+router.get("/users/favorites", usersShouldBeLoggedIn, async (req, res) => {
   try {
     // Loop through users_favorites
     // Return all favorites_id for specific user_id
     // Search API using favorites_id & return details
-    const result = await db(`SELECT * FROM books`);
+    const result = await db(
+      `SELECT * FROM users_favorites WHERE user_id=${req.user_id}`
+    );
+    console.log(result);
     const items = result.data;
+    console.log(items);
     res.send(items);
   } catch (err) {
     res.status(500).send(err);
