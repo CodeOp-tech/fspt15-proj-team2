@@ -2,6 +2,9 @@
 import Navbar from "../Components/Navbar";
 
 export default function Account() {
+  // Need function to fetch users_favorites data
+  // And search API by episode ID to return details
+
   return (
     <div className="">
       <Navbar></Navbar>
@@ -28,7 +31,7 @@ export default function Account() {
         <h3 style={{ color: "#AA4A44" }} className="align-items-center">
           Favorites
         </h3>
-        <table class="table table-hover">
+        <table className="table table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>

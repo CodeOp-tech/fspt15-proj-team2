@@ -38,7 +38,7 @@ export default function Login() {
       let results = await fetch("/users/login", options);
       let data = await results.json();
       // this reflects the data from the backend users.js line 91 in the console (message, token, and username)
-      console.log(data);
+      console.log(data.token);
 
       // save the token and username in the local storage with the setItem method (can only do one at a time)
       localStorage.setItem("token", data.token);

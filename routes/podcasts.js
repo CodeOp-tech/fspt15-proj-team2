@@ -45,11 +45,9 @@ router.get(
             JOIN favorites ON favorites.id = users_favorites.favorites_id 
             WHERE users.id = ${req.user_id}
         `;
-      //Getting an error with WHERE and req.user_id, tried using variable user_id (above), but same error
       let results = await db(sql);
       console.log(results);
-      // Convert DB results into "sensible" JSON
-      //   user = joinToJson(results); // This function needs tweaking -- only returning one book.
+      // Convert DB results into "sensible" JSON -- reformat data
 
       res.send(results);
       console.log(results);
