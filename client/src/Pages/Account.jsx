@@ -7,7 +7,15 @@ export default function Account() {
   // Need function to fetch users_favorites data
   // And search API by episode ID to return details
 
-  const getFavorites = async () => {};
+  const getFavorites = async () => {
+    setLoading(true);
+    try {
+      let results = await fetch(`/users/favorites`);
+      let data = await results.json();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="">
