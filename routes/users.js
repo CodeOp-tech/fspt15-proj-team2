@@ -65,10 +65,30 @@ router.post("/login", async (req, res) => {
   }
 });
 
+async function isLoggedIn(req, res, next) {
+  // get the token from the "authorization" header in our frontend (the options)
+  let authHeader = req.headers["authorization"];
+  try {
+    // we only want our token so we have to split our authHeader into the following
+    let [str, token] = authHeader.split(" ");
+    console.log(token);
+    console.log(str);
+    // jwt will check the payload and if a token doesn't exist then it will throw an error
+    let payload = jwt.verify(token, process.env.SUPER_SECRET);
+    console.log(payload);
+    // store the payload in the req to be used later
+    req.userID = payload.userID;
+    next();
+  } catch (error) {
+    res.status(401).send({ error: "Unauthorized" });
+  }
+}
+
 // INSERT a new podcast episode into favorites table 
-router.post("/favorites", async function (req, res) {
+router.post("/favorites", isLoggedIn, async function (req, res) {
   const {id}  = req.body;
-  const sql = `INSERT INTO favorites (id) VALUES ('${id}')`;
+  const user_id = userID;
+  const sql = `INSERT INTO favorites (id) VALUES ('${id}') INTO users_favorites (user_id, favorites_id) VALUES ('${user_id}',  '${id}')`;
   try {
     await db(sql);
     const results = await db("SELECT * FROM favorites");
@@ -79,9 +99,10 @@ router.post("/favorites", async function (req, res) {
 });
 
 // DELETE a podcast episode from favorites table 
-router.delete("/favorites/:id", async function (req, res) {
+router.delete("/favorites/:id", isLoggedIn, async function (req, res) {
   const id = req.params.id;
-  const sql = `DELETE FROM favorites WHERE id="${id}"`;
+  const user_id = userID;
+  const sql = `DELETE FROM favorites WHERE id="${id}" FROM users_favorites WHERE (user_id, favorites_id) VALUES ('${user_id}',  '${id}')";`;
   try {
     await db(sql)
     const results = await db("SELECT * FROM favorites");
@@ -90,32 +111,6 @@ router.delete("/favorites/:id", async function (req, res) {
     res.status(500).send({message: err.message});
   }
 });
-
-// // INSERT a new podcast episode into users_favorites table
-// router.post("/favorites", async function (req, res) {
-//   const {user_id}  = req.body;
-//   const sql = `INSERT INTO favorites (id) VALUES ('${user_id}', '${favorites_id}' )`;
-//   try {
-//     await db(sql);
-//     const results = await db("SELECT * FROM users_favorites");
-//     res.send(results.data);
-//   } catch (err) {
-//     res.status(500).send({message: err.message});
-//   }
-// });
-
-// // DELETE a podcast episode from user_favorites table 
-// router.delete("/favorites/:id", async function (req, res) {
-//   const id = req.params.id;
-//   const sql = `DELETE FROM users_favorites WHERE favorites_id="${id}"`;
-//   try {
-//     await db(sql)
-//     const results = await db("SELECT * FROM favorites");
-//     res.send(results.data);
-//   } catch (err) {
-//     res.status(500).send({message: err.message});
-//   }
-// });
 
 
 
