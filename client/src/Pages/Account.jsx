@@ -15,21 +15,21 @@ export default function Account() {
 
   useEffect(() => {
     if (episodeIDs.length) getEpisodeDetails();
-    console.log(userData); //Get episode details from API
   }, [episodeIDs]);
 
   //Need function to loop through episodeIDs & get details
 
   const getEpisodeDetails = async () => {
-    const episodeDetails = [];
+    // const episodeDetails = [];
     for (let i = 0; i < episodeIDs.length; i++) {
       console.log(episodeIDs[i].favorites_id); //working
       let details = await getDetails(episodeIDs[i].favorites_id); // working
       // console.log(details);
-      episodeDetails.push(details);
-      console.log(episodeDetails); // Array of undefined items...not sure why
+      // episodeDetails.push(details);
+      // console.log(episodeDetails); // Array of undefined items...not sure why
+      setUserData((episode) => [...episode, details]);
     }
-    setUserData(episodeDetails);
+    // setUserData(episodeDetails);
     return userData;
   };
 
@@ -49,8 +49,8 @@ export default function Account() {
       let data = await results.json();
       console.log(data); //Working
       setLoading(false);
-      // setUserData((episode) => [...episode, data]);
       console.log(userData);
+      return data;
     } catch (err) {
       console.log(err);
     }
@@ -108,17 +108,17 @@ export default function Account() {
               <div
                 className="card w-25 mb-5 me-5"
                 id="podcast"
-                key={episode.id}
+                key={episode?.id}
               >
                 {/* <Link to={`/episode/${episode.id}`}> */}
                 <img
-                  src={episode.image}
+                  src={episode?.image}
                   className="card-img-top"
                   alt="podcast image"
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{episode.title}</h5>
-                  <p className="card-text">{episode.podcast?.title}</p>
+                  <h5 className="card-title">{episode?.title}</h5>
+                  <p className="card-text">{episode?.podcast?.title}</p>
                 </div>
                 {/* </Link> */}
               </div>
