@@ -10,11 +10,12 @@ export default function Account() {
   //Load user favorites when page loads
   useEffect(() => {
     getFavorites();
-    // console.log(userData);
+    console.log(userData);
   }, []);
 
   useEffect(() => {
-    if (episodeIDs.length) getEpisodeDetails(); //Get episode details from API
+    if (episodeIDs.length) getEpisodeDetails();
+    console.log(userData); //Get episode details from API
   }, [episodeIDs]);
 
   //Need function to loop through episodeIDs & get details
@@ -97,16 +98,6 @@ export default function Account() {
         <h3 style={{ color: "#AA4A44" }} className="align-items-center">
           Favorites
         </h3>
-
-        {userData.map((episode) => (
-          <div
-            className="col-lg-4 col-md-6 col-12 ps-3 pe-3 mt-5"
-            id="favorite"
-            key={episode.id + episode.title}
-          >
-            <h5>{episode?.title}</h5>
-          </div>
-        ))}
 
         <table className="table table-hover">
           <thead>
