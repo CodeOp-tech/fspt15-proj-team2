@@ -110,17 +110,17 @@ export default function Account() {
                 id="podcast"
                 key={episode.id}
               >
-                <Link to={`/episode/${episode.id}`}>
-                  <img
-                    src={episode.image}
-                    className="card-img-top"
-                    alt="podcast image"
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{episode.title}</h5>
-                    <p className="card-text">{episode.podcast?.title}</p>
-                  </div>
-                </Link>
+                {/* <Link to={`/episode/${episode.id}`}> */}
+                <img
+                  src={episode.image}
+                  className="card-img-top"
+                  alt="podcast image"
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{episode.title}</h5>
+                  <p className="card-text">{episode.podcast?.title}</p>
+                </div>
+                {/* </Link> */}
               </div>
             ))}
           </div>
