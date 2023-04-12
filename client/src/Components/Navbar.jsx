@@ -26,7 +26,7 @@ function Navbar() {
   }
 
   return (
-      <div className="navbar navbar-default sticky-top">
+      <div className="navbar navbar-default navbar-fixed-top">
           <Link to="/" onClick={reset}>
             <h6 className="nav-title">Podcast App</h6>
           </Link>

@@ -1,12 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import UserContext from "../UserContext";
 
+
 export default function Login() {
   const auth = useContext(UserContext);
   const navigate = useNavigate();
-
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -16,6 +16,10 @@ export default function Login() {
     navigate("/signup");
   }
 
+  function login() {
+    navigate("/login");
+  }
+
   const handleChange = (e) => {
     // alternative to writing it separately
     let { name, value } = e.target;
@@ -23,6 +27,7 @@ export default function Login() {
   };
 
   // send the login info to the database; post method so we have a body
+  // previously I had an error because I had an arrow function so it didn't call it correctly in the handleSubmit
   async function login() {
     try {
       await auth.login(user);
@@ -31,12 +36,10 @@ export default function Login() {
     }
   }
 
-  
-
   const handleSubmit = (e) => {
     e.preventDefault();
     login();
-    navigate("/account");
+    console.log("log in successful");
   };
 
   return (

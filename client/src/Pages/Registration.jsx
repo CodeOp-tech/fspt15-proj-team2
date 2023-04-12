@@ -60,8 +60,6 @@ export default function Registration() {
     }
   }
 
-  
-
   return (
     <>
       <Navbar></Navbar>
