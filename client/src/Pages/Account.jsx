@@ -18,7 +18,7 @@ export default function Account() {
   //Uses search API by episode id in the index file to get podcast episode details
   // Need to grab episode id value from data.favorites_id
   const getDetails = async () => {
-    console.log(episodeIDs.favorites_id); //Undefined -- how to access the episode ID in this function?
+    console.log(episodeIDs); //Undefined -- how to access the episode ID in this function?
     let options = {
       method: "POST",
       headers: {
@@ -47,16 +47,17 @@ export default function Account() {
     };
     try {
       let results = await fetch(`/users/account`, options);
-      // console.log(results);
       let data = await results.json();
       // console.log(data); //Returns array of favorites (user id & episode id)
       setEpisodeIDs(data); //This seems to be working -- returns array of favorites (user id & episode id)
-      console.log(episodeIDs);
+      // console.log(episodeIDs);
+
       //Loop through episodes returned, get details for each one -- THIS PART NEEDS WORK
-      for (let episode in data) {
+      for (let episode in episodeIDs) {
         let details = await getDetails(episode.favorites_id);
         episodeDetails.push(details);
       }
+
       console.log(episodeDetails); //Empty.
       setUserData(episodeDetails);
 
