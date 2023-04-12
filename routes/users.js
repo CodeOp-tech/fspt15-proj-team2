@@ -81,7 +81,7 @@ router.post("/favorites", async function (req, res) {
 // DELETE a podcast episode favorites table 
 router.delete("/favorites/:id", async function (req, res) {
   const id = req.params.id;
-  const sql = `DELETE FROM favorites WHERE id = ${id}`;
+  const sql = `DELETE FROM favorites WHERE id="${id}"`;
   try {
     await db(sql)
     const results = await db("SELECT * FROM favorites");
