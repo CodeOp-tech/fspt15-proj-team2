@@ -9,10 +9,13 @@ export default function Account() {
 
   //Load user favorites when page loads
   useEffect(() => {
-    getFavorites(); //Get user favorites from database
-    getEpisodeDetails(); //Get episode details from API
+    getFavorites();
     // console.log(userData);
   }, []);
+
+  useEffect(() => {
+    if (episodeIDs.length) getEpisodeDetails(); //Get episode details from API
+  }, [episodeIDs]);
 
   //Need function to loop through episodeIDs & get details
 
