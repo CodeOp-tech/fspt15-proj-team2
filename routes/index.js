@@ -68,7 +68,7 @@ router.post("/api/search", async (req, res) => {
   }
 });
 
-// SEARCH BY episode ID -- used in search by podcast id POST function
+// SEARCH BY episode ID -- used in search by episode id POST function
 const searchById = async (req, res) => {
   const { id } = req.body;
   try {
@@ -85,7 +85,7 @@ const searchById = async (req, res) => {
   }
 };
 
-// SEARCH FOR PODCAST DETAILS BY ID -- RETURNS OBJECT WITH PODCAST DATA AND NESTED EPISODE LIST (10 EPISODES)
+// SEARCH FOR EPISODE DETAILS BY ID -- RETURNS OBJECT WITH PODCAST DATA
 router.post("/api/search/:id", async (req, res) => {
   try {
     searchById(req, res);

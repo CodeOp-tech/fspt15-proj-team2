@@ -13,7 +13,24 @@ export default function Account() {
     getFavorites(); //Get user favorites
   }, []);
 
+  //Uses search API by episode id in the index file to get podcast episode details
+  const getDetails = async () => {
+    let options = {
+      body: {
+        id: {},
+      },
+    };
+    setLoading(true);
+    try {
+      let results = await fetch(`api/search/:id`, options);
+      let data = await results.json();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const getFavorites = async () => {
+    const episodeDetails = [];
     setLoading(true);
     let options = {
       headers: {
@@ -25,7 +42,13 @@ export default function Account() {
       // console.log(results);
       let data = await results.json();
       console.log(data); //Returns array of favorites (user id & episode id)
-      setUserData(data);
+
+      //Loop through episodes returned, get details for each one
+      for (let episode in data) {
+        let details = getDetails(episode);
+        episodeDetails.push(details);
+      }
+      setUserData(episodeDetails);
     } catch (err) {
       console.log(err);
     }
