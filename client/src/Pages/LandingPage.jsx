@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { Routes, Route, Link } from "react-router-dom";
 import "../App.css";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 import Search from "../Components/Search";
 // import Favorites from "../components/Favorites";
 // import Recommended from "../components/Recommended";
