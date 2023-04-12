@@ -73,9 +73,9 @@ async function isLoggedIn(req, res, next) {
     console.log(str);
     // jwt will check the payload and if a token doesn't exist then it will throw an error
     let payload = jwt.verify(token, process.env.SUPER_SECRET);
-    console.log(payload);
+    console.log(payload); // Not reaching this point in the code.
     // store the payload in the req to be used later
-    req.user_id = payload.user_id;
+    req.userID = payload.userID;
     next();
   } catch (error) {
     res.status(401).send({ error: "Unauthorized" });
@@ -88,7 +88,7 @@ router.get("/account", isLoggedIn, async (req, res) => {
     // Return all favorites_id for specific user_id
     // Search API using favorites_id & return details
     const result = await db(
-      `SELECT * FROM users_favorites WHERE users_favorites.user_id = ${req.user_id}`
+      `SELECT * FROM users_favorites WHERE users_favorites.user_id = ${req.userID}`
     );
     console.log(result);
     const items = result.data;
