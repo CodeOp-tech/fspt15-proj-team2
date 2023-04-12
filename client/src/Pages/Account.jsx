@@ -20,25 +20,30 @@ export default function Account() {
     const episodeDetails = [];
     for (let episode in episodeIDs) {
       console.log(episode.favorites_id); // RETURNING UNDEFINED...WHY?
-      let details = await getDetails(episode.favorites_id); //This is not right?
+      let details = await getDetails(episode.favorites_id); // undefined
       console.log(details); //Empty object...why?
       episodeDetails.push(details);
     }
     setUserData(episodeDetails);
+    return userData;
   };
 
   const getDetails = async () => {
+    let id = episodeIDs.favorites_id;
+    console.log(id); // undefined
     let options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id: episodeIDs.favorites_id }),
+      body: JSON.stringify({ id: id }),
     };
     setLoading(true);
     try {
-      let results = await fetch(`api/search/:id`, options);
+      let results = await fetch(`api/search/${id}`, options);
+      console.log(results);
       let data = await results.json();
+      console.log(data);
       setLoading(false);
       return data;
     } catch (err) {
@@ -48,7 +53,6 @@ export default function Account() {
 
   //Gets user favorites from users_favorites table in database, returns array with user id & episode id
   const getFavorites = async () => {
-    const episodeDetails = [];
     setLoading(true);
     let options = {
       headers: {
@@ -61,8 +65,6 @@ export default function Account() {
       console.log(data); //Returns array of favorites (user id & episode id)
       setEpisodeIDs(data); //This seems to be working -- returns array of favorites (user id & episode id)
       // console.log(episodeIDs);
-
-      //Loop through episodes returned, get details for each one -- THIS PART NEEDS WORK
 
       setLoading(false);
     } catch (err) {
