@@ -58,11 +58,10 @@ export default function Account() {
   const getIDOnly = (episodeIDs) => {
     let justIDs = [];
     if (episodeIDs) {
-      for (let i = 0; i <= episodeIDs.length; i++) {
+      for (let i = 0; i < episodeIDs.length; i++) {
         justIDs.push(episodeIDs[i].favorites_id);
       }
     }
-
     console.log(justIDs);
     return justIDs;
   };

@@ -88,7 +88,7 @@ router.get("/account", isLoggedIn, async (req, res) => {
     // Return all favorites_id for specific user_id
     // Search API using favorites_id & return details
     const result = await db(
-      `SELECT * FROM users_favorites WHERE users_favorites.user_id = ${req.userID}`
+      `SELECT favorites_id FROM users_favorites WHERE users_favorites.user_id = ${req.userID}`
     );
     // console.log(result);
     const items = result.data;
