@@ -65,4 +65,17 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// INSERT a new podcast into favorites for one user
+router.post("/favorites", async function (req, res) {
+  const {id}  = req.body;
+  const sql = `INSERT INTO favorites (id) VALUES ('${id}')`;
+  try {
+    const results = await db(sql);
+    getFavorites(req, res);
+    res.send(results.data);
+  } catch (err) {
+    res.status(500).send({message: err.message});
+  }
+});
+
 module.exports = router;
