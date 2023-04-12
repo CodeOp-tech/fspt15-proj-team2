@@ -18,7 +18,7 @@ CREATE TABLE users (
   
 -- need to fetch the id from the podcast API for this
 CREATE TABLE favorites (
-    id INTEGER NOT NULL PRIMARY KEY
+    id VARCHAR(100) NOT NULL PRIMARY KEY
 );
 
 CREATE TABLE users_favorites (

@@ -46,6 +46,28 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
     setHideListenButton(true);
   }
 
+  // async function addToFavorites() {
+  //   try {
+  //     let body = {
+
+  //     };
+  //   let options = {
+  //     method: "POST",
+  //     headers: {"Content-Type": "application/json"}, 
+  //     body: JSON.stringify(body)
+  //     };
+  //   let results = await fetch("/users/favorites", options);
+  //   let data = await results.json();
+  //   console.log(data);
+  //   } catch(err) {
+  //     console.log(err);
+  //   }
+  // }
+
+  // function removeFromFavorites() {
+
+  // }
+
  return (
   <div className="episode-details-container">
     <Navbar />
