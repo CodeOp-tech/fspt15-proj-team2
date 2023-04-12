@@ -52,9 +52,12 @@ a.nav-signup:hover {
     cursor: pointer;
 }
 
-.account:hover {
-    cursor: pointer;
-}
+
 .material-symbols-outlined {
     color: white;
+    padding: 0.5rem;
 }
+
+    cursor: pointer;
+}
+

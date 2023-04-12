@@ -22,10 +22,10 @@ async function userExists(req, res, next) {
 
 // creating a new user
 router.post("/signup", userExists, async (req, res) => {
-  const { firstName, email, username, password } = req.body;
-  const stringPass = password.toString();
+  const { firstName, email, username, password } = req.body;  
+  
   try {
-    const hashedPW = await bcrypt.hash(stringPass, 10);
+    const hashedPW = await bcrypt.hash(password, 10);
     let sql = `INSERT INTO users (firstName, email, username, password) VALUES ("${firstName}", "${email}", "${username}", "${hashedPW}");`;
     await db(sql);
     res.status(200).send({ message: "User registered!" });
@@ -52,7 +52,7 @@ router.post("/login", async (req, res) => {
     if (doMatch) {
       const token = jwt.sign({ userID: user.id }, process.env.SUPER_SECRET);
       res.send({
-        message: "Log in successful! here is your token",
+        message: "Log in successful! Here is your token",
         token,
         username,
       });

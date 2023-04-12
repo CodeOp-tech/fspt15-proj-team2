@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
+import UserContext from "../UserContext";
+
 
 export default function Login() {
+  const auth = useContext(UserContext);
   const navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
@@ -27,29 +30,7 @@ export default function Login() {
   // previously I had an error because I had an arrow function so it didn't call it correctly in the handleSubmit
   async function login() {
     try {
-      // will this syntax be correct?
-      let body = user;
-
-      let options = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      };
-      let results = await fetch("/users/login", options);
-      let data = await results.json();
-      // this reflects the data from the backend users.js line 91 in the console (message, token, and username)
-      console.log(data);
-
-      // save the token and username in the local storage with the setItem method (can only do one at a time)
-      localStorage.setItem("token", data.token);
-      console.log(data.message, data.token, data.username);
-
-      //
-      if (localStorage.getItem("token")) {
-        navigate("/account");
-      } else {
-        navigate("/signup");
-      }
+      await auth.login(user);
     } catch (err) {
       console.log(err);
     }
@@ -95,7 +76,7 @@ export default function Login() {
 
         <div className="d-flex justify-content-center align-items-center flex-column flex-wrap m-2">
           <div className="m-2 ">
-            <button className="login-btn" type="submit">
+            <button onClick={login} className="login-btn" type="submit">
               Log in
             </button>
           </div>

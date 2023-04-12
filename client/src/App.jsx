@@ -11,6 +11,9 @@ import Navbar from "./Components/Navbar";
 import Login from "./Pages/Login";
 import Registration from "./Pages/Registration";
 import Account from "./Pages/Account";
+import UserContext from "./UserContext";
+import useProvideAuth from "./hooks/useProvideAuth";
+
 
 function App() {
   const [url, setUrl] = useState("");

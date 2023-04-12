@@ -2,6 +2,7 @@
 import Navbar from "../Components/Navbar";
 
 export default function Account() {
+    const auth = useContext(UserContext)
 
     return(
         <>
