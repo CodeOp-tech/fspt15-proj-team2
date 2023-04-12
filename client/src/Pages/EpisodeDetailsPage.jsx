@@ -49,7 +49,8 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
   async function addToFavorites() {
     try {
       let body = {
-        id: episodeData.id
+        id: episodeData.id,
+        user_id: userID,
       };
     let options = {
       method: "POST",
