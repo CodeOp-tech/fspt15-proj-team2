@@ -78,7 +78,7 @@ router.post("/favorites", async function (req, res) {
   }
 });
 
-// DELETE a podcast episode favorites table 
+// DELETE a podcast episode from favorites table 
 router.delete("/favorites/:id", async function (req, res) {
   const id = req.params.id;
   const sql = `DELETE FROM favorites WHERE id="${id}"`;
@@ -91,6 +91,31 @@ router.delete("/favorites/:id", async function (req, res) {
   }
 });
 
+// // INSERT a new podcast episode into users_favorites table
+// router.post("/favorites", async function (req, res) {
+//   const {user_id}  = req.body;
+//   const sql = `INSERT INTO favorites (id) VALUES ('${user_id}', '${favorites_id}' )`;
+//   try {
+//     await db(sql);
+//     const results = await db("SELECT * FROM users_favorites");
+//     res.send(results.data);
+//   } catch (err) {
+//     res.status(500).send({message: err.message});
+//   }
+// });
+
+// // DELETE a podcast episode from user_favorites table 
+// router.delete("/favorites/:id", async function (req, res) {
+//   const id = req.params.id;
+//   const sql = `DELETE FROM users_favorites WHERE favorites_id="${id}"`;
+//   try {
+//     await db(sql)
+//     const results = await db("SELECT * FROM favorites");
+//     res.send(results.data);
+//   } catch (err) {
+//     res.status(500).send({message: err.message});
+//   }
+// });
 
 
 
