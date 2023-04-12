@@ -33,9 +33,13 @@ function Navbar() {
           <div className="m-1 mr-2 user-control">
               {/* if we prefer google material symbols we can switch it out with the flaticons */}
               <span className="material-symbols-outlined" onClick={account}>account_circle</span>
-              <a className="nav-login p-2" onClick={auth.login}>Login</a>
+              <a className="nav-login p-2" onClick={login}>Login</a>
               <a className="nav-signup px-2" onClick={signup}>Sign up</a>
               <a className="nav-signup px-2" onClick={auth.logout}>Logout</a>
+              {/* {!auth.isLoggedIn && ( */}
+                
+              {/* )} */}
+              
               
           </div>
       </div>

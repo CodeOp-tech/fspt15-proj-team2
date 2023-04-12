@@ -35,12 +35,13 @@ export default function Login() {
       };
 
       let results = await fetch("/users/login", options);
-      console.log(results)
+      // console.log(results)
       let data = await results.json();
       console.log(data);
 
       // save the token and username in the local storage with the setItem method (can only do one at a time)
       localStorage.setItem("token", data.token);
+      localStorage.setItem("username", data.user.username);
       console.log(data.message, data.token, data.user);
 
       // three conditionals
@@ -99,7 +100,7 @@ export default function Login() {
 
         <div className="d-flex justify-content-center align-items-center flex-column flex-wrap m-2">
           <div className="m-2 ">
-            <button onClick={auth.login} className="login-btn" type="submit">
+            <button onClick={login} className="login-btn" type="submit">
               Log in
             </button>
           </div>
