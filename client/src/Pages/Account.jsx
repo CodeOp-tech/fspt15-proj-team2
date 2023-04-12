@@ -6,7 +6,8 @@ export default function Account() {
   const [loading, setLoading] = useState(false);
   // Need function to fetch users_favorites data
   // And search API by episode ID to return details
-  const [userData, setUserData] = useState([]);
+  const [episodeIDs, setEpisodeIDs] = useState([]); //To save episode ids
+  const [userData, setUserData] = useState([]); //To save full episode details
 
   //Load user favorites when page loads
   useEffect(() => {
@@ -21,12 +22,13 @@ export default function Account() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id: bookId }),
+      body: JSON.stringify({ id: episodeIDs.favorites_id }),
     };
     setLoading(true);
     try {
       let results = await fetch(`api/search/:id`, options);
       let data = await results.json();
+      return data;
     } catch (err) {
       console.log(err);
     }
@@ -45,13 +47,15 @@ export default function Account() {
       // console.log(results);
       let data = await results.json();
       console.log(data); //Returns array of favorites (user id & episode id)
-
-      //Loop through episodes returned, get details for each one
+      setEpisodeIDs(data);
+      console.log(episodeIDs);
+      //Loop through episodes returned, get details for each one -- THIS PART NEEDS WORK
       for (let episode in data) {
-        let details = getDetails(episode);
+        let details = await getDetails(episode);
         episodeDetails.push(details);
       }
       setUserData(episodeDetails);
+      console.log(userData);
       setLoading(false);
     } catch (err) {
       console.log(err);

@@ -82,7 +82,7 @@ async function isLoggedIn(req, res, next) {
   }
 }
 
-// GET ALL FROM FAVORITES FOR ONE USER
+// GET ALL FROM FAVORITES FOR ONE USER -- running when account page loads
 router.get("/account", isLoggedIn, async (req, res) => {
   try {
     // Return all favorites_id for specific user_id
