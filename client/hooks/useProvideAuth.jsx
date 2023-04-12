@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // lets us know if the user has a token and if they are allowed to view the info
 // can be accessed all throughout
@@ -8,7 +9,8 @@ import { useState } from "react";
 export default function useProvideAuth() {
     // this is a boolean; the double exclamation transforms this into a boolean
     const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
-    const [currentUser, setCurrentUser] = useState({firstName: "sample", email: "sample@gmail.com", username: "sample"})
+    const [currentUser, setCurrentUser] = useState({firstName: "User", email: "user@gmail.com", username: "user"})
+    const navigate = useNavigate();
 
     const login = async (user) => {
         try {
@@ -25,8 +27,9 @@ export default function useProvideAuth() {
             localStorage.setItem("token", data.token);
             setIsLoggedIn(true);
             setCurrentUser(data.user);
+            navigate("/account")
         } catch (err) {
-            throw err.response.data.message;
+            console.log(err)
         }
     }
 
@@ -34,6 +37,7 @@ export default function useProvideAuth() {
         localStorage.removeItem("token");
         setIsLoggedIn(null);
         setCurrentUser({})
+        navigate("/")
     }
 
 

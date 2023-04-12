@@ -21,7 +21,9 @@ export default function Account() {
         }
     }
 
-    useEffect(() => {console.log(auth)}, [])
+    useEffect(() => {
+        console.log(auth)
+    }, [])
 
     
 

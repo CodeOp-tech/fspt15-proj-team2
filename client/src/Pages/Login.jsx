@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
+import UserContext from "../UserContext";
 
 export default function Login() {
+  const auth = useContext(UserContext);
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -39,7 +41,7 @@ export default function Login() {
 
       // save the token and username in the local storage with the setItem method (can only do one at a time)
       localStorage.setItem("token", data.token);
-      console.log(data.message, data.token, data.username);
+      console.log(data.message, data.token, data.user);
 
       // three conditionals
         // if the user logs in and has no favorites, navigate to the landing page
@@ -97,7 +99,7 @@ export default function Login() {
 
         <div className="d-flex justify-content-center align-items-center flex-column flex-wrap m-2">
           <div className="m-2 ">
-            <button className="login-btn" type="submit">
+            <button onClick={auth.login} className="login-btn" type="submit">
               Log in
             </button>
           </div>
