@@ -3,6 +3,25 @@ import Navbar from "../Components/Navbar";
 
 export default function Account() {
 
+    // No need to specify the method since GET is the default set
+    async function getUserInfo() {
+        let options = {
+        headers: {
+            authorization: "Bearer " + localStorage.getItem("token")
+        },
+        };
+        try {
+        const { data } = await fetch("/users/login", options)
+        console.log(data)
+        } catch (error) {
+        console.log(error)
+        }
+    }
+
+    useEffect(() => {console.log(auth)}, [])
+
+    
+
     return(
         <>
             <Navbar></Navbar>
