@@ -66,11 +66,12 @@ router.post("/login", async (req, res) => {
 });
 
 // INSERT a new podcast episode into favorites table 
-router.post("/favorites", isLoggedIn, async function (req, res) {
+router.post("/favorites", async function (req, res) {
   const {id}  = req.body;
   const sql = `INSERT INTO favorites (id) VALUES ('${id}')`;
   try {
-    const results = await db(sql);
+    await db(sql);
+    const results = await db("SELECT * FROM favorites");
     res.send(results.data);
   } catch (err) {
     res.status(500).send({message: err.message});
@@ -78,11 +79,12 @@ router.post("/favorites", isLoggedIn, async function (req, res) {
 });
 
 // DELETE a podcast episode favorites table 
-router.delete("/favorites/:id", isLoggedIn, async function (req, res) {
-  const {id}  = req.body;
-  const sql = `DELETE FROM favorites (id) WHERE id = ${id}`;
+router.delete("/favorites/:id", async function (req, res) {
+  const id = req.params.id;
+  const sql = `DELETE FROM favorites WHERE id = ${id}`;
   try {
-    const results = await db(sql);
+    await db(sql)
+    const results = await db("SELECT * FROM favorites");
     res.send(results.data);
   } catch (err) {
     res.status(500).send({message: err.message});
