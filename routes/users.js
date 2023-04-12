@@ -92,7 +92,10 @@ router.get("/account", isLoggedIn, async (req, res) => {
     );
     // console.log(result);
     const items = result.data;
-    // console.log(items);
+    console.log(items);
+
+    //Could include function to just return the episode IDs here
+    //Could also include function to search API to return episode details instead of IDs here?
     res.send(items);
     return;
   } catch (err) {

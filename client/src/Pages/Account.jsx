@@ -4,21 +4,38 @@ import Navbar from "../Components/Navbar";
 
 export default function Account() {
   const [loading, setLoading] = useState(false);
-  // Need function to fetch users_favorites data
-  // And search API by episode ID to return details
   const [episodeIDs, setEpisodeIDs] = useState([]); //To save episode ids
   const [userData, setUserData] = useState([]); //To save full episode details
 
   //Load user favorites when page loads
   useEffect(() => {
-    getFavorites(); //Get user favorites
-    console.log(userData); //ARRAY OF EMPTY OBJECTS...
+    getFavorites(); //Get user favorites from database
+    getEpisodeDetails();
+    // console.log(userData);
   }, []);
 
-  //Uses search API by episode id in the index file to get podcast episode details
-  // Need to grab episode id value from data.favorites_id
+  //Need function to loop through episodeIDs & get details
+
+  //   for (let episode in episodeIDs) {
+  //   let details = await getDetails(episode.favorites_id); //This is not right.
+  //   episodeDetails.push(details);
+  //   console.log(details);
+  // }
+
+  // console.log(episodeDetails); //Empty.
+  // setUserData(episodeDetails);
+
+  const getEpisodeDetails = async () => {
+    const episodeDetails = [];
+    for (let episode in episodeIDs) {
+      let details = await getDetails(episode.favorites_id); //This is not right.
+      console.log(details); //Empty object...why?
+      episodeDetails.push(details);
+    }
+    setUserData(episodeDetails);
+  };
+
   const getDetails = async () => {
-    console.log(episodeIDs); //Undefined -- how to access the episode ID in this function?
     let options = {
       method: "POST",
       headers: {
@@ -37,6 +54,7 @@ export default function Account() {
     }
   };
 
+  //Gets user favorites from users_favorites table in database, returns array with user id & episode id
   const getFavorites = async () => {
     const episodeDetails = [];
     setLoading(true);
@@ -48,18 +66,11 @@ export default function Account() {
     try {
       let results = await fetch(`/users/account`, options);
       let data = await results.json();
-      // console.log(data); //Returns array of favorites (user id & episode id)
+      console.log(data); //Returns array of favorites (user id & episode id)
       setEpisodeIDs(data); //This seems to be working -- returns array of favorites (user id & episode id)
       // console.log(episodeIDs);
 
       //Loop through episodes returned, get details for each one -- THIS PART NEEDS WORK
-      for (let episode in episodeIDs) {
-        let details = await getDetails(episode.favorites_id);
-        episodeDetails.push(details);
-      }
-
-      console.log(episodeDetails); //Empty.
-      setUserData(episodeDetails);
 
       setLoading(false);
     } catch (err) {
