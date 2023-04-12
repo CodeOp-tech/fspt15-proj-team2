@@ -14,11 +14,14 @@ export default function Account() {
   }, []);
 
   //Uses search API by episode id in the index file to get podcast episode details
+  // Need to grab episode id value from data.favorites_id
   const getDetails = async () => {
     let options = {
-      body: {
-        id: {},
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify({ id: bookId }),
     };
     setLoading(true);
     try {
@@ -49,6 +52,7 @@ export default function Account() {
         episodeDetails.push(details);
       }
       setUserData(episodeDetails);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
