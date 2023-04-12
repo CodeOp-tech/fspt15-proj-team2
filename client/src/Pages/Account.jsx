@@ -12,6 +12,7 @@ export default function Account() {
   //Load user favorites when page loads
   useEffect(() => {
     getFavorites(); //Get user favorites
+    console.log(userData); //ARRAY OF EMPTY OBJECTS...
   }, []);
 
   //Uses search API by episode id in the index file to get podcast episode details
