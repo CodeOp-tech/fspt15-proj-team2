@@ -69,8 +69,11 @@ async function isLoggedIn(req, res, next) {
   try {
     // we only want our token so we have to split our authHeader into the following
     let [str, token] = authHeader.split(" ");
+    console.log(token);
+    console.log(str);
     // jwt will check the payload and if a token doesn't exist then it will throw an error
     let payload = jwt.verify(token, process.env.SUPER_SECRET);
+    console.log(payload);
     // store the payload in the req to be used later
     req.user_id = payload.user_id;
     next();
