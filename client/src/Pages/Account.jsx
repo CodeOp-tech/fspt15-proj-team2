@@ -22,7 +22,7 @@ export default function Account() {
   const getEpisodeDetails = async () => {
     const episodeDetails = [];
     for (let episode in episodeIDs) {
-      console.log(episode.favorites_id); // RETURNING UNDEFINED...WHY?
+      console.log(episode.favorites_id); //Undefined
       let details = await getDetails(episode.favorites_id); // undefined
       console.log(details); //Empty object...why?
       episodeDetails.push(details);
@@ -32,8 +32,6 @@ export default function Account() {
   };
 
   const getDetails = async () => {
-    let id = episodeIDs.favorites_id;
-    console.log(id); // undefined
     let options = {
       method: "POST",
       headers: {
@@ -54,19 +52,7 @@ export default function Account() {
     }
   };
 
-  //Function to pull out episode IDs only -- still getting undefined for favorites_id
-  const getIDOnly = (episodeIDs) => {
-    let justIDs = [];
-    if (episodeIDs) {
-      for (let i = 0; i < episodeIDs.length; i++) {
-        justIDs.push(episodeIDs[i].favorites_id);
-      }
-    }
-    console.log(justIDs);
-    return justIDs;
-  };
-
-  //Gets user favorites from users_favorites table in database, returns array with user id & episode id
+  //Gets user favorites from users_favorites table in database, returns array episode ids
   const getFavorites = async () => {
     setLoading(true);
     let options = {
@@ -78,7 +64,6 @@ export default function Account() {
       let results = await fetch(`/users/account`, options);
       let data = await results.json();
       console.log(data); //Returns array of favorites (user id & episode id)
-      getIDOnly(data);
       setEpisodeIDs(data); //This seems to be working -- returns array of favorites (user id & episode id)
       // console.log(episodeIDs);
 
