@@ -1,17 +1,25 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 
 export default function Account() {
   const [loading, setLoading] = useState(false);
   // Need function to fetch users_favorites data
   // And search API by episode ID to return details
+  const [userData, setUserData] = useState([]);
+
+  //Load user favorites when page loads
+  useEffect(() => {
+    getFavorites(); //Get user favorites
+  }, []);
 
   const getFavorites = async () => {
     setLoading(true);
     try {
       let results = await fetch(`/users/favorites`);
       let data = await results.json();
+      console.log(data);
+      setUserData(data);
     } catch (err) {
       console.log(err);
     }
