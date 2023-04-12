@@ -21,9 +21,9 @@ export default function Account() {
 
   const getEpisodeDetails = async () => {
     const episodeDetails = [];
-    for (let episode in episodeIDs) {
-      console.log(episode.favorites_id); //Undefined
-      let details = await getDetails(episode.favorites_id); // undefined
+    for (let i = 0; i < episodeIDs.length; i++) {
+      console.log(episodeIDs[i].favorites_id); //Undefined
+      let details = await getDetails(episodeIDs[i].favorites_id); // undefined
       console.log(details); //Empty object...why?
       episodeDetails.push(details);
     }
@@ -31,7 +31,8 @@ export default function Account() {
     return userData;
   };
 
-  const getDetails = async () => {
+  //Where does this id come from? idk.
+  const getDetails = async (id) => {
     let options = {
       method: "POST",
       headers: {
@@ -46,7 +47,7 @@ export default function Account() {
       let data = await results.json();
       console.log(data);
       setLoading(false);
-      return data;
+      setUserData((episode) => [...episode, data]);
     } catch (err) {
       console.log(err);
     }
