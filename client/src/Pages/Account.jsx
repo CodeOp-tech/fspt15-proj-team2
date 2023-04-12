@@ -22,9 +22,9 @@ export default function Account() {
     };
     try {
       let results = await fetch(`/users/account`, options);
-      console.log(results); // Getting 401 error -- unauthorized
+      // console.log(results);
       let data = await results.json();
-      console.log(data);
+      console.log(data); //Returns array of favorites (user id & episode id)
       setUserData(data);
     } catch (err) {
       console.log(err);

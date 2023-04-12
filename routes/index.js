@@ -68,21 +68,13 @@ router.post("/api/search", async (req, res) => {
   }
 });
 
-// router.post("/api/search/more", async (req, res) => {
-//   try {
-//     await searchFullPodcastMore(req, res);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-
-// SEARCH BY PODCAST ID -- used in search by podcast id POST function
+// SEARCH BY episode ID -- used in search by podcast id POST function
 const searchById = async (req, res) => {
   const { id } = req.body;
   try {
     const response = await unirest
       .get(
-        `https://listen-api.listennotes.com/api/v2/podcasts/${id}?sort=recent_first`
+        `https://listen-api.listennotes.com/api/v2/episodes/${id}?show_transcript=1`
       )
       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
     response.toJSON();
