@@ -23,8 +23,8 @@ export default function Account() {
   const getEpisodeDetails = async () => {
     const episodeDetails = [];
     for (let i = 0; i < episodeIDs.length; i++) {
-      console.log(episodeIDs[i].favorites_id); //Undefined
-      let details = await getDetails(episodeIDs[i].favorites_id); // undefined
+      console.log(episodeIDs[i].favorites_id); //working
+      let details = await getDetails(episodeIDs[i].favorites_id); // working
       // console.log(details);
       episodeDetails.push(details);
       console.log(episodeDetails); // Array of undefined items...not sure why
@@ -49,7 +49,7 @@ export default function Account() {
       let data = await results.json();
       console.log(data); //Working
       setLoading(false);
-      setUserData((episode) => [...episode, data]);
+      // setUserData((episode) => [...episode, data]);
       console.log(userData);
     } catch (err) {
       console.log(err);
