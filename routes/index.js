@@ -38,7 +38,7 @@ const searchById = async (req, res) => {
   try {
     const response = await unirest
       .get(
-        `https://listen-api.listennotes.com/api/v2/episodes/${id}?show_transcript=1`
+        `https://listen-api-test.listennotes.com/api/v2/episodes/${id}?show_transcript=1`
       )
       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
     response.toJSON();

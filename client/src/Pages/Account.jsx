@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 
@@ -25,8 +25,9 @@ export default function Account() {
     for (let i = 0; i < episodeIDs.length; i++) {
       console.log(episodeIDs[i].favorites_id); //Undefined
       let details = await getDetails(episodeIDs[i].favorites_id); // undefined
-      console.log(details);
+      // console.log(details);
       episodeDetails.push(details);
+      console.log(episodeDetails); // Array of undefined items...not sure why
     }
     setUserData(episodeDetails);
     return userData;
@@ -44,9 +45,9 @@ export default function Account() {
     setLoading(true);
     try {
       let results = await fetch(`api/search/${id}`, options);
-      console.log(results);
+      // console.log(results);
       let data = await results.json();
-      console.log(data); //empty object
+      console.log(data); //Working
       setLoading(false);
       setUserData((episode) => [...episode, data]);
       console.log(userData);
@@ -101,6 +102,34 @@ export default function Account() {
           Favorites
         </h3>
 
+        {userData ? (
+          <div id="favorites" className="row mt-2 justify-content-center">
+            {userData.map((episode) => (
+              <div
+                className="card w-25 mb-5 me-5"
+                id="podcast"
+                key={episode.id}
+              >
+                <Link to={`/episode/${episode.id}`}>
+                  <img
+                    src={episode.image}
+                    className="card-img-top"
+                    alt="podcast image"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{episode.title}</h5>
+                    <p className="card-text">{episode.podcast?.title}</p>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="col">
+            <h3>You don't have any episodes in your favorites.</h3>
+          </div>
+        )}
+        {/* 
         <table className="table table-hover">
           <thead>
             <tr>
@@ -117,20 +146,8 @@ export default function Account() {
               <td>Name of Podcast</td>
               <td>More info link</td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Title of Episode</td>
-              <td>Name of Podcast</td>
-              <td>More info link</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Title of Episode</td>
-              <td>Name of Podcast</td>
-              <td>More info link</td>
-            </tr>
           </tbody>
-        </table>
+        </table> */}
       </div>
     </div>
   );
