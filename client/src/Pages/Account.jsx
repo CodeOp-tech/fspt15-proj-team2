@@ -24,7 +24,6 @@ export default function Account() {
     for (let i = 0; i < episodeIDs.length; i++) {
       console.log(episodeIDs[i].favorites_id); //Undefined
       let details = await getDetails(episodeIDs[i].favorites_id); // undefined
-      console.log(details); //Empty object...why?
       episodeDetails.push(details);
     }
     setUserData(episodeDetails);
@@ -98,6 +97,17 @@ export default function Account() {
         <h3 style={{ color: "#AA4A44" }} className="align-items-center">
           Favorites
         </h3>
+
+        {userData.map((episode) => (
+          <div
+            className="col-lg-4 col-md-6 col-12 ps-3 pe-3 mt-5"
+            id="favorite"
+            key={episode.id + episode.title}
+          >
+            <h5>{episode?.title}</h5>
+          </div>
+        ))}
+
         <table className="table table-hover">
           <thead>
             <tr>
