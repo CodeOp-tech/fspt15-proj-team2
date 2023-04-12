@@ -66,17 +66,12 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
     }
   }
 
-  async function removeFromFavorites() {
+  async function removeFromFavorites(id) {
     try {
-      let body = {
-        id: episodeData.id
-      };
     let options = {
       method: "DELETE",
-      headers: {"Content-Type": "application/json"}, 
-      body: JSON.stringify(body)
       };
-    let results = await fetch("/users/favorites", options);
+    let results = await fetch(`/users/favorites/${id}`, options);
     let data = await results.json();
     // to change button
     setChecked(false);
@@ -115,7 +110,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
             {episodeData.title_original && <div className="ep-info">
               {!hideListenButton && <button  className="fav-btn mb-3" onClick={() => playEpisode()}><span className="material-symbols-outlined down ">play_arrow</span><span> Listen </span></button>} <br/>
               {!checked && <button  className="fav-btn mb-2" onClick={() => addToFavorites()}><span className="material-symbols-outlined down">heart_plus</span><span> Add to favorites</span></button>}
-              { checked && <button  className="rem-btn mb-2"onClick={() => removeFromFavorites()}><span className="material-symbols-outlined down">favorite</span><span> Remove from favorites</span></button>} <br/>
+              { checked && <button  className="rem-btn mb-2"onClick={() => removeFromFavorites(episodeData.id)}><span className="material-symbols-outlined down">favorite</span><span> Remove from favorites</span></button>} <br/>
               <span className="bold spaced-line release">Release Date: </span>
               <span>{dateObject?.toUTCString().slice(4, 16)}</span> <br/>
               <span className="bold spaced-line">Rating: </span>
