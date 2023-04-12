@@ -25,34 +25,7 @@ export default function Login() {
   // send the login info to the database; post method so we have a body
   async function login() {
     try {
-      // will this syntax be correct?
-      let body = user;
-
-      let options = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      };
-
-      let results = await fetch("/users/login", options);
-      // console.log(results)
-      let data = await results.json();
-      console.log(data);
-
-      // save the token and username in the local storage with the setItem method (can only do one at a time)
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("username", data.user.username);
-      console.log(data.message, data.token, data.user);
-
-      // three conditionals
-        // if the user logs in and has no favorites, navigate to the landing page
-        // if the user was saving favorites and was in a certain page then redirect them to the page they were on at log in
-        // if the user has favorites, but was not in a certain page then just redirect to the 
-      if (localStorage.getItem("token")) {
-        navigate("/account");
-      } else {
-        navigate("/signup");
-      }
+      await auth.login(user);
     } catch (err) {
       console.log(err);
     }

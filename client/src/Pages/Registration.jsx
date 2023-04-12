@@ -54,8 +54,7 @@ export default function Registration() {
       // the fetch needs to match the API route in the backend
       let results = await fetch("/users/signup", options);
       console.log(results);
-      let data = await results.json();
-      
+      await results.json();
     } catch (err) {
       console.log({ message: err.message });
     }
