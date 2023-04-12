@@ -80,7 +80,7 @@ async function isLoggedIn(req, res, next) {
 }
 
 // GET ALL FROM FAVORITES FOR ONE USER
-router.get("/favorites", isLoggedIn, async (req, res) => {
+router.get("/account", isLoggedIn, async (req, res) => {
   try {
     // Return all favorites_id for specific user_id
     // Search API using favorites_id & return details
@@ -97,4 +97,9 @@ router.get("/favorites", isLoggedIn, async (req, res) => {
   }
 });
 
+// router.get("/account", isLoggedIn, async function (req, res) {
+//   res.status(200).send({
+//     message: req.user_id,
+//   });
+// });
 module.exports = router;
