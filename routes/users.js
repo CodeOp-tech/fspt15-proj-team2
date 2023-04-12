@@ -65,17 +65,31 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// INSERT a new podcast into favorites for one user
-router.post("/favorites", async function (req, res) {
+// INSERT a new podcast episode into favorites table 
+router.post("/favorites", isLoggedIn, async function (req, res) {
   const {id}  = req.body;
   const sql = `INSERT INTO favorites (id) VALUES ('${id}')`;
   try {
     const results = await db(sql);
-    getFavorites(req, res);
     res.send(results.data);
   } catch (err) {
     res.status(500).send({message: err.message});
   }
 });
+
+// DELETE a podcast episode favorites table 
+router.delete("/favorites/:id", isLoggedIn, async function (req, res) {
+  const {id}  = req.body;
+  const sql = `DELETE FROM favorites (id) VALUES ('${id}')`;
+  try {
+    const results = await db(sql);
+    res.send(results.data);
+  } catch (err) {
+    res.status(500).send({message: err.message});
+  }
+});
+
+
+
 
 module.exports = router;

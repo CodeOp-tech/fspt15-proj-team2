@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 // import Player from "../components/Player";
 import { SearchContext } from "../SearchContext";
 import "./EpisodeDetailsPage.css";
