@@ -10,25 +10,17 @@ export default function Account() {
   //Load user favorites when page loads
   useEffect(() => {
     getFavorites(); //Get user favorites from database
-    getEpisodeDetails();
+    getEpisodeDetails(); //Get episode details from API
     // console.log(userData);
   }, []);
 
   //Need function to loop through episodeIDs & get details
 
-  //   for (let episode in episodeIDs) {
-  //   let details = await getDetails(episode.favorites_id); //This is not right.
-  //   episodeDetails.push(details);
-  //   console.log(details);
-  // }
-
-  // console.log(episodeDetails); //Empty.
-  // setUserData(episodeDetails);
-
   const getEpisodeDetails = async () => {
     const episodeDetails = [];
     for (let episode in episodeIDs) {
-      let details = await getDetails(episode.favorites_id); //This is not right.
+      console.log(episode.favorites_id); // RETURNING UNDEFINED...WHY?
+      let details = await getDetails(episode.favorites_id); //This is not right?
       console.log(details); //Empty object...why?
       episodeDetails.push(details);
     }
