@@ -73,7 +73,7 @@ async function isLoggedIn(req, res, next) {
     console.log(str);
     // jwt will check the payload and if a token doesn't exist then it will throw an error
     let payload = jwt.verify(token, process.env.SUPER_SECRET);
-    console.log(payload); // Not reaching this point in the code.
+    console.log(payload);
     // store the payload in the req to be used later
     req.userID = payload.userID;
     next();
@@ -90,9 +90,9 @@ router.get("/account", isLoggedIn, async (req, res) => {
     const result = await db(
       `SELECT * FROM users_favorites WHERE users_favorites.user_id = ${req.userID}`
     );
-    console.log(result);
+    // console.log(result);
     const items = result.data;
-    console.log(items);
+    // console.log(items);
     res.send(items);
     return;
   } catch (err) {

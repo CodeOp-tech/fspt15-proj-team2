@@ -15,8 +15,14 @@ export default function Account() {
 
   const getFavorites = async () => {
     setLoading(true);
+    let options = {
+      headers: {
+        authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    };
     try {
-      let results = await fetch(`/users/favorites`);
+      let results = await fetch(`/users/account`, options);
+      console.log(results); // Getting 401 error -- unauthorized
       let data = await results.json();
       console.log(data);
       setUserData(data);
