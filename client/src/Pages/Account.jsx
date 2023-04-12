@@ -25,6 +25,7 @@ export default function Account() {
     for (let i = 0; i < episodeIDs.length; i++) {
       console.log(episodeIDs[i].favorites_id); //Undefined
       let details = await getDetails(episodeIDs[i].favorites_id); // undefined
+      console.log(details);
       episodeDetails.push(details);
     }
     setUserData(episodeDetails);
@@ -45,9 +46,10 @@ export default function Account() {
       let results = await fetch(`api/search/${id}`, options);
       console.log(results);
       let data = await results.json();
-      console.log(data);
+      console.log(data); //empty object
       setLoading(false);
       setUserData((episode) => [...episode, data]);
+      console.log(userData);
     } catch (err) {
       console.log(err);
     }
