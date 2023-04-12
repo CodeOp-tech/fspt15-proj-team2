@@ -54,6 +54,19 @@ export default function Account() {
     }
   };
 
+  //Function to pull out episode IDs only -- still getting undefined for favorites_id
+  const getIDOnly = (episodeIDs) => {
+    let justIDs = [];
+    if (episodeIDs) {
+      for (let i = 0; i <= episodeIDs.length; i++) {
+        justIDs.push(episodeIDs[i].favorites_id);
+      }
+    }
+
+    console.log(justIDs);
+    return justIDs;
+  };
+
   //Gets user favorites from users_favorites table in database, returns array with user id & episode id
   const getFavorites = async () => {
     setLoading(true);
@@ -66,6 +79,7 @@ export default function Account() {
       let results = await fetch(`/users/account`, options);
       let data = await results.json();
       console.log(data); //Returns array of favorites (user id & episode id)
+      getIDOnly(data);
       setEpisodeIDs(data); //This seems to be working -- returns array of favorites (user id & episode id)
       // console.log(episodeIDs);
 
