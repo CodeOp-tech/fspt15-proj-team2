@@ -46,23 +46,25 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
     setHideListenButton(true);
   }
 
-  // async function addToFavorites() {
-  //   try {
-  //     let body = {
-
-  //     };
-  //   let options = {
-  //     method: "POST",
-  //     headers: {"Content-Type": "application/json"}, 
-  //     body: JSON.stringify(body)
-  //     };
-  //   let results = await fetch("/users/favorites", options);
-  //   let data = await results.json();
-  //   console.log(data);
-  //   } catch(err) {
-  //     console.log(err);
-  //   }
-  // }
+  async function addToFavorites() {
+    try {
+      let body = {
+        id: episodeData.id
+      };
+    let options = {
+      method: "POST",
+      headers: {"Content-Type": "application/json"}, 
+      body: JSON.stringify(body)
+      };
+    let results = await fetch("/users/favorites", options);
+    let data = await results.json();
+    // to change button
+    setChecked(true);
+    console.log(data);
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
   // function removeFromFavorites() {
 
@@ -96,7 +98,7 @@ function EpisodeDetails({setUrl, setShowPlayer}) {
           <div>
             {episodeData.title_original && <div className="ep-info">
               {!hideListenButton && <button  className="fav-btn mb-3" onClick={() => playEpisode()}><span className="material-symbols-outlined down ">play_arrow</span><span> Listen </span></button>} <br/>
-              {!checked && <button  className="fav-btn mb-2" onClick={() => setChecked(true)}><span className="material-symbols-outlined down">heart_plus</span><span> Add to favorites</span></button>}
+              {!checked && <button  className="fav-btn mb-2" onClick={() => addToFavorites()}><span className="material-symbols-outlined down">heart_plus</span><span> Add to favorites</span></button>}
               { checked && <button  className="rem-btn mb-2"onClick={() => setChecked(false)}><span className="material-symbols-outlined down">favorite</span><span> Remove from favorites</span></button>} <br/>
               <span className="bold spaced-line release">Release Date: </span>
               <span>{dateObject?.toUTCString().slice(4, 16)}</span> <br/>
