@@ -36,7 +36,7 @@ export default function Registration() {
     });
     signup();
     // we know that it grabs the necessary information from our table, we just have to save this to our database
-    console.log(userRegistration);
+    // console.log(userRegistration);
     // add a conditional that makes it so that it only brings us to the login page if the user account is successfully create
     login();
   };
@@ -53,7 +53,7 @@ export default function Registration() {
 
       // the fetch needs to match the API route in the backend
       let results = await fetch("/users/signup", options);
-      console.log(results);
+      // console.log(results);
       await results.json();
     } catch (err) {
       console.log({ message: err.message });

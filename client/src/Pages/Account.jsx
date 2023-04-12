@@ -6,15 +6,6 @@ import UserContext from "../UserContext";
 export default function Account() {
     const auth = useContext(UserContext)
 
-
-    useEffect(() => {
-        console.log(auth)
-    }, [])
-
-    // useEffect(() => {
-        
-    // }, [])
-
     return(
         <>
             <Navbar></Navbar>
