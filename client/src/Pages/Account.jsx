@@ -13,6 +13,7 @@ export default function Account() {
   useEffect(() => {
     getFavorites();
     console.log(userData);
+    console.log(auth.currentUser);
   }, []);
 
   useEffect(() => {
