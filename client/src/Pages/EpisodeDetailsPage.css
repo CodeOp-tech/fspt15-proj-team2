@@ -1,83 +1,82 @@
 .body {
-    margin-top: 60px;
-    margin-bottom: 200px;
+  margin-top: 60px;
+  margin-bottom: 200px;
 }
 
 .results-btn {
-    background-color: #FC5F5F;
-    border: 1px solid #FC5F5F;
-    border-radius: 50px;
-    padding: 3px 36px;
-    color: #F9F9F9;
-    margin-left: 15px;
+  background-color: #fc5f5f;
+  border: 1px solid #fc5f5f;
+  border-radius: 50px;
+  padding: 3px 36px;
+  color: #f9f9f9;
+  margin-left: 15px;
 }
 .results-btn:hover {
-    background-color: #F9F9F9;
-    border: 1px solid #FC5F5F;
-    color: #FC5F5F;
+  background-color: #f9f9f9;
+  border: 1px solid #fc5f5f;
+  color: #fc5f5f;
 }
 
 .podcast-title {
-    font-style: italic;
+  font-style: italic;
 }
 
 .episode-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .episode-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .episode-desc {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .container {
-    margin-bottom: 200px;
+  margin-bottom: 200px;
 }
 
 .episode_img {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .container-info {
-    display: flex;
-    flex-direction: row;    
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .ep-info {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 .rem-btn {
-    background-color: #fc5f5f;
-    border: 1px solid #fc5f5f;
-    color: #f9f9f9;
-  }
+  background-color: #fc5f5f;
+  border: 1px solid #fc5f5f;
+  color: #f9f9f9;
+}
 
 .fav-btn {
-    background-color: #f9f9f9;
-    border: 1px solid #fc5f5f;
-    color: #fc5f5f;
-  }
+  background-color: #f9f9f9;
+  border: 1px solid #fc5f5f;
+  color: #fc5f5f;
+}
 
 .down {
-    vertical-align: bottom;
- }
+  vertical-align: bottom;
+}
 
- .spaced-line {
-    line-height: 50px;
- }
-
+.spaced-line {
+  line-height: 50px;
+}
