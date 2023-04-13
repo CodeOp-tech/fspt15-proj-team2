@@ -1,4 +1,5 @@
 import SearchResultsPage from "./Pages/SearchResultsPage";
+import LandingPage from "./Pages/LandingPage";
 // import PodcastDetailsPage from "./Pages/PodcastDetailsPage"; //We don't need this in this iteration of the project.
 import EpisodeDetailsPage from "./Pages/EpisodeDetailsPage";
 import SearchContextProvider from "./SearchContext";
@@ -9,6 +10,8 @@ import Registration from "./Pages/Registration";
 import Account from "./Pages/Account";
 import UserContext from "./UserContext";
 import useProvideAuth from "./hooks/useProvideAuth";
+import { useState } from "react";
+import { Routes, Link, Route } from "react-router-dom";
 
 function App() {
   const [url, setUrl] = useState("");

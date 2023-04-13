@@ -32,7 +32,7 @@ export default function Account() {
         <h3 style={{ color: "#AA4A44" }} className="align-items-center">
           Favorites
         </h3>
-        <table class="table table-hover">
+        <table className="table table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
