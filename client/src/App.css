@@ -1,4 +1,3 @@
-
 .body {
   margin: 0;
   padding: 0;
@@ -6,15 +5,15 @@
 
 .hero {
   width: 100%;
-  height: 100vh;
-  margin-top: 30px;
+  height: 93vh;
+  margin-top: 0px;
   display: flex;
   justify-content: center;
   align-items: top;
   text-align: center;
   background-image: url(https://images.pexels.com/photos/983831/pexels-photo-983831.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -22,14 +21,13 @@
 .hero h1 {
   font-size: 3rem;
   text-align: right;
-  color: #FC5F5F;
-  margin-top: 50px;
+  color: #fc5f5f;
+  margin-top: 30px;
 }
 
 a:link {
   text-decoration: none;
 }
-
 
 a:visited {
   text-decoration: none;
@@ -50,10 +48,43 @@ button {
   padding: 3px 36px;
   color: white;
 }
+
 button:hover {
   background-color: white;
   border: 1px solid #fc5f5f;
   color: #fc5f5f;
+}
+
+input:focus {
+  border-color: #fc5f5f;
+}
+
+.card-body {
+  color: black;
+}
+
+.card-body:hover {
+  color: #fc5f5f;
+}
+
+.card-img-top:hover {
+  opacity: 80%;
+}
+
+input:focus {
+  border-color: #fc5f5f;
+}
+
+.card-body {
+  color: black;
+}
+
+.card-body:hover {
+  color: #fc5f5f;
+}
+
+.card-img-top:hover {
+  opacity: 80%;
 }
 
 a.link {
