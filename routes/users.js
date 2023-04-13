@@ -20,20 +20,21 @@ async function userExists(req, res, next) {
   next();
 }
 
-// CHECK IF THE USER IS LOGGED IN
+// TO CHECK IF USER IS LOGGED IN
 async function isLoggedIn(req, res, next) {
   // get the token from the "authorization" header in our frontend (the options)
   let authHeader = req.headers["authorization"];
-
   try {
     // we only want our token so we have to split our authHeader into the following
     let [str, token] = authHeader.split(" ");
-
+    console.log(token);
+    console.log(str);
     // jwt will check the payload and if a token doesn't exist then it will throw an error
     let payload = jwt.verify(token, process.env.SUPER_SECRET);
-
+    console.log(payload);
     // store the payload in the req to be used later
-    req.user_id = payload.user_id;
+    req.userID = payload.userID;
+
     next();
   } catch (error) {
     res.status(401).send({ error: "Unauthorized" });
@@ -87,28 +88,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// TO CHECK IF USER IS LOGGED IN
-
-async function isLoggedIn(req, res, next) {
-  // get the token from the "authorization" header in our frontend (the options)
-  let authHeader = req.headers["authorization"];
-  try {
-    // we only want our token so we have to split our authHeader into the following
-    let [str, token] = authHeader.split(" ");
-    console.log(token);
-    console.log(str);
-    // jwt will check the payload and if a token doesn't exist then it will throw an error
-    let payload = jwt.verify(token, process.env.SUPER_SECRET);
-    console.log(payload);
-    // store the payload in the req to be used later
-    req.userID = payload.userID;
-    return userId;
-    next();
-  } catch (error) {
-    res.status(401).send({ error: "Unauthorized" });
-  }
-}
-
+// THIS FUNCTION NEEDS MORE WORK
 // INSERT a new podcast episode into favorites/junction table
 // I only tested it with the first sql segment and the favorites table so may need tweaking
 router.post("/favorites", isLoggedIn, async function (req, res) {
