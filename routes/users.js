@@ -92,8 +92,8 @@ router.post("/login", async (req, res) => {
 // INSERT a new podcast episode into favorites/junction table
 // I only tested it with the first sql segment and the favorites table so may need tweaking
 router.post("/favorites", isLoggedIn, async function (req, res) {
-  const { id } = req.body; // id from episode
-  const user_id = userID; // NOT SURE WHERE TO GET THIS FROM...
+  const { id } = req.body; //id from episode
+  const user_id = userID; //user id -- where can I get this from?
   const sql = `INSERT INTO favorites (id) VALUES ('${id}') INTO users_favorites (user_id, favorites_id) VALUES ('${user_id}',  '${id}')`;
   try {
     await db(sql);
