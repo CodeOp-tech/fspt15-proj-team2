@@ -6,9 +6,9 @@ const db = require("../model/helper");
 const jwt = require("jsonwebtoken");
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
+// router.get("/", function (req, res, next) {
+//   res.send("respond with a resource");
+// });
 
 //* CHECK IF THE USERNAME ALREADY EXISTS
 async function userExists(req, res, next) {
@@ -20,12 +20,32 @@ async function userExists(req, res, next) {
   next();
 }
 
+// CHECK IF THE USER IS LOGGED IN
+async function isLoggedIn(req, res, next) {
+  // get the token from the "authorization" header in our frontend (the options)
+  let authHeader = req.headers["authorization"];
+
+  try {
+    // we only want our token so we have to split our authHeader into the following
+    let [str, token] = authHeader.split(" ");
+
+    // jwt will check the payload and if a token doesn't exist then it will throw an error
+    let payload = jwt.verify(token, process.env.SUPER_SECRET);
+
+    // store the payload in the req to be used later
+    req.user_id = payload.user_id;
+    next();
+  } catch (error) {
+    res.status(401).send({ error: "Unauthorized" });
+  }
+}
+
 // creating a new user
 router.post("/signup", userExists, async (req, res) => {
   const { firstName, email, username, password } = req.body;
-  const stringPass = password.toString();
+
   try {
-    const hashedPW = await bcrypt.hash(stringPass, 10);
+    const hashedPW = await bcrypt.hash(password, 10);
     let sql = `INSERT INTO users (firstName, email, username, password) VALUES ("${firstName}", "${email}", "${username}", "${hashedPW}");`;
     await db(sql);
     res.status(200).send({ message: "User registered!" });
@@ -38,23 +58,25 @@ router.post("/signup", userExists, async (req, res) => {
 // log in for the user
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-
   // retrieve user from db
   try {
     let sql = `SELECT * FROM users WHERE username="${username}";`;
     let result = await db(sql);
     let user = result.data[0];
-
     // if user not found, return an error
     if (!user) res.status(404).send({ message: "User not found!" });
-
     let doMatch = await bcrypt.compare(password, user.password);
     if (doMatch) {
       const token = jwt.sign({ userID: user.id }, process.env.SUPER_SECRET);
+
+      // we do not want the user's password in the object we are sending for security reasons
+      delete user.password;
+
+      // this information is sent to our console
       res.send({
-        message: "Log in successful! here is your token",
+        message: "Log in successful! Here is your token",
         token,
-        username,
+        user,
       });
     } else {
       res.send({ message: "The password is incorrect!" });
@@ -64,6 +86,10 @@ router.post("/login", async (req, res) => {
     res.status(400).send({ message: err.message });
   }
 });
+
+
+
+// TO CHECK IF USER IS LOGGED IN
 
 async function isLoggedIn(req, res, next) {
   // get the token from the "authorization" header in our frontend (the options)
@@ -83,6 +109,7 @@ async function isLoggedIn(req, res, next) {
     res.status(401).send({ error: "Unauthorized" });
   }
 }
+
 
 // INSERT a new podcast episode into favorites/junction table 
 // I only tested it with the first sql segment and the favorites table so may need tweaking
@@ -114,6 +141,32 @@ router.delete("/favorites/:id", isLoggedIn, async function (req, res) {
   }
 });
 
+// GET ALL FROM FAVORITES FOR ONE USER -- running when account page loads
+router.get("/account", isLoggedIn, async (req, res) => {
+  try {
+    // Return all favorites_id for specific user_id
+    // Search API using favorites_id & return details
+    const result = await db(
+      `SELECT favorites_id FROM users_favorites WHERE users_favorites.user_id = ${req.userID}`
+    );
+    // console.log(result);
+    const items = result.data;
+    console.log(items);
+
+    //Could include function to just return the episode IDs here
+    //Could also include function to search API to return episode details instead of IDs here?
+    res.send(items);
+    return;
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// router.get("/account", isLoggedIn, async function (req, res) {
+//   res.status(200).send({
+//     message: req.user_id,
+//   });
+// });
 
 
 module.exports = router;

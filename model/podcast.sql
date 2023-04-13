@@ -23,7 +23,7 @@ CREATE TABLE favorites (
 
 CREATE TABLE users_favorites (
     user_id INTEGER NOT NULL,
-    favorites_id INT NOT NULL,
+    favorites_id VARCHAR(100) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (favorites_id) REFERENCES favorites(id) ON DELETE CASCADE
 );

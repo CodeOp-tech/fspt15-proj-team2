@@ -23,42 +23,6 @@ const searchFullPodcast = async (req, res) => {
     console.log(error);
   }
 };
-// RETURNS OFFSET RESULTS -- SEE MORE RESULTS FUNCTION IN SEARCH COMPONENT
-// const searchFullPodcastMore = async (req, res) => {
-//   try {
-//     const { searchTerm } = req.body;
-//     const response = await unirest
-//       .get(
-//         `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&offset=11`
-//         // below is mock database api url:
-//         // `https://listen-api-test.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
-//       )
-//       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
-//     response.toJSON();
-
-//     console.log(response.body);
-//     res.send(response.body.results); // Returns array of podcasts
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// const searchFullPodcastEnglish = async (req, res) => {
-//   try {
-//     const { searchTerm } = req.body;
-//     const response = await unirest
-//       .get(
-//         `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
-//       )
-//       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
-//     response.toJSON();
-
-//     console.log(response.body.results);
-//     res.send(response.body.results); // Returns array of podcasts
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 // FULL SEARCH -- RETURNS ARRAY OF EPISODE RESULTS WITH NESTED PODCAST DATA
 router.post("/api/search", async (req, res) => {
@@ -69,21 +33,13 @@ router.post("/api/search", async (req, res) => {
   }
 });
 
-// router.post("/api/search/more", async (req, res) => {
-//   try {
-//     await searchFullPodcastMore(req, res);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-
-// SEARCH BY PODCAST ID -- used in search by podcast id POST function
+// SEARCH BY episode ID -- used in search by episode id POST function
 const searchById = async (req, res) => {
   const { id } = req.body;
   try {
     const response = await unirest
       .get(
-        `https://listen-api.listennotes.com/api/v2/podcasts/${id}?sort=recent_first`
+        `https://listen-api-test.listennotes.com/api/v2/episodes/${id}?show_transcript=1`
       )
       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
     response.toJSON();
@@ -94,7 +50,7 @@ const searchById = async (req, res) => {
   }
 };
 
-// SEARCH FOR PODCAST DETAILS BY ID -- RETURNS OBJECT WITH PODCAST DATA AND NESTED EPISODE LIST (10 EPISODES)
+// SEARCH FOR EPISODE DETAILS BY ID -- RETURNS OBJECT WITH PODCAST DATA
 router.post("/api/search/:id", async (req, res) => {
   try {
     searchById(req, res);
