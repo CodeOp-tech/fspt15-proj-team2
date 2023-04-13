@@ -5,6 +5,7 @@ import Navbar from "../Components/Navbar";
 // import Player from "../components/Player";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../SearchContext";
+import UserContext from "../UserContext";
 import "./EpisodeDetailsPage.css";
 
 function EpisodeDetails({ setUrl, setShowPlayer }) {
@@ -17,10 +18,9 @@ function EpisodeDetails({ setUrl, setShowPlayer }) {
   const [checked, setChecked] = useState(false);
   const [hideListenButton, setHideListenButton] = useState(false);
 
-
   const dateObject = new Date(episodeData.pub_date_ms);
   const navigate = useNavigate();
-
+  const auth = useContext(UserContext);
 
   const getEpisodeDetails = (results) => {
     for (let episode of results) {
@@ -47,7 +47,7 @@ function EpisodeDetails({ setUrl, setShowPlayer }) {
   }
 
   async function addToFavorites() {
-    if (!userID) {
+    if (!auth.isLoggedIn) {
       navigate("/login");
     } else {
       try {
@@ -136,9 +136,7 @@ function EpisodeDetails({ setUrl, setShowPlayer }) {
                     {!checked && (
                       <button
                         className="fav-btn mb-2"
-
                         onClick={() => addToFavorites()}
-
                       >
                         <span className="material-symbols-outlined down">
                           heart_plus
@@ -149,9 +147,7 @@ function EpisodeDetails({ setUrl, setShowPlayer }) {
                     {checked && (
                       <button
                         className="rem-btn mb-2"
-
                         onClick={() => removeFromFavorites(episodeData.id)}
-
                       >
                         <span className="material-symbols-outlined down">
                           favorite
