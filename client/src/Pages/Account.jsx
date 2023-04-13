@@ -22,16 +22,11 @@ export default function Account() {
   //Need function to loop through episodeIDs & get details
 
   const getEpisodeDetails = async () => {
-    // const episodeDetails = [];
     for (let i = 0; i < episodeIDs.length; i++) {
       console.log(episodeIDs[i].favorites_id); //working
-      let details = await getDetails(episodeIDs[i].favorites_id); // working
-      // console.log(details);
-      // episodeDetails.push(details);
-      // console.log(episodeDetails); // Array of undefined items...not sure why
+      let details = await getDetails(episodeIDs[i].favorites_id);
       setUserData((episode) => [...episode, details]);
     }
-    // setUserData(episodeDetails);
     return userData;
   };
 
@@ -70,8 +65,6 @@ export default function Account() {
       let data = await results.json();
       console.log(data); //Returns array of favorites (user id & episode id)
       setEpisodeIDs(data); //This seems to be working -- returns array of favorites (user id & episode id)
-      // console.log(episodeIDs);
-
       setLoading(false);
     } catch (err) {
       console.log(err);
