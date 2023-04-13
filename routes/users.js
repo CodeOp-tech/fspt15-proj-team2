@@ -93,8 +93,8 @@ router.post("/login", async (req, res) => {
 // I only tested it with the first sql segment and the favorites table so may need tweaking
 router.post("/favorites", isLoggedIn, async function (req, res) {
   const { id } = req.body; // id from episode
-  const user_id = userID; // NOT SURE WHERE TO GET THIS FROM...CAN WE GET IT FROM THE ISLOGGEDIN FUNCTION?
-  const sql = `INSERT INTO favorites (id) VALUES ('${id}') INTO users_favorites (user_id, favorites_id) VALUES ('${user_id}',  '${id}')`;
+  // const user_id = userID; // NOT SURE WHERE TO GET THIS FROM...CAN WE GET IT FROM THE ISLOGGEDIN FUNCTION?
+  const sql = `INSERT INTO favorites (id) VALUES ('${id}') INTO users_favorites (user_id, favorites_id) VALUES ('${req.userID}',  '${id}')`;
   try {
     await db(sql);
     const results = await db("SELECT * FROM favorites");
