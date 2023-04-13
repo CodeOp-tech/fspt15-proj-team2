@@ -6,6 +6,7 @@ const cors = require("cors");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+// const favoritesRouter = require("./routes/podcasts");
 
 const app = express();
 
@@ -18,5 +19,6 @@ app.use(cors());
 
 app.use("/", indexRouter); // BASE URL
 app.use("/users", usersRouter); // BASE URL FOR USERS
+// app.use("/favorites", favoritesRouter);
 
 module.exports = app;

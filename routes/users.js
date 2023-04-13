@@ -6,9 +6,9 @@ const db = require("../model/helper");
 const jwt = require("jsonwebtoken");
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
+// router.get("/", function (req, res, next) {
+//   res.send("respond with a resource");
+// });
 
 //* CHECK IF THE USERNAME ALREADY EXISTS
 async function userExists(req, res, next) {
@@ -58,16 +58,13 @@ router.post("/signup", userExists, async (req, res) => {
 // log in for the user
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
-
   // retrieve user from db
   try {
     let sql = `SELECT * FROM users WHERE username="${username}";`;
     let result = await db(sql);
     let user = result.data[0];
-
     // if user not found, return an error
     if (!user) res.status(404).send({ message: "User not found!" });
-
     let doMatch = await bcrypt.compare(password, user.password);
     if (doMatch) {
       const token = jwt.sign({ userID: user.id }, process.env.SUPER_SECRET);
@@ -90,11 +87,51 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// GET user information
-router.get("/account", isLoggedIn, async function (req, res) {
-  res.status(200).send({
-    message: req.user_id,
-  });
+// TO CHECK IF USER IS LOGGED IN
+async function isLoggedIn(req, res, next) {
+  // get the token from the "authorization" header in our frontend (the options)
+  let authHeader = req.headers["authorization"];
+  try {
+    // we only want our token so we have to split our authHeader into the following
+    let [str, token] = authHeader.split(" ");
+    console.log(token);
+    console.log(str);
+    // jwt will check the payload and if a token doesn't exist then it will throw an error
+    let payload = jwt.verify(token, process.env.SUPER_SECRET);
+    console.log(payload);
+    // store the payload in the req to be used later
+    req.userID = payload.userID;
+    next();
+  } catch (error) {
+    res.status(401).send({ error: "Unauthorized" });
+  }
+}
+
+// GET ALL FROM FAVORITES FOR ONE USER -- running when account page loads
+router.get("/account", isLoggedIn, async (req, res) => {
+  try {
+    // Return all favorites_id for specific user_id
+    // Search API using favorites_id & return details
+    const result = await db(
+      `SELECT favorites_id FROM users_favorites WHERE users_favorites.user_id = ${req.userID}`
+    );
+    // console.log(result);
+    const items = result.data;
+    console.log(items);
+
+    //Could include function to just return the episode IDs here
+    //Could also include function to search API to return episode details instead of IDs here?
+    res.send(items);
+    return;
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
+
+// router.get("/account", isLoggedIn, async function (req, res) {
+//   res.status(200).send({
+//     message: req.user_id,
+//   });
+// });
 
 module.exports = router;

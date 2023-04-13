@@ -18,12 +18,12 @@ CREATE TABLE users (
   
 -- need to fetch the id from the podcast API for this
 CREATE TABLE favorites (
-    id INTEGER NOT NULL PRIMARY KEY
+    id VARCHAR(100) NOT NULL PRIMARY KEY
 );
 
 CREATE TABLE users_favorites (
     user_id INTEGER NOT NULL,
-    favorites_id INT NOT NULL,
+    favorites_id VARCHAR(100) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (favorites_id) REFERENCES favorites(id) ON DELETE CASCADE
 );
