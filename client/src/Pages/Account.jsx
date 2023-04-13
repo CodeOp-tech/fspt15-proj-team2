@@ -1,7 +1,5 @@
 // import { useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
 import Navbar from "../Components/Navbar";
-import UserContext from "../UserContext";
 
 export default function Account() {
   const auth = useContext(UserContext);
@@ -12,6 +10,7 @@ export default function Account() {
       <div className="d-flex flex-column justify-content-center align-content-center m-4">
         <h2 style={{ color: "#AA4A44" }}>Account Details</h2>
       </div>
+
 
       <div className="d-flex flex-column justify-content-center align-content-center align-items-left m-4">
         {/* these are things that we will eventually get from the database when the registration is working */}
@@ -28,6 +27,7 @@ export default function Account() {
           </p>
         </div>
       </div>
+
 
       <div className="d-flex flex-column justify-content-center align-content-center  m-4">
         <h3 style={{ color: "#AA4A44" }} className="align-items-center">
