@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 // import Player from "../components/Player";
+import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../SearchContext";
 import "./EpisodeDetailsPage.css";
 
@@ -11,10 +12,15 @@ function EpisodeDetails({ setUrl, setShowPlayer }) {
   const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
   // this podcast episode id is in the database & can be used to search API
   let { results, setResults } = useContext(SearchContext);
+
   const [episodeData, setEpisodeData] = useState([]);
-  const dateObject = new Date(episodeData.pub_date_ms);
   const [checked, setChecked] = useState(false);
   const [hideListenButton, setHideListenButton] = useState(false);
+
+
+  const dateObject = new Date(episodeData.pub_date_ms);
+  const navigate = useNavigate();
+
 
   const getEpisodeDetails = (results) => {
     for (let episode of results) {
@@ -38,6 +44,46 @@ function EpisodeDetails({ setUrl, setShowPlayer }) {
     setUrl(`${episodeData.listennotes_url}/embed`);
     setShowPlayer(true);
     setHideListenButton(true);
+  }
+
+  async function addToFavorites() {
+    if (!userID) {
+      navigate("/login");
+    } else {
+      try {
+        let body = {
+          id: episodeData.id,
+          user_id: userID,
+        };
+        let options = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        };
+        let results = await fetch("/users/favorites", options);
+        let data = await results.json();
+        // to change button
+        setChecked(true);
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
+
+  async function removeFromFavorites(id) {
+    try {
+      let options = {
+        method: "DELETE",
+      };
+      let results = await fetch(`/users/favorites/${id}`, options);
+      let data = await results.json();
+      // to change button
+      setChecked(false);
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
@@ -90,7 +136,9 @@ function EpisodeDetails({ setUrl, setShowPlayer }) {
                     {!checked && (
                       <button
                         className="fav-btn mb-2"
-                        onClick={() => setChecked(true)}
+
+                        onClick={() => addToFavorites()}
+
                       >
                         <span className="material-symbols-outlined down">
                           heart_plus
@@ -101,7 +149,9 @@ function EpisodeDetails({ setUrl, setShowPlayer }) {
                     {checked && (
                       <button
                         className="rem-btn mb-2"
-                        onClick={() => setChecked(false)}
+
+                        onClick={() => removeFromFavorites(episodeData.id)}
+
                       >
                         <span className="material-symbols-outlined down">
                           favorite

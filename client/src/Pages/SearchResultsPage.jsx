@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../Components/Navbar";
 import SearchResults from "../Components/SearchResults";
 import Search from "../Components/Search";
 import { Link } from "react-router-dom";

@@ -7,6 +7,7 @@ const db = require("../model/helper"); // Not used currently, but could be used 
 const searchFullPodcast = async (req, res) => {
   try {
     const { searchTerm, offset } = req.body;
+    console.log(req.body);
     const response = await unirest
       .get(
         // `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&offset=${offset}`
@@ -16,7 +17,7 @@ const searchFullPodcast = async (req, res) => {
       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
     response.toJSON();
 
-    console.log(response.body);
+    
     res.send(response.body.results); // Returns array of podcast episodes
   } catch (error) {
     console.log(error);

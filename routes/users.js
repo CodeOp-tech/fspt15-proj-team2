@@ -87,7 +87,10 @@ router.post("/login", async (req, res) => {
   }
 });
 
+
+
 // TO CHECK IF USER IS LOGGED IN
+
 async function isLoggedIn(req, res, next) {
   // get the token from the "authorization" header in our frontend (the options)
   let authHeader = req.headers["authorization"];
@@ -106,6 +109,37 @@ async function isLoggedIn(req, res, next) {
     res.status(401).send({ error: "Unauthorized" });
   }
 }
+
+
+// INSERT a new podcast episode into favorites/junction table 
+// I only tested it with the first sql segment and the favorites table so may need tweaking
+router.post("/favorites", isLoggedIn, async function (req, res) {
+  const {id}  = req.body;
+  const user_id = userID;
+  const sql = `INSERT INTO favorites (id) VALUES ('${id}') INTO users_favorites (user_id, favorites_id) VALUES ('${user_id}',  '${id}')`;
+  try {
+    await db(sql);
+    const results = await db("SELECT * FROM favorites");
+    res.send(results.data);
+  } catch (err) {
+    res.status(500).send({message: err.message});
+  }
+});
+
+// DELETE a podcast episode from favorites/junction table
+// I only tested it with the first sql segment and the favorites table so may need tweaking
+router.delete("/favorites/:id", isLoggedIn, async function (req, res) {
+  const id = req.params.id;
+  const user_id = userID;
+  const sql = `DELETE FROM favorites WHERE id="${id}" FROM users_favorites WHERE (user_id, favorites_id) VALUES ('${user_id}',  '${id}')";`;
+  try {
+    await db(sql)
+    const results = await db("SELECT * FROM favorites");
+    res.send(results.data);
+  } catch (err) {
+    res.status(500).send({message: err.message});
+  }
+});
 
 // GET ALL FROM FAVORITES FOR ONE USER -- running when account page loads
 router.get("/account", isLoggedIn, async (req, res) => {
@@ -133,5 +167,6 @@ router.get("/account", isLoggedIn, async (req, res) => {
 //     message: req.user_id,
 //   });
 // });
+
 
 module.exports = router;
