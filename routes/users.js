@@ -84,7 +84,8 @@ async function isLoggedIn(req, res, next) {
   }
 }
 
-// INSERT a new podcast episode into favorites table 
+// INSERT a new podcast episode into favorites/junction table 
+// I only tested it with the first sql segment and the favorites table so may need tweaking
 router.post("/favorites", isLoggedIn, async function (req, res) {
   const {id}  = req.body;
   const user_id = userID;
@@ -98,7 +99,8 @@ router.post("/favorites", isLoggedIn, async function (req, res) {
   }
 });
 
-// DELETE a podcast episode from favorites table 
+// DELETE a podcast episode from favorites/junction table
+// I only tested it with the first sql segment and the favorites table so may need tweaking
 router.delete("/favorites/:id", isLoggedIn, async function (req, res) {
   const id = req.params.id;
   const user_id = userID;
