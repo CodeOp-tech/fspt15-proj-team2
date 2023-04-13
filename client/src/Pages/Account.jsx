@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useContext } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import Navbar from "../Components/Navbar";
@@ -8,6 +8,8 @@ export default function Account() {
   const [loading, setLoading] = useState(false);
   const [episodeIDs, setEpisodeIDs] = useState([]); //To save episode ids
   const [userData, setUserData] = useState([]); //To save full episode details
+
+  const auth = useContext(UserContext);
 
   //Load user favorites when page loads
   useEffect(() => {
@@ -79,22 +81,13 @@ export default function Account() {
   };
 
   return (
-    <div className="">
-      <Navbar></Navbar>
-      <div className="d-flex flex-column justify-content-center align-content-center m-4">
-        <h2>Your Account</h2>
-
-  const auth = useContext(UserContext);
-
-  return (
     <div>
       <Navbar></Navbar>
       <div className="d-flex flex-column justify-content-center align-content-center m-4">
-        <h2 style={{ color: "#AA4A44" }}>Account Details</h2>
+        <h2 style={{ color: "#AA4A44" }}>Your Details</h2>
       </div>
 
       <div className="d-flex flex-column justify-content-center align-content-center align-items-left m-4">
-
         <h3 className="mx-3">
           Hello,{" "}
           <span style={{ color: "#AA4A44" }}>{auth.currentUser.firstName}</span>
