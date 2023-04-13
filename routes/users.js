@@ -34,7 +34,7 @@ async function isLoggedIn(req, res, next) {
     console.log(payload);
     // store the payload in the req to be used later
     req.userID = payload.userID;
-
+    console.log(userID);
     next();
   } catch (error) {
     res.status(401).send({ error: "Unauthorized" });
@@ -93,7 +93,7 @@ router.post("/login", async (req, res) => {
 // I only tested it with the first sql segment and the favorites table so may need tweaking
 router.post("/favorites", isLoggedIn, async function (req, res) {
   const { id } = req.body; // id from episode
-  const user_id = userID; // NOT SURE WHERE TO GET THIS FROM...
+  const user_id = userID; // NOT SURE WHERE TO GET THIS FROM...CAN WE GET IT FROM THE ISLOGGEDIN FUNCTION?
   const sql = `INSERT INTO favorites (id) VALUES ('${id}') INTO users_favorites (user_id, favorites_id) VALUES ('${user_id}',  '${id}')`;
   try {
     await db(sql);
