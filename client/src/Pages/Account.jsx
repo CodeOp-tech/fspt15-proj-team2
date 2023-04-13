@@ -1,6 +1,4 @@
-import { useNavigate, Link, useContext } from "react-router-dom";
-import { useState, useEffect } from "react";
-
+import { useContext, useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import UserContext from "../UserContext";
 
