@@ -87,8 +87,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-
-
 // TO CHECK IF USER IS LOGGED IN
 
 async function isLoggedIn(req, res, next) {
@@ -104,25 +102,25 @@ async function isLoggedIn(req, res, next) {
     console.log(payload);
     // store the payload in the req to be used later
     req.userID = payload.userID;
+    return userId;
     next();
   } catch (error) {
     res.status(401).send({ error: "Unauthorized" });
   }
 }
 
-
-// INSERT a new podcast episode into favorites/junction table 
+// INSERT a new podcast episode into favorites/junction table
 // I only tested it with the first sql segment and the favorites table so may need tweaking
 router.post("/favorites", isLoggedIn, async function (req, res) {
-  const {id}  = req.body;
-  const user_id = userID;
+  const { id } = req.body; //id from episode
+  const user_id = userID; //user id -- where can I get this from?
   const sql = `INSERT INTO favorites (id) VALUES ('${id}') INTO users_favorites (user_id, favorites_id) VALUES ('${user_id}',  '${id}')`;
   try {
     await db(sql);
     const results = await db("SELECT * FROM favorites");
     res.send(results.data);
   } catch (err) {
-    res.status(500).send({message: err.message});
+    res.status(500).send({ message: err.message });
   }
 });
 
@@ -130,14 +128,14 @@ router.post("/favorites", isLoggedIn, async function (req, res) {
 // I only tested it with the first sql segment and the favorites table so may need tweaking
 router.delete("/favorites/:id", isLoggedIn, async function (req, res) {
   const id = req.params.id;
-  const user_id = userID;
+  const user_id = user_id; // from the isLoggedIn function?
   const sql = `DELETE FROM favorites WHERE id="${id}" FROM users_favorites WHERE (user_id, favorites_id) VALUES ('${user_id}',  '${id}')";`;
   try {
-    await db(sql)
+    await db(sql);
     const results = await db("SELECT * FROM favorites");
     res.send(results.data);
   } catch (err) {
-    res.status(500).send({message: err.message});
+    res.status(500).send({ message: err.message });
   }
 });
 
@@ -167,6 +165,5 @@ router.get("/account", isLoggedIn, async (req, res) => {
 //     message: req.user_id,
 //   });
 // });
-
 
 module.exports = router;
