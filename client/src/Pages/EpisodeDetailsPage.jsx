@@ -53,7 +53,7 @@ function EpisodeDetails({ setUrl, setShowPlayer }) {
       try {
         let body = {
           id: episodeData.id,
-          user_id: userID,
+          user_id: auth.currentUser.id,
         };
         let options = {
           method: "POST",

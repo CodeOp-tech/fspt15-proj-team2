@@ -108,7 +108,7 @@ router.post("/favorites", isLoggedIn, async function (req, res) {
 // I only tested it with the first sql segment and the favorites table so may need tweaking
 router.delete("/favorites/:id", isLoggedIn, async function (req, res) {
   const id = req.params.id;
-  const user_id = user_id; // from the isLoggedIn function?
+  const user_id = req.userID; // from the isLoggedIn function?
   const sql = `DELETE FROM favorites WHERE id="${id}" FROM users_favorites WHERE (user_id, favorites_id) VALUES ('${user_id}',  '${id}')";`;
   try {
     await db(sql);
