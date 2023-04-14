@@ -10,14 +10,13 @@ const searchFullPodcast = async (req, res) => {
     console.log(req.body);
     const response = await unirest
       .get(
-        // `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&offset=${offset}`
+        `https://listen-api.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&offset=${offset}`
         // below is mock database api url:
-        `https://listen-api-test.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
+        // `https://listen-api-test.listennotes.com/api/v2/search?q=${searchTerm}&sort_by_date=0&language=English`
       )
       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
     response.toJSON();
 
-    
     res.send(response.body.results); // Returns array of podcast episodes
   } catch (error) {
     console.log(error);
@@ -39,7 +38,7 @@ const searchById = async (req, res) => {
   try {
     const response = await unirest
       .get(
-        `https://listen-api-test.listennotes.com/api/v2/episodes/${id}?show_transcript=1`
+        `https://listen-api.listennotes.com/api/v2/episodes/${id}?show_transcript=1`
       )
       .header("X-ListenAPI-Key", process.env.LISTEN_API_KEY);
     response.toJSON();

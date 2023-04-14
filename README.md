@@ -1,20 +1,23 @@
 # Team 2: Podcast App
 
 ### Back End (localhost: 5001)
-- **Express** 
-- **Node** 
+
+- **Express**
+- **Node**
 - **MySQL**
 
 **Getting started:**
+
 - Run `npm install` to install the dependencies in the project folder
 - To start the server, run `npm start`
 
-
 ### Front End
-- **React** 
+
+- **React**
 - **Vite**
 
 **Getting started:**
+
 - Open a separate Terminal to start the front end
 - Go into the client directory by entering `cd client` into the Terminal
 - Install the dependencies with `npm install`
@@ -45,8 +48,11 @@ Open another terminal and go into the project folder and run `npm run migrate`. 
 In addition to nodemon and the regular stuff, our project also includes [node-fetch](https://www.npmjs.com/package/node-fetch) so we can do fetches in the backend and [react-router-dom](https://reactrouter.com/en/main) so we can use react-router for pages.
 
 ### Links
-[Project Presentation Slides](https://docs.google.com/presentation/d/1gnEdT3RED8NwjqLBgb56dx9DoSKqEKYiipeo1NttxLM/edit#slide=id.p)
 
+[Project Presentation Slides](https://docs.google.com/presentation/d/1gnEdT3RED8NwjqLBgb56dx9DoSKqEKYiipeo1NttxLM/edit#slide=id.p)
+[Basic functionality demo video](https://www.awesomescreenshot.com/video/16478577?key=cf30360042eedd6407a79465a4c4c40d)
+[User favorites/account demo video](https://www.awesomescreenshot.com/video/16459123?key=6aecbaa7833c01756d5aee92c1890897)
 
 ### Notes
+
 _This is a student project that was created at [CodeOp](http://CodeOp.tech), a full stack development bootcamp in Barcelona._
