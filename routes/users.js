@@ -34,7 +34,7 @@ async function isLoggedIn(req, res, next) {
     console.log(payload);
     // store the payload in the req to be used later
     req.userID = payload.userID;
-
+    console.log(userID);
     next();
   } catch (error) {
     res.status(401).send({ error: "Unauthorized" });
