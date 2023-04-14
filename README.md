@@ -49,9 +49,9 @@ In addition to nodemon and the regular stuff, our project also includes [node-fe
 
 ### Links
 
-[Project Presentation Slides](https://docs.google.com/presentation/d/1gnEdT3RED8NwjqLBgb56dx9DoSKqEKYiipeo1NttxLM/edit#slide=id.p)
-[Basic functionality demo video](https://www.awesomescreenshot.com/video/16478577?key=cf30360042eedd6407a79465a4c4c40d)
-[User favorites/account demo video](https://www.awesomescreenshot.com/video/16459123?key=6aecbaa7833c01756d5aee92c1890897)
+- [Project Presentation Slides](https://docs.google.com/presentation/d/1gnEdT3RED8NwjqLBgb56dx9DoSKqEKYiipeo1NttxLM/edit#slide=id.p)
+- [Basic functionality demo video](https://www.awesomescreenshot.com/video/16478577?key=cf30360042eedd6407a79465a4c4c40d)
+- [User favorites/account demo video](https://www.awesomescreenshot.com/video/16459123?key=6aecbaa7833c01756d5aee92c1890897)
 
 ### Notes
 
